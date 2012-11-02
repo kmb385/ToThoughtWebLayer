@@ -1,0 +1,42 @@
+.bold{
+	font-weight: bold;
+}
+
+input{
+	border: 1px solid #999999;
+}
+
+.v-margin-4{
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.v-margin-10{
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+
+.v-margin-20{
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}

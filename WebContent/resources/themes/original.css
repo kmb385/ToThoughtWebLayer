@@ -1,0 +1,29 @@
+body {	
+	color: #333333;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: 90%;
+}
+
+.bg1{
+	background-color: #F7F7F7;
+}
+
+.bg2{
+	background-color: #FFFFFF;
+}
+
+.bg3{
+	background-color: #10486E;
+}
+
+.fg1{
+	color: #F2EDED;
+}
+
+.fg2{
+	color: #10486E;
+}
+
+.font-medium{
+	font-size: 1.5em;
+}

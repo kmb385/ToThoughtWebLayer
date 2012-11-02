@@ -1,0 +1,47 @@
+.frame{
+	background: yellow;
+}
+
+body{
+	background-color: #F7F7F7;
+}
+
+#container{
+	border-bottom: 1px solid lightgray;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	margin: 0px auto;
+	width: 980px;
+}
+
+#header{
+	position: relative;
+	height: 60px;
+}
+
+#nav-menu{
+	position: absolute;
+	bottom: 5px;
+	width:100%;
+}
+
+#logo{
+	background: url('../images/logo-small.png') no-repeat;
+	height: 55px;
+	left: 10px;
+	position: relative;
+	top: 5px;
+	width: 190px;
+}
+
+#center-panel{
+	float:left;
+	padding: 10px 20px;
+	width: 650px;
+}
+
+#side-bar{
+	height: 500px;
+	float: left;
+	width: 290px;
+}

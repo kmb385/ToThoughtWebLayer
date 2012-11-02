@@ -1,0 +1,29 @@
+#nav-menu ul{
+	list-style-type:none;
+	margin: 0px auto;
+	width: 383px;
+}
+
+#nav-menu ul li{
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+
+	display:inline-block;
+	font-weight: bold;
+	margin: 0px 10px;
+	font-size: 1.5em;
+	padding: 2px 3px;
+}
+
+#nav-menu ul li:hover{
+	background-color: #FFFFFF;
+	color: #10486E;
+}
+
+#nav-menu ul li a{
+	color: inherit;
+	text-decoration: none;
+}
+
