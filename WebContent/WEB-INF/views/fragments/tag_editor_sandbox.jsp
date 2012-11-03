@@ -6,6 +6,7 @@
 <jsp:include page="../fragments/base_css.jsp" />
 <link href="../resources/css/post.css" rel="stylesheet" />
 <link href="../resources/css/post_tags.css" rel="stylesheet" />
+<link href="../resources/css/controls.css" rel="stylesheet" />
 <jsp:include page="../fragments/jquery_files.jsp" />
 <script type="text/javascript" src="../resources/js/tag_editor.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -25,6 +26,12 @@
 		</div>
 	</div>
 	<div style="height: 400px; width: 400px; background: url(../images/icons.png)"></div>
+	
+	<!-- Creating a Control -->
+	<a href="#" class="control">
+		<span class="img"></span>
+		<span class="text">Create New Post</span>
+	</a>
 </form>
 </body>
 </html>

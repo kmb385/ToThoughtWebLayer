@@ -11,16 +11,21 @@
 <link href="../resources/css/post.css" rel="stylesheet" />
 <jsp:include page="../fragments/text_editor_files.jsp" />
 <script>
-SyntaxHighlighter.all();
+	SyntaxHighlighter.all();
 </script>
 </head>
 <body>
 	<jsp:include page="../fragments/header.jsp" />
 	<div id="container" class="clearfix bg2">
 		<div id="center-panel" class="clearfix">
-			<jsp:include page="../fragments/post.jsp"/>
+			<jsp:include page="../fragments/post.jsp" />
 		</div>
-		<div id="side-bar" class="frame"></div>
+		<div id="side-bar" class="frame">
+			<div class="control-container">
+				<ttTags:control text="Create New Post" href="../blog/new"
+					classes="new-post" />
+			</div>
+		</div>
 	</div>
 </body>
 </html>

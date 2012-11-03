@@ -1,0 +1,41 @@
+.control{
+	background: #C3D5E0;
+	
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+	border: 1px solid rgba(0,0,0, 0.1);
+	color: #666666;
+	display: block;
+	margin: 3px;
+	padding: 3px;
+	position: relative;
+	overflow: auto;
+	text-decoration: none;
+}
+
+.control:hover{
+	background: #C1D4E0;
+	border: 1px solid rgba(0,0,0, 0.3);
+	color: #555555;
+}
+
+.control .img{
+	float: left;
+	height: 32px;
+	width: 32px;
+}
+
+.control .text{
+	float: left;
+	font-size: 1.35em;
+	font-weight: bold;
+	position: absolute;
+	left: 45px;
+	margin: 4px 0px 4px;
+}
+
+.new-post{
+	background: url(../../resources/images/file-add.png) no-repeat;
+}

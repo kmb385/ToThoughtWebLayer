@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="ttTags" uri="http://tothought.cloudfoundry.com/ttTags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,8 +24,10 @@
 				<jsp:include page="../fragments/post.jsp"></jsp:include>
 			</c:forEach>
 		</div>
-		<div id="side-bar" class="frame">
-			
+		<div id="side-bar">
+			<div class="control-container">
+				<ttTags:control text="Create New Post" href="../blog/new" classes="new-post"/>
+			</div>
 		</div>
 	</div>
 </body>

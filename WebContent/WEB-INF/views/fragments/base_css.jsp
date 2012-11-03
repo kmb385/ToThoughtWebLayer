@@ -5,3 +5,4 @@
 <link href="../resources/css/global.css" rel="stylesheet" />
 <link href="../resources/css/structure.css" rel="stylesheet" />
 <link href="../resources/css/nav.css" rel="stylesheet" />
+<link href="../resources/css/controls.css" rel="stylesheet" />
