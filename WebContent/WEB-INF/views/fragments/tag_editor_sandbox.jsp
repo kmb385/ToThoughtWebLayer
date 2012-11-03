@@ -24,6 +24,7 @@
 		<div class="tag-editor">
 		</div>
 	</div>
+	<div style="height: 400px; width: 400px; background: url(../images/icons.png)"></div>
 </form>
 </body>
 </html>

@@ -10,6 +10,8 @@ body{
 	border-bottom: 1px solid lightgray;
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
+	position: relative;
+	overflow: hidden;
 	margin: 0px auto;
 	width: 980px;
 }
@@ -41,7 +43,10 @@ body{
 }
 
 #side-bar{
-	height: 500px;
+	border-left: 1px solid lightgray;
+	height: 100%;
 	float: left;
+	position: absolute;
+	right: 0;
 	width: 290px;
 }

@@ -23,7 +23,9 @@
 				<jsp:include page="../fragments/post.jsp"></jsp:include>
 			</c:forEach>
 		</div>
-		<div id="side-bar" class="frame"></div>
+		<div id="side-bar" class="frame">
+			
+		</div>
 	</div>
 </body>
 </html>
