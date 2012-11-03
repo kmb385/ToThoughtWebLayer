@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="Cloud Foundry (Runtime) v1.0"/>
+  <runtime name="VMware vFabric tc Server Developer Edition (Runtime) v2.7"/>
+  <secondary-runtime name="Cloud Foundry (Runtime) v1.0"/>
   <fixed facet="java"/>
   <fixed facet="jst.web"/>
   <fixed facet="wst.jsdt.web"/>

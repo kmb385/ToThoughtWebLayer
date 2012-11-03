@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ToThought</title>
 <jsp:include page="../fragments/base_css.jsp" />
-<link href="/tothought/resources/css/post.css" rel="stylesheet" />
+<link href="../resources/css/post.css" rel="stylesheet" />
 <jsp:include page="../fragments/text_editor_files.jsp" />
 <script>
 	SyntaxHighlighter.all();

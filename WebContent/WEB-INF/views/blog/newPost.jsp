@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>.toThought();</title>
 <jsp:include page="../fragments/base_css.jsp" />
-<link href="/tothought/resources/css/post.css" rel="stylesheet" />
-<link href="/tothought/resources/css/post_tags.css" rel="stylesheet" />
+<link href="../resources/css/post.css" rel="stylesheet" />
+<link href="../resources/css/post_tags.css" rel="stylesheet" />
 <jsp:include page="../fragments/jquery_files.jsp" />
-<script type="text/javascript" src="/tothought/resources/js/tag_editor.js"></script>
+<script type="text/javascript" src="../resources/js/tag_editor.js"></script>
 <jsp:include page="../fragments/text_editor_files.jsp" />
 <script>
 	$(document).ready(function() {

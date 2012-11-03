@@ -10,13 +10,13 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
 <!--  Code Formatting -->
-<script type="text/javascript" src="/tothought/resources/libraries/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript" src="/tothought/resources/libraries/syntaxhl/scripts/shCore.js"></script>
-<script type="text/javascript" src="/tothought/resources/libraries/syntaxhl/scripts/shBrushJava.js"></script>
-<script type="text/javascript" src="/tothought/resources/libraries/syntaxhl/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="resources/libraries/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="resources/libraries/syntaxhl/scripts/shCore.js"></script>
+<script type="text/javascript" src="resources/libraries/syntaxhl/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="resources/libraries/syntaxhl/scripts/shBrushJScript.js"></script>
 <!-- Include *at least* the core style and default theme -->
-<link href="/tothought/resources/libraries/syntaxhl/styles/shCore.css" rel="stylesheet" type="text/css" />
-<link href="/tothought/resources/libraries/syntaxhl/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+<link href="resources/libraries/syntaxhl/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="resources/libraries/syntaxhl/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
 <!-- Code Formatting -->
 
 <script type="text/javascript">
