@@ -7,7 +7,7 @@
 <link href="../resources/css/post.css" rel="stylesheet" />
 <link href="../resources/css/post_tags.css" rel="stylesheet" />
 <link href="../resources/css/controls.css" rel="stylesheet" />
-<jsp:include page="../fragments/jquery_files.jsp" />
+<jsp:include page="../fragments/base_js.jsp" />
 <script type="text/javascript" src="../resources/js/tag_editor.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>

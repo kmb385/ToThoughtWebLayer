@@ -28,7 +28,7 @@ import org.tothought.repositories.TagRepository;
 public class BlogController {
 
 	@Autowired
-	PostRepository repository;
+	PostRepository postRepository;
 
 	@Autowired
 	TagRepository tagRepository;
@@ -56,19 +56,32 @@ public class BlogController {
 	public String createPost(Model model) {
 		model.addAttribute("post", new Post());
 		model.addAttribute("postPart", new PostPart());
-		return "blog/newPost";
+		return "blog/managePost";
 	}
 
 	@RequestMapping("/save")
 	public String savePost(@ModelAttribute Post post,
 			@ModelAttribute PostPart postPart, @RequestParam("tags") String tags) {
+
 		post.setAuthor("Kevin Bowersox");
 		post.setPostedDt(new Date());
 		post.setPostPart(postPart);
 		post.setTags(this.createTags(tags));
 
-		repository.save(post);
+		postRepository.save(post);
 
+		return "redirect:/blog/";
+	}
+
+	@RequestMapping("/{postId}/edit")
+	public String editPost(@PathVariable Integer postId, Model model) {
+		model.addAttribute("post", postRepository.findOne(postId));
+		return "blog/managePost";
+	}
+
+	@RequestMapping("/{postId}/delete")
+	public String deletePost(@PathVariable Integer postId, Model model) {
+		System.out.println("Post deleted");
 		return "redirect:/blog/";
 	}
 

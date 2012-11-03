@@ -39,3 +39,11 @@
 .new-post{
 	background: url(../../resources/images/file-add.png) no-repeat;
 }
+
+.edit-post{
+	background: url(../../resources/images/file-edit.png) no-repeat;
+}
+
+.delete-post{
+	background: url(../../resources/images/file-delete.png) no-repeat;
+}

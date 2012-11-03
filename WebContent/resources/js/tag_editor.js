@@ -40,7 +40,7 @@
 			search : function(token) {
 				var that = this;
 				if (token && !this.isTagOptionsDisplayed) {
-					$.post("/tag/find/" + token, function(data) {
+					$.post(ttroot + "/tag/find/" + token, function(data) {
 						if(data.length > 0){
 							that.createTagOptions(data);
 						}else{

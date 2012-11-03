@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ToThought</title>
 <jsp:include page="../fragments/base_css.jsp" />
-<link href="../resources/css/post.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/post.css" rel="stylesheet" />
 <jsp:include page="../fragments/text_editor_files.jsp" />
 <script>
 	SyntaxHighlighter.all();
@@ -26,7 +26,7 @@
 		</div>
 		<div id="side-bar">
 			<div class="control-container">
-				<ttTags:control text="Create New Post" href="../blog/new" classes="new-post"/>
+				<ttTags:control text="Create New Post" href="${pageContext.request.contextPath}/blog/new" classes="new-post"/>
 			</div>
 		</div>
 	</div>

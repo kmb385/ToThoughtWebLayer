@@ -8,8 +8,8 @@ MyTinyMce.prototype.load = function(){
 		mode: "exact",
 		elements: that.id,
 		theme: "advanced",
-		plugins : "autolink,lists,save,advimage,advlink,inlinepopups,preview,contextmenu,directionality, noneditable,nonbreaking,template,syntaxhl",
-        
+		plugins : "autolink,lists,save,advimage,advlink,inlinepopups,preview,contextmenu,directionality, noneditable,nonbreaking,template,syntaxhl,preelementfix",
+
 		// Theme options
         theme_advanced_buttons1 : "save,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect,syntaxhl",
         theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,nonbreaking,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,preview,|,forecolor,backcolor",
