@@ -78,7 +78,7 @@ public class PostController {
 
 	@RequestMapping("/{postId}/delete")
 	public String deletePost(@PathVariable Integer postId, Model model) {
-		System.out.println("Post deleted");
+		postRepository.delete(postId);
 		return "redirect:/blog/";
 	}
 
