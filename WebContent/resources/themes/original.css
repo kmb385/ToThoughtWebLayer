@@ -16,6 +16,10 @@ body {
 	background-color: #10486E;
 }
 
+.border{
+	border: 1px solid lightgray;
+}
+
 .fg1{
 	color: #F2EDED;
 }
@@ -24,6 +28,15 @@ body {
 	color: #10486E;
 }
 
-.font-medium{
+.fg3{
+	color: #555555;
+}
+
+.font-large{
 	font-size: 1.5em;
 }
+
+.font-medium{
+	font-size: 1.35em;
+}
+

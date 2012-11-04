@@ -5,10 +5,10 @@
 	<div id="logo"></div>
 	<div id="nav-menu" class="clearfix">
 		<ul>
-			<li class="font-medium fg1"><a href="${pageContext.request.contextPath}/blog/">Blog</a></li>
-			<li class="font-medium fg1"><a href="#">About</a></li>
-			<li class="font-medium fg1"><a href="#">Resume</a></li>
-			<li class="font-medium fg1"><a href="#">Admin</a></li>
+			<li class="font-large fg1"><a href="${pageContext.request.contextPath}/blog/">Blog</a></li>
+			<li class="font-large fg1"><a href="#">About</a></li>
+			<li class="font-large fg1"><a href="#">Resume</a></li>
+			<li class="font-large fg1"><a href="#">Admin</a></li>
 		</ul>
 	</div>
 </div>

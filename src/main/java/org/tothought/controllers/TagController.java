@@ -19,7 +19,7 @@ public class TagController {
 	public String getTagSample(){
 		return "fragments/tag_editor_sandbox";
 	}
-	
+
 	@RequestMapping("/find/{tagNamePart}")
 	@ResponseBody
 	public String getTagsByTagNamePart(@PathVariable String tagNamePart){

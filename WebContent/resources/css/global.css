@@ -20,6 +20,15 @@ input{
 	margin-bottom: 20px;
 }
 
+.h-margin-20{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.pad-5{
+	padding: 5px;
+}
+
 .clearfix:after {
 	content: ".";
 	display: block;

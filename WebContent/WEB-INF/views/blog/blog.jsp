@@ -10,6 +10,7 @@
 <title>ToThought</title>
 <jsp:include page="../fragments/base_css.jsp" />
 <link href="${pageContext.request.contextPath}/resources/css/post.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/post_tags.css" rel="stylesheet" />
 <jsp:include page="../fragments/text_editor_files.jsp" />
 <script>
 	SyntaxHighlighter.all();
@@ -27,6 +28,17 @@
 		<div id="side-bar">
 			<div class="control-container">
 				<ttTags:control text="Create New Post" href="${pageContext.request.contextPath}/post/new" classes="new-post"/>
+			</div>
+			<div class="v-margin-20 h-margin-20">
+				<div class="bold fg3 v-margin-4 font-medium">Find Posts By Tag</div>
+				<div class="bg2 pad-5 border">
+					<c:forEach items="${tags}" var="tag">
+						<div class="v-margin-4 clearfix">
+							<a href="${pageContext.request.contextPath}/blog/tag/${tag.tagId}" class="post-tag">${tag.name}</a>
+							<span class="bold fg3"> x ${tag.count}</span>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>
