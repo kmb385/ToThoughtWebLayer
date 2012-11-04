@@ -15,19 +15,19 @@
 			<name>text</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>String</type>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<name>classes</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>String</type>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<name>href</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>String</type>
+			<type>java.lang.String</type>
 		</attribute>
 	</tag>
 </taglib>

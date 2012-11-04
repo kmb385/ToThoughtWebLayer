@@ -34,7 +34,7 @@
 	<div id="container" class="clearfix bg2">
 		<div id="center-panel" class="clearfix">
 			<div class="font-medium bold">New Blog Post</div>
-			<form action="${pageContext.request.contextPath}/blog/save" method="POST">
+			<form action="${pageContext.request.contextPath}/post/save" method="POST">
 				<div class="v-margin-10">
 					<div class="bold v-margin-4">Title</div>
 					<div>

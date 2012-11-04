@@ -25,8 +25,8 @@
 		</div>
 		<div id="side-bar" class="frame">
 			<div class="control-container">
-				<ttTags:control text="Edit Post" href="${pageContext.request.contextPath}/blog/${post.postId }/edit" classes="edit-post" />
-				<ttTags:control text="Delete Post" href="${pageContext.request.contextPath}/blog/${post.postId }/delete" classes="delete-post" />
+				<ttTags:control text="Edit Post" href="${pageContext.request.contextPath}/post/${post.postId }/edit" classes="edit-post" />
+				<ttTags:control text="Delete Post" href="${pageContext.request.contextPath}/post/${post.postId }/delete" classes="delete-post" />
 			</div>
 		</div>
 	</div>

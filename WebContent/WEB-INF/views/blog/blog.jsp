@@ -26,7 +26,7 @@
 		</div>
 		<div id="side-bar">
 			<div class="control-container">
-				<ttTags:control text="Create New Post" href="${pageContext.request.contextPath}/blog/new" classes="new-post"/>
+				<ttTags:control text="Create New Post" href="${pageContext.request.contextPath}/post/new" classes="new-post"/>
 			</div>
 		</div>
 	</div>

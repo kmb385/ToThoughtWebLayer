@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="post v-margin-20">
 	<div class="font-medium bold">
-		<a href="${post.postId}" class="post-title">${post.title}</a>
+		<a href="${pageContext.request.contextPath}/post/${post.postId}" class="post-title">${post.title}</a>
 	</div>
 	<div>
 		<fmt:formatDate value="${post.postedDt}" pattern="MMM dd yyyy" />
@@ -15,7 +15,7 @@
 			<c:when test="${tease}">
 				<div>${post.teaser}</div>
 				<div>
-					<a href="${post.postId}">Continue Reading</a>
+					<a href="${pageContext.request.contextPath}/post/${post.postId}">Continue Reading</a>
 				</div>
 			</c:when>
 			<c:otherwise>${post.body}</c:otherwise>
