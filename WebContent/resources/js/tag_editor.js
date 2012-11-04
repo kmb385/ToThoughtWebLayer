@@ -1,14 +1,40 @@
 	(function($) {
-		$.fn.ttTagEditor = function() {
+		$.fn.ttTagEditor = function(options, settings) {
+			if(typeof options == "object"){
+				settings = options;
+			}else if(typeof options === "string"){
+				
+				var elements = this.each(function(){
+					var data = $(this).data("_ttTags");
+					
+					if(data){
+						if(options == "load"){
+							data.load(settings);
+						}
+					}
+				});
+				
+				return elements;
+			}
+			
 			return this.each(function() {
 				var $elem = $(this);
-				var tagEditor = new TagEditor($elem);
+				
+				var $settings = $.extend({}, $.fn.ttTagEditor.defaultSettings, settings || {});
+				
+				var tagEditor = new TagEditor($elem, $settings);
 				tagEditor.init();
+				$elem.data("_ttTags", tagEditor);
 			});
 		};
+		
+		$.fn.ttTagEditor.defaultSettings = {
+				background : '#FFFFFF'
+		};
 
-		function TagEditor($elem) {
+		function TagEditor($elem, settings) {
 			this.$elem = $elem;
+			this.settings = settings;
 			this.$input = {};
 			this.$hiddenInput = {};
 			this.isTipDisplayed = false;
@@ -21,13 +47,14 @@
 		TagEditor.prototype = {
 			init : function() {
 				//pretty static should take options
-				this.$elem.addClass("bg2");
+				this.$elem.css("background", this.settings.background);
 				$("<input/>").attr({
 					"class": "tag-input"
 				}).appendTo(this.$elem);
 				this.$input = this.$elem.find(".tag-input");
 				this.addHiddenInput();
 				this.bindKeyPress();
+				this.bindClickMonitor();
 			},
 			bindKeyPress : function() {
 				var that = this;
@@ -40,14 +67,14 @@
 			search : function(token) {
 				var that = this;
 				if (token && !this.isTagOptionsDisplayed) {
-					$.post(ttroot + "/tag/find/" + token, function(data) {
-						if(data.length > 0){
+					$.post(ttRoot + "/tag/find/" + token, function(data) {
+						if(data.length > 1){
 							that.createTagOptions(data);
+						}else if(data.length == 1){
+							var tag = data[0];
+							that.addTag(tag.tagId, tag.name);
 						}else{
-							var $newTag = that.createTag(token,token);
-							that.addHiddenInputData($newTag.data("id"));
-							$newTag.prependTo(that.$elem);
-							that.cleanUI();
+							that.addTag(token, token);
 						}
 					}, "json");
 				}
@@ -60,6 +87,9 @@
 					var $tmpTag = that.createTag(tag.tagId, tag.name);
 					$tmpTag.appendTo(that.$elem.find(".tag-options"));
 				});
+				
+				$(that.$elem).parent().height("80px");
+				$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 			},
 			createOptionFrame: function(){
 				if(!this.isTagOptionsDisplayed){
@@ -141,6 +171,33 @@
 						  }
 					}
 				}
+			},
+			bindClickMonitor: function(){
+				var that = this;
+				$(document).mouseup(function(e){
+					var $tagOptions = that.$elem.find(".tag-options");
+					
+					if($tagOptions.has(e.target).length === 0){
+						that.isTagOptionsDisplayed = false;
+						$tagOptions.remove();
+					}
+				});
+			},
+			addTag: function(id, name){
+				var $newTag = this.createTag(id, name);
+				this.addHiddenInputData($newTag.data("id"));
+				$newTag.prependTo(this.$elem);
+				this.cleanUI();
+			},
+			load: function(settings){
+				var that = this;
+				var _url = settings.url || settings || this.settings.url;
+				
+				$.post(_url, function(data){
+					for(var i = 0; i < data.length; i++){
+						that.addTag(data[i].tagId, data[i].name);
+					}
+				}, "json");
 			}
 		};
 

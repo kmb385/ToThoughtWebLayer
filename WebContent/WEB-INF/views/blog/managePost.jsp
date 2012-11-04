@@ -18,6 +18,13 @@
 		myTinyMce.load();
 		
 		$(".tag-editor").ttTagEditor();
+		
+		var postId = $("#postId").val();
+		if(postId){
+			var url = ttRoot + /post/ + postId + "/tags";
+			$(".tag-editor").ttTagEditor("load", url);
+		}
+		
 		$("input").eq(0).focus();
 	});
 </script>
@@ -41,7 +48,7 @@
 					<div class="bold v-margin-4">Tags</div>
 					<div class="tag-editor"></div>
 				</div>
-				<input name="postId" type="hidden" value="${post.postId}"/>
+				<input id="postId" name="postId" type="hidden" value="${post.postId}"/>
 			</form>
 		</div>
 		<div id="side-bar" class="frame"></div>

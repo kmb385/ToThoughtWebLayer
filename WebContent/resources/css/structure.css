@@ -4,6 +4,7 @@
 
 body{
 	background-color: #F7F7F7;
+	overflow:auto;
 }
 
 #container{
@@ -11,7 +12,6 @@ body{
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
 	position: relative;
-	overflow: hidden;
 	margin: 0px auto;
 	width: 980px;
 }
