@@ -10,6 +10,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class ControlTag extends SimpleTagSupport {
 
 	private String text = "";
+	private String imageClass = "";
 	private String classes = "";
 	private String href = "#";
 
@@ -19,6 +20,14 @@ public class ControlTag extends SimpleTagSupport {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+	
+	public String getImageClass() {
+		return imageClass;
+	}
+
+	public void setImageClass(String imageClass) {
+		this.imageClass = imageClass;
 	}
 
 	public String getClasses() {
@@ -44,8 +53,8 @@ public class ControlTag extends SimpleTagSupport {
 		try {
 			StringBuilder sb = new StringBuilder();
 
-			sb.append("<a href=\"" + this.href + "\" class=\"control\">");
-			sb.append("<span class=\"img " + this.classes + "\"></span>");
+			sb.append("<a href=\"" + this.href + "\" class=\"control " + this.classes + "\">");
+			sb.append("<span class=\"img " + this.imageClass + "\"></span>");
 			sb.append("<span class=\"text\">" + this.text + "</span>");
 			sb.append("</a>");
 

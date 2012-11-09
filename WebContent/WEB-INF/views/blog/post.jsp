@@ -30,10 +30,10 @@
 				<div class="control-container">
 					<ttTags:control text="Edit Post"
 						href="${pageContext.request.contextPath}/post/${post.postId }/edit"
-						classes="edit-post" />
+						classes="shadow" imageClass="edit-post" />
 					<ttTags:control text="Delete Post"
 						href="${pageContext.request.contextPath}/post/${post.postId }/delete"
-						classes="delete-post" />
+						imageClass="delete-post" classes="shadow" />
 				</div>
 			</div>
 		</div>

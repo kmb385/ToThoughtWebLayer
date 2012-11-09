@@ -24,6 +24,12 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
+			<name>imageClass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
 			<name>href</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>

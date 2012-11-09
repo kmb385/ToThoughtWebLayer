@@ -34,12 +34,12 @@
 				<div class="control-container">
 					<ttTags:control text="Create New Post"
 						href="${pageContext.request.contextPath}/post/new"
-						classes="new-post" />
+						classes="shadow" imageClass="new-post" />
 				</div>
 				<div class="v-margin-20 h-margin-20">
 					<div class="bold fg3 v-margin-4 font-medium">Find Posts By
 						Tag</div>
-					<div class="bg2 pad-5 border">
+					<div class="bg2 pad-5 border shadow">
 						<c:forEach items="${tags}" var="tag">
 							<div class="v-margin-4 clearfix">
 								<a href="${pageContext.request.contextPath}/blog/tag/${tag.tagId}"

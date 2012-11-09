@@ -29,6 +29,10 @@ input{
 	padding: 5px;
 }
 
+.shadow{
+	box-shadow: 0.3em 0.4em .5em -0.2em #333;
+}
+
 .clearfix:after {
 	content: ".";
 	display: block;
