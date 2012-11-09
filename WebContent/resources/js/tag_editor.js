@@ -82,13 +82,14 @@
 			createTagOptions : function(tags) {
 				var that = this;
 				this.createOptionFrame();
+				var $tagOptions = that.$elem.find(".tag-options");
 				
 				$.each(tags, function(index, tag) {
 					var $tmpTag = that.createTag(tag.tagId, tag.name);
-					$tmpTag.appendTo(that.$elem.find(".tag-options"));
+					$tmpTag.appendTo($tagOptions);
 				});
-				
-				$(that.$elem).parent().height("80px");
+				var parent = $(that.$elem).parent();
+				parent.height(parent.height() + $tagOptions.height() + 10);
 				$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 			},
 			createOptionFrame: function(){

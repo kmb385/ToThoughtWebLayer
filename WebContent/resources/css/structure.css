@@ -2,7 +2,7 @@
 	background: yellow;
 }
 
-body{
+html,body{
 	background-color: #F7F7F7;
 	overflow:auto;
 }
@@ -11,9 +11,15 @@ body{
 	border-bottom: 1px solid lightgray;
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
-	position: relative;
 	margin: 0px auto;
+	overflow: hidden;
 	width: 980px;
+}
+
+#inner-container{
+	float: left;
+	position: relative;
+	right: 650px;
 }
 
 #header{
@@ -37,18 +43,19 @@ body{
 }
 
 #center-panel{
+	border-right: 1px solid lightgray;
 	float:left;
-	padding: 10px 20px;
-	width: 650px;
+	min-height: 500px;
+	padding: 10px 40px;
+	position: relative;
+	left: 650px;
+	width: 610px;
 }
 
 #side-bar{
-	background: #EBF0F5;
-	border-left: 1px solid lightgray;
-	height: 100%;
 	float: left;
 	padding: 5px;
-	position: absolute;
-	right: 0;
-	width: 290px;
+	position: relative;
+	left: 650px;
+	width: 279px;
 }
