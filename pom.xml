@@ -8,6 +8,12 @@
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-webmvc</artifactId>
   		<version>3.1.2.RELEASE</version>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>commons-logging</artifactId>
+  				<groupId>commons-logging</groupId>
+  			</exclusion>
+  		</exclusions>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse.mylyn.github</groupId>
@@ -38,6 +44,11 @@
   		<groupId>javax.servlet.jsp.jstl</groupId>
   		<artifactId>javax.servlet.jsp.jstl-api</artifactId>
   		<version>1.2.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>jcl-over-slf4j</artifactId>
+  		<version>1.7.2</version>
   	</dependency>
   </dependencies>
 </project>

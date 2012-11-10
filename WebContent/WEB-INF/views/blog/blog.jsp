@@ -29,6 +29,20 @@
 					<c:set var="post" value="${tmpPost}" scope="request" />
 					<jsp:include page="../fragments/post.jsp"></jsp:include>
 				</c:forEach>
+				<div>
+					<c:if test="${!lastPage}">
+						<ttTags:control text="Next 5 Entries"
+							href="${nextPage}"
+							classes="float-right shadow" imageClass="next-btn"
+							shrinkwrap="true" floatImage="right" />
+					</c:if>
+					<c:if test="${prevPage > -1}">
+						<ttTags:control text="Previous 5 Entries"
+							href="${prevPage}"
+							classes="float-right shadow" shrinkwrap="true"
+							imageClass="prev-btn"/>
+					</c:if>
+				</div>
 			</div>
 			<div id="side-bar">
 				<div class="control-container">
@@ -42,7 +56,7 @@
 					<div class="bg2 pad-5 border shadow">
 						<c:forEach items="${tags}" var="tag">
 							<div class="v-margin-4 clearfix">
-								<a href="${pageContext.request.contextPath}/blog/tag/${tag.tagId}"
+								<a href="${pageContext.request.contextPath}/blog/tag/${tag.tagId}/page/0"
 									class="post-tag">${tag.name}</a> <span class="bold fg3">
 									x ${tag.count}</span>
 							</div>

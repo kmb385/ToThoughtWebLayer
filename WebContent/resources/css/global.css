@@ -1,35 +1,44 @@
-.bold{
+.bold {
 	font-weight: bold;
 }
 
-input{
+input {
 	border: 1px solid #999999;
 }
 
-.v-margin-4{
+.v-margin-4 {
 	margin-top: 4px;
 	margin-bottom: 4px;
 }
-.v-margin-10{
-	margin-top:10px;
+
+.v-margin-10 {
+	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
-.v-margin-20{
-	margin-top:20px;
+.v-margin-20 {
+	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
-.h-margin-20{
+.h-margin-20 {
 	margin-left: 20px;
 	margin-right: 20px;
 }
 
-.pad-5{
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.pad-5 {
 	padding: 5px;
 }
 
-.shadow{
+.shadow {
 	box-shadow: 0.3em 0.4em .5em -0.2em #333;
 }
 
@@ -41,15 +50,15 @@ input{
 	line-height: 0;
 	height: 0;
 }
- 
+
 .clearfix {
 	display: inline-block;
 }
- 
+
 html[xmlns] .clearfix {
 	display: block;
 }
- 
+
 * html .clearfix {
 	height: 1%;
 }

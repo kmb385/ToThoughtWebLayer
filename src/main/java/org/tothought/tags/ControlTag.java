@@ -7,13 +7,17 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class ControlTag extends SimpleTagSupport {
 
 	private String text = "";
 	private String imageClass = "";
 	private String classes = "";
 	private String href = "#";
-
+	private Boolean shrinkwrap = false;
+	private String floatImage = "left";
+	
 	public String getText() {
 		return text;
 	}
@@ -46,14 +50,31 @@ public class ControlTag extends SimpleTagSupport {
 		this.href = href;
 	}
 
+	public Boolean getShrinkwrap() {
+		return shrinkwrap;
+	}
+
+	public void setShrinkwrap(Boolean shrinkwrap) {
+		this.shrinkwrap = shrinkwrap;
+	}
+	
+	public String getFloatImage() {
+		return floatImage;
+	}
+
+	public void setFloatImage(String floatImage) {
+		this.floatImage = floatImage;
+	}
+
 	public void doTag() throws JspException {
 		PageContext pageContext = (PageContext) getJspContext();
 		JspWriter out = pageContext.getOut();
-
+		
+		String anchorClasses = this.createAnchorClassLink();
 		try {
 			StringBuilder sb = new StringBuilder();
-
-			sb.append("<a href=\"" + this.href + "\" class=\"control " + this.classes + "\">");
+		
+			sb.append("<a href=\"" + this.href + "\" class=\"control" + anchorClasses + "\">");
 			sb.append("<span class=\"img " + this.imageClass + "\"></span>");
 			sb.append("<span class=\"text\">" + this.text + "</span>");
 			sb.append("</a>");
@@ -62,5 +83,14 @@ public class ControlTag extends SimpleTagSupport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private String createAnchorClassLink() {
+		String anchorClasses = "";
+		if(this.shrinkwrap){
+			anchorClasses = " shrink-wrap-control" + (!StringUtils.isEmpty(this.floatImage) ? ("-" + this.floatImage): " ");
+		}
+		anchorClasses += (!StringUtils.isEmpty(this.classes) ? (" " + this.classes): "");
+		return anchorClasses;
 	}
 }

@@ -5,6 +5,7 @@
     -webkit-border-radius: 2px;
     -khtml-border-radius: 2px;
     border-radius: 2px;
+	
 	border: 1px solid rgba(0,0,0, 0.1);
 	color: #666666;
 	display: block;
@@ -15,25 +16,45 @@
 	text-decoration: none;
 }
 
+.skrink-wrap-control, .shrink-wrap-control-left{
+	display: inline-block;
+	padding-right: 20px;
+}
+
+.shrink-wrap-control-right{
+	display: inline-block;
+	padding-left: 20px;
+}
+
 .control:hover{
 	background: #C1D4E0;
 	border: 1px solid rgba(0,0,0, 0.3);
 	color: #555555;
 }
 
-.control .img{
+.control .img, .shrink-wrap-control-left .img{
 	float: left;
 	height: 32px;
 	width: 32px;
 }
 
-.control .text{
+.shrink-wrap-control-right .img{
+	float: right;
+	margin-left: 10px;
+}
+
+.control .text, .shrink-wrap-control-left .text{
 	float: left;
 	font-size: 1.35em;
 	font-weight: bold;
-	position: absolute;
-	left: 45px;
-	margin: 4px 0px 4px;
+	position: relative;
+	left: 10px;
+	margin: 4px 0px;
+}
+
+.shrink-wrap-control-right .text{
+	float: right;
+	left: 0px;
 }
 
 .new-post{
@@ -46,4 +67,12 @@
 
 .delete-post{
 	background: url(../../resources/images/file-delete.png) no-repeat;
+}
+
+.next-btn{
+	background: url(../../resources/images/next.png) no-repeat;
+}
+
+.prev-btn{
+	background: url(../../resources/images/back.png) no-repeat;
 }
