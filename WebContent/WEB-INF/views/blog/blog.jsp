@@ -12,9 +12,7 @@
 <jsp:include page="../fragments/base_css.jsp" />
 <link href="${pageContext.request.contextPath}/resources/css/post.css"
 	rel="stylesheet" />
-<link
-	href="${pageContext.request.contextPath}/resources/css/post_tags.css"
-	rel="stylesheet" />
+
 <jsp:include page="../fragments/text_editor_files.jsp" />
 <script>
 	SyntaxHighlighter.all();
