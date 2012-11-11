@@ -1,7 +1,7 @@
 #nav-menu ul{
 	list-style-type:none;
 	margin: 0px auto;
-	width: 383px;
+	width: 466px;
 }
 
 #nav-menu ul li{
@@ -11,14 +11,14 @@
     border-radius: 5px;
 
 	display:inline-block;
+	font-size: 2em;
 	font-weight: bold;
 	margin: 0px 10px;
-	font-size: 1.5em;
 	padding: 2px 3px;
 }
 
 #nav-menu ul li:hover{
-	background-color: #FFFFFF;
+	background-color: #E3EBEF;
 	color: #10486E;
 }
 

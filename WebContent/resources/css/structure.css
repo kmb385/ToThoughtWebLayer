@@ -8,7 +8,7 @@ html,body{
 }
 
 #container{
-    box-shadow: 0.0em 0.4em 1em -0.2em olive;
+    box-shadow: 0.0em 0.4em 1em -0.2em #333;
 	border-bottom: 1px solid lightgray;
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
@@ -24,8 +24,10 @@ html,body{
 }
 
 #header{
+	box-shadow: 0.3em 0.4em .5em -0.2em #333;
+	height: 85px;
 	position: relative;
-	height: 60px;
+	z-index:100;
 }
 
 #nav-menu{
@@ -36,7 +38,7 @@ html,body{
 
 #logo{
 	background: url('../images/logo-small.png') no-repeat;
-	height: 55px;
+	height: 75px;
 	left: 10px;
 	position: relative;
 	top: 5px;
