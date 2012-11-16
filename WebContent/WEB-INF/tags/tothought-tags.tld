@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
-<taglib>
-	<tlib-version>1.0</tlib-version>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"   
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0"> 
+	<tlib-version>1.2</tlib-version>
 	<jsp-version>2.0</jsp-version>
 	<short-name>ttTags</short-name>
 	<uri>http://tothought.cloudfoundry.com/ttTags</uri>
 	<description>This tag lib supports common tags used across the toThought web site.</description>
+	<tag-file>
+		<name>documentTemplate</name>
+		<path>/WEB-INF/tags/documentTemplate.tag</path>
+	</tag-file>
 	<tag>
 		<name>control</name>
 		<tag-class>org.tothought.tags.ControlTag</tag-class>
@@ -46,6 +51,36 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<name>rated-resume-item</name>
+		<tag-class>org.tothought.tags.RatedResumeItemTag</tag-class>
+		<body-content>empty</body-content>
+		<description>This tag is for rated resume items</description>
+		<attribute>
+			<name>text</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<name>imageSrc</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<name>href</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<name>rating</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Integer</type>
 		</attribute>
 	</tag>
 </taglib>

@@ -1,4 +1,4 @@
-package org.tothought.controllers;
+package org.tothought.controllers.blog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

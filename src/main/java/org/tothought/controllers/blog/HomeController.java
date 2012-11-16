@@ -1,4 +1,4 @@
-package org.tothought.controllers;
+package org.tothought.controllers.blog;
 
 import java.util.Date;
 import java.util.List;

@@ -1,0 +1,59 @@
+/** Buttons **/
+.profile-btn{
+	background: url(../../resources/images/resume/user2.png) no-repeat;
+}
+
+.tech-btn{
+	background: url(../../resources/images/resume/tech.png) no-repeat;
+	position: relative;
+	top: 3px;
+}
+
+.java-btn{
+	background: url(../../resources/images/resume/tech/java.png) no-repeat;
+	height: 32px;
+	width: 32px;
+}
+
+.section-title{
+	margin-top: .75em;
+	margin-bottom: .5em;
+}
+
+/** Profile Section **/
+.label{
+	color: #666666;
+	margin-right: 6px;
+	text-align: right;
+}
+
+.left-cell-50{
+	float: left;
+	width: 50px;
+}
+
+.right-cell{
+	float: left;
+}
+
+.list li{
+	list-style: circle;
+	margin-left: 20px;
+}
+
+.floated-list{
+	float: left;
+	margin-right: 20px;
+}
+
+/** End Profile Section **/
+
+.resume-block div{
+	float: left;
+	font-size: 2em;
+	margin: 3px 10px;
+}
+
+.resume-block .name{
+	width: 150px;
+}

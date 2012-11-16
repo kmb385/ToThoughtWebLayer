@@ -1,30 +1,21 @@
-.post-title{
-	color: inherit;
-	text-decoration: none;	
-}
-
 .post-body{
 	margin: 1.25em 0;
 	text-align: justify;	
 }
-/*
-.post-tag{
-	background-color: #E0EAF1;
-    border-bottom: 1px solid #3E6D8E;
-    border-right: 1px solid #7F9FB6;
-    color: #3E6D8E;
-	float:left;
-	margin: 0px 5px;
-	padding: 3px 5px;
-}
-*/
+
 .post-editor{
 	height: 400px;
 	width: 600px;
 }
 
 .post-title{
-	width: 600px;
+	color: inherit;
+	text-decoration: none;
+	width: 600px;	
+}
+
+.post:first-child{
+	margin-top: 0px;
 }
 
 

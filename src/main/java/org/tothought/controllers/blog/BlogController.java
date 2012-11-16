@@ -1,4 +1,4 @@
-package org.tothought.controllers;
+package org.tothought.controllers.blog;
 
 import java.util.List;
 
@@ -30,6 +30,11 @@ public class BlogController {
 	
 	private Sort sort = new Sort(Direction.DESC, "postId");	
 	private int pageSize = 5;
+	
+	@RequestMapping("/")
+	public String redirectBlog(){
+		return "redirect:/blog/page/0";
+	}
 	
 	@RequestMapping("/page/{page}")
 	@PageableRequestMapping(pathVariable="page")

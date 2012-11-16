@@ -1,0 +1,47 @@
+.rating{
+	background: url(../../resources/images/resume/tech/rating.png) no-repeat;
+	height: 32px;
+	width: 174px;
+}
+
+.rating-0{
+	background-position: 0 0;
+}
+
+.rating-1{
+	background-position: 0 -33px;
+}
+
+.rating-2{
+	background-position: 0 -66px;
+}
+.rating-3{
+	background-position: 0 -99px;
+}
+.rating-4{
+	background-position: 0 -132px;
+}
+.rating-5{
+	background-position: 0 -165px;
+}
+
+.rating-editor{
+	height: 32px;
+	width: 174px;
+}
+
+.gray-star{
+	background: url(../../resources/images/gray-star.png) no-repeat;
+	cursor: pointer;
+	float: left;
+	height: 32px;
+	width: 32px;
+}
+
+.gold-star{
+	background: url(../../resources/images/gold-star.png) no-repeat;
+	cursor: pointer;
+	float: left;
+	height: 32px;
+	width: 32px;
+}

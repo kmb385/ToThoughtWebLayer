@@ -21,6 +21,20 @@ input {
 	margin-bottom: 20px;
 }
 
+.v-bottom-margin-20{
+	margin-bottom: 20px;
+}
+
+.v-margin-text-block{
+	margin-top: .75em;
+	margin-bottom: .75em;
+}
+
+.h-margin-3{
+	margin-left: 3px;
+	margin-right: 3px;	
+}
+
 .h-margin-20 {
 	margin-left: 20px;
 	margin-right: 20px;
@@ -40,6 +54,10 @@ input {
 
 .shadow {
 	box-shadow: 0.3em 0.4em .5em -0.2em #333;
+}
+
+.text-right{
+	text-align:right;
 }
 
 .clearfix:after {

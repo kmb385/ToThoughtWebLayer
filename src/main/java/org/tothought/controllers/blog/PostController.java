@@ -1,4 +1,4 @@
-package org.tothought.controllers;
+package org.tothought.controllers.blog;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +22,7 @@ import org.tothought.json.JsonUtil;
 import org.tothought.repositories.PostRepository;
 import org.tothought.repositories.PostViewRepository;
 import org.tothought.repositories.TagRepository;
+import org.tothought.repositories.TagViewRepository;
 
 @Controller
 @RequestMapping("/post")
@@ -29,9 +30,12 @@ public class PostController {
 
 	@Autowired
 	PostRepository postRepository;
-
+	
 	@Autowired
 	TagRepository tagRepository;
+	
+	@Autowired
+	TagViewRepository tagViewRepository;
 
 	@Autowired
 	PostViewRepository postViewRepository;
@@ -39,6 +43,7 @@ public class PostController {
 	@RequestMapping("/{postId}")
 	public String getPost(@PathVariable Integer postId, Model model) {
 		model.addAttribute("post", postViewRepository.findOne(postId));
+		model.addAttribute("tags", tagViewRepository.findAll());
 		return "blog/post";
 	}
 
