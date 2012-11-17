@@ -29,7 +29,8 @@
 		};
 		
 		$.fn.ttTagEditor.defaultSettings = {
-				background : '#FFFFFF'
+				background : '#FFFFFF',
+				max_tags: 4
 		};
 
 		function TagEditor($elem, settings) {
@@ -59,8 +60,10 @@
 			bindKeyPress : function() {
 				var that = this;
 				this.$elem.keypress(function(event) {
-					if (event.which == 32) {
+					if (event.which == 32 && that.tagCount < that.settings.max_tags) {
 						that.search(that.$input.val());
+					}else if(that.tagCount >= that.settings.max_tags){
+						return false;
 					}
 				});
 			},
@@ -89,7 +92,7 @@
 					$tmpTag.appendTo($tagOptions);
 				});
 				var parent = $(that.$elem).parent();
-				parent.height(parent.height() + $tagOptions.height() + 10);
+				//parent.height(parent.height() + $tagOptions.height() + 10);
 				$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 			},
 			createOptionFrame: function(){
@@ -189,6 +192,7 @@
 				this.addHiddenInputData($newTag.data("id"));
 				$newTag.prependTo(this.$elem);
 				this.cleanUI();
+				this.tagCount++;
 			},
 			load: function(settings){
 				var that = this;

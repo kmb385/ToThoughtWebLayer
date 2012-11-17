@@ -1,0 +1,45 @@
+.tile-container{
+	margin: 0px auto;
+	width: 462px;	
+}
+
+.tile{
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+	
+	float: left;
+	font-weight: bold;
+	display:block;
+	margin: 2px;
+	height: 90px;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: bottom;
+	width: 150px;
+}
+
+.tile:hover{
+	background: #E3EBEF;
+	color: #10486E;
+}
+
+.tile-img{
+	display:block;
+	height: 64px;
+	width: 64px;
+	margin: 5px auto;
+}
+
+.tech-skills-tile-img{
+	background: url(../../resources/images/resume/tech-skills.png) no-repeat;
+}
+
+.work-tile-img{
+	background: url(../../resources/images/resume/work.png) no-repeat;
+}
+
+.education-tile-img{
+	background: url(../../resources/images/resume/student.png) no-repeat;
+}

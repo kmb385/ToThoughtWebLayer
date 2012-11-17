@@ -7,7 +7,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<context:property-placeholder location="classpath:META-INF/db/db.properties" />
-
+	<context:annotation-config/>
+	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -26,6 +27,8 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<jpa:repositories base-package="org.tothought.repositories"></jpa:repositories>
-
+	<jpa:repositories base-package="org.tothought.repositories"/>
+	
+	<bean id="lookupLoader" class="org.tothought.controllers.listeners.LookupLoaderApplicationListener" /> 
+	
 </beans>

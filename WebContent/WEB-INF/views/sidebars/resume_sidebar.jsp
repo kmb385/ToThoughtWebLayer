@@ -11,4 +11,13 @@
 	<ttTags:control text="Technical Expertise"
 		href="${pageContext.request.contextPath}/resume/tech"
 		imageClass="tech-btn" classes="shadow control-26" />
+	<ttTags:control text="Work Experience"
+		href="${pageContext.request.contextPath}/resume/tech"
+		imageClass="work-btn" classes="shadow control-26" />
+	<ttTags:control text="Education"
+		href="${pageContext.request.contextPath}/resume/tech"
+		imageClass="education-btn" classes="shadow control-26" />
+	<ttTags:control text="Resume Manager"
+		href="${pageContext.request.contextPath}/resume/manager/"
+		imageClass="manager-btn" classes="shadow control-26" />
 </div>

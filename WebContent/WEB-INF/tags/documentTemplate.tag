@@ -16,7 +16,7 @@
 	<title>ToThought</title>
 	
 	<!-- Load Base CSS -->
-	<jsp:include page="../fragments/base_css.jsp" />
+	<jsp:include page="/WEB-INF/views/fragments/base_css.jsp" />
 	
 	<!-- Load Specified CSS -->
 	<c:if test="${!empty cssFiles}">
@@ -33,11 +33,11 @@
 	</c:if>
 	
 	<!-- Load Base Javascript Javascript -->
-	<jsp:include page="../fragments/base_js.jsp" />
+	<jsp:include page="/WEB-INF/views/fragments/base_js.jsp" />
 	
 	<!-- Load Text Editor Script -->
 	<c:if test="${requiresTextEditor}">
-		<jsp:include page="../fragments/text_editor_files.jsp" />
+		<jsp:include page="/WEB-INF/views/fragments/text_editor_files.jsp" />
 		<script>
 			SyntaxHighlighter.all();
 		</script>
@@ -59,14 +59,14 @@
 	
 </head>
 <body>
-	<jsp:include page="../fragments/header.jsp" />
+	<jsp:include page="/WEB-INF/views/fragments/header.jsp" />
 	<div id="container" class="clearfix bg4">
 		<div id="inner-container" class="bg2">
 			<div id="center-panel" class="bg2 clearfix">
 				<jsp:doBody/>	
 			</div>
 			<div id="side-bar">
-				<jsp:include page="../sidebars/${sidebarFragment}" />
+				<jsp:include page="/WEB-INF/views/sidebars/${sidebarFragment}" />
 			</div>
 		</div>
 	</div>

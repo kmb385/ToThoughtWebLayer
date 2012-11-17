@@ -4,9 +4,23 @@
 }
 
 .tech-btn{
-	background: url(../../resources/images/resume/tech.png) no-repeat;
+	background: url(../../resources/images/resume/tech-skills32.png) no-repeat;
+}
+
+.education-btn{
+	background: url(../../resources/images/resume/education32.png) no-repeat;
 	position: relative;
-	top: 3px;
+	top: 2px;	
+}
+
+.work-btn{
+	background: url(../../resources/images/resume/work32.png) no-repeat;	
+}
+
+.manager-btn{
+	background: url(../../resources/images/resume/manager.png) no-repeat;
+	position: relative;
+	top: 2px;
 }
 
 .java-btn{

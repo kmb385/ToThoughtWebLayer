@@ -22,6 +22,10 @@
 			<mvc:mapping path="/blog/**"/>
 			<bean class="org.tothought.controllers.interceptors.PageableRequestHandlerInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="org.tothought.controllers.interceptors.LookupHandlerInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 

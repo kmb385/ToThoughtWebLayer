@@ -23,11 +23,12 @@ public class ResumeController {
 		return "resume/profile";
 	}
 
+
 	@RequestMapping("/tech")
 	public String tech() {
 		return "resume/tech";
 	}
-
+/*
 	@RequestMapping("/tech/manage")
 	public String manageTech() {
 		return "resume/manageTech";
@@ -47,4 +48,5 @@ public class ResumeController {
 		}
 		return "resume/manageTech";
 	}
+	*/
 }

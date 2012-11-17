@@ -6,3 +6,4 @@
 <link href="${pageContext.request.contextPath}/resources/css/structure.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/css/nav.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/resources/css/controls.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/components.css" rel="stylesheet" />

@@ -13,7 +13,8 @@ html,body{
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
 	margin: 0px auto;
-	overflow: hidden;
+/*	overflow: hidden;*/
+	overflow: visible;
 	width: 980px;
 }
 
