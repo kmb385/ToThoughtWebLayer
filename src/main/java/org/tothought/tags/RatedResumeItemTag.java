@@ -54,9 +54,10 @@ public class RatedResumeItemTag extends SimpleTagSupport {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("<div class=\"resume-block clearfix\">");
-		sb.append("<div>").append("<img src=\"").append(this.imageSrc).append("\"/>").append("</div>");
+		sb.append("<div class=\"img\">").append("<img src=\"").append(this.imageSrc).append("\"/>").append("</div>");
 		sb.append("<div class=\"name\">").append(this.text).append("</div>");
 		sb.append("<div class=\"rating rating-").append(this.rating.toString()).append("\"/></div>");
+		sb.append("<a href=\"").append(this.href).append("\"><span class=\"div-link\">&nbsp;</span></a>");
 		sb.append("</div>");
 		
 		out.write(sb.toString());

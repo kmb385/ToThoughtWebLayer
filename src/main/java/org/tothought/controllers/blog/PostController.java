@@ -61,6 +61,12 @@ public class PostController {
 		return "blog/managePost";
 	}
 
+	@RequestMapping("/{postId}/edit")
+	public String editPost(@PathVariable Integer postId, Model model) {
+		model.addAttribute("post", postRepository.findOne(postId));
+		return "blog/managePost";
+	}
+
 	@RequestMapping("/save")
 	public String savePost(@ModelAttribute Post post,
 			@ModelAttribute PostPart postPart, @RequestParam("tags") String tags) {
@@ -73,12 +79,6 @@ public class PostController {
 		postRepository.save(post);
 
 		return "redirect:/blog/";
-	}
-
-	@RequestMapping("/{postId}/edit")
-	public String editPost(@PathVariable Integer postId, Model model) {
-		model.addAttribute("post", postRepository.findOne(postId));
-		return "blog/managePost";
 	}
 
 	@RequestMapping("/{postId}/delete")

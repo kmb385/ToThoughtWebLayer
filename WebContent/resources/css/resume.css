@@ -1,4 +1,4 @@
-/** Buttons **/
+/** Side-Bar Buttons **/
 .profile-btn{
 	background: url(../../resources/images/resume/user2.png) no-repeat;
 }
@@ -62,6 +62,25 @@
 
 /** End Profile Section **/
 
+/** Technical Expertise Section **/
+.resume-block{
+	border: 1px solid transparent;
+	
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+	
+	/** To Support Links **/
+	position: relative;	
+	width: 520px;	
+}
+
+.resume-block:hover{
+	border: 1px solid lightgray;
+	cursor: pointer;	
+}
+
 .resume-block div{
 	float: left;
 	font-size: 2em;
@@ -69,5 +88,15 @@
 }
 
 .resume-block .name{
-	width: 150px;
+	width: 250px;
+}
+
+.resume-block .img{
+	height: 32px;
+	width: 32px;
+	margin: 0px 10px;
+}
+
+.resume-block .img img{
+	vertical-align: middle;
 }

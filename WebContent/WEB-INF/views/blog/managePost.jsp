@@ -26,4 +26,5 @@
 			</div>
 			<input id="postId" name="postId" type="hidden" value="${post.postId}" />
 	</form>
+	<div class="spacer"></div>
 </ttTags:documentTemplate>

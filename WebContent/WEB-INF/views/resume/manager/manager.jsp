@@ -10,7 +10,7 @@
 
 	<div class="v-bottom-margin-20 font-large bold">Resume Manager</div>
 	<div class="tile-container">
-		<a href="${pageContext.request.contextPath}/resume/manager/tech" class="tile bg3 fg1"><span>Technical
+		<a href="${pageContext.request.contextPath}/resume/manager/tech/new" class="tile bg3 fg1"><span>Technical
 				Expertise</span>
 			<span class="tile-img tech-skills-tile-img"></span> 
 		</a> 

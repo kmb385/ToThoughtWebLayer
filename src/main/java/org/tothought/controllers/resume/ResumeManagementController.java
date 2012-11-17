@@ -1,7 +1,11 @@
 package org.tothought.controllers.resume;
 
+import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,66 +28,9 @@ import org.tothought.repositories.SkillRepository;
 @Controller
 @RequestMapping("/resume/manager")
 public class ResumeManagementController {
-	
-	Logger logger = LoggerFactory.getLogger(ResumeManagementController.class);
-	
-	@Autowired
-	LookupLoaderApplicationListener myValues;
-	
-	@Autowired
-	SkillCategoryRepository skillCategoryRepository;
-	
-	@Autowired
-	SkillRepository skillRepository;
-	
+			
 	@RequestMapping("/")
 	public String manage(){
 		return "resume/manager/manager";
-	}
-	
-	@RequestMapping("/tech")
-	public String manageTech(Model model){
-		model.addAttribute("skill", new Skill());
-		model.addAttribute("skillCategory", new SkillCategory());
-		return "resume/manager/manageTech";
-	}
-	
-	@RequestMapping("/tech/save")
-	public String saveTech(@ModelAttribute Skill skill, @RequestParam("file") MultipartFile file) {
-		try {
-			skill.setImage(this.createImage(file));
-			skillRepository.save(skill);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-/*
-		String realPath = request.getServletContext().getRealPath("/");
-		File tmpFile = new File(realPath + "/resources/images/resume/tech/uploaded-icons/" + file.getOriginalFilename());
-		try {
-			FileUtils.writeByteArrayToFile(tmpFile, file.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-*/
-		return "resume/manager/tech";
-	}
-	
-	/**
-	 * Sets a binder to handle the conversion of the file.
-	 * @param binder
-	 */
-	@InitBinder
-	public void initBinderAll(WebDataBinder binder){
-		binder.registerCustomEditor(SkillCategory.class, new SkillCategoryTypeEditor(this.skillCategoryRepository));
-	}
-	
-	public Image createImage(MultipartFile file) throws IOException{
-		Image image = new Image();
-		image.file = file.getBytes();
-		image.name = file.getOriginalFilename();
-		image.type = file.getContentType();
-		return image;
-	}
+	}	
 }

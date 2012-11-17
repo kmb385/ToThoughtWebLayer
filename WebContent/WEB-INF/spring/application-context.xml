@@ -29,6 +29,7 @@
 
 	<jpa:repositories base-package="org.tothought.repositories"/>
 	
+	<!-- Application Listeners -->
 	<bean id="lookupLoader" class="org.tothought.controllers.listeners.LookupLoaderApplicationListener" /> 
-	
+	<bean id="imageLoader" class="org.tothought.controllers.listeners.ImageLoaderApplicationListener" /> 
 </beans>
