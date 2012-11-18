@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,8 +26,8 @@ import org.tothought.repositories.SkillCategoryRepository;
 import org.tothought.repositories.SkillRepository;
 
 @Controller
-@RequestMapping("/resume/manager/tech")
-public class TechnicalExpertiseController {
+@RequestMapping("/resume/manager/skills")
+public class SkillsController {
 	
 	Logger logger = LoggerFactory.getLogger(ResumeManagementController.class);
 		
@@ -37,21 +38,29 @@ public class TechnicalExpertiseController {
 	SkillRepository skillRepository;
 
 	@RequestMapping("/")
-	public String manageTech(Model model){
+	public String manageSkills(Model model){
 		model.addAttribute("skill", new Skill());
 		model.addAttribute("skillCategory", new SkillCategory());
-		return "resume/manager/manageTech";
+		return "resume/manager/manageSkill";
 	}
 
 	@RequestMapping("/new")
-	public String newExpertise(Model model){
+	public String newSkill(Model model){
 		model.addAttribute("skill", new Skill());
 		model.addAttribute("skillCategory", new SkillCategory());
-		return "resume/manager/manageTech";
+		return "resume/manager/manageSkill";
+	}
+	
+	@RequestMapping("/{skillId}/edit")
+	public String editSkill(Model model, @PathVariable Integer skillId){
+		Skill skill = skillRepository.findOne(skillId);
+		model.addAttribute("skill", skill);
+		//model.addAttribute("skillCategory", skill.getSkillCategory());
+		return "resume/manager/manageSkill";
 	}
 	
 	@RequestMapping("/save")
-	public String saveTech(@ModelAttribute Skill skill, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
+	public String saveSkill(@ModelAttribute Skill skill, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
 		try {
 			skill.setImage(this.createImage(file));
 			skillRepository.save(skill);
@@ -61,7 +70,7 @@ public class TechnicalExpertiseController {
 		}
 		
 		String realPath = request.getServletContext().getRealPath("/");
-		File tmpFile = new File(realPath + "/resources/images/resume/tech/uploaded-icons/" + file.getOriginalFilename());
+		File tmpFile = new File(realPath + "/resources/images/resume/skills/uploaded-icons/" + file.getOriginalFilename());
 		try {
 			logger.info("Saving image to :" + tmpFile.getAbsolutePath());
 			FileUtils.writeByteArrayToFile(tmpFile, file.getBytes());
@@ -69,7 +78,7 @@ public class TechnicalExpertiseController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/resume/tech";
+		return "redirect:/resume/skills";
 	}
 	
 	/**

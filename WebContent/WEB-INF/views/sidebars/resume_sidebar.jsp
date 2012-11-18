@@ -8,16 +8,25 @@
 	<ttTags:control text="Profile"
 		href="${pageContext.request.contextPath}/resume/profile"
 		classes="shadow" imageClass="profile-btn" />
-	<ttTags:control text="Technical Expertise"
-		href="${pageContext.request.contextPath}/resume/tech"
-		imageClass="tech-btn" classes="shadow control-26" />
+	<ttTags:control text="Technical Skills"
+		href="${pageContext.request.contextPath}/resume/skills"
+		imageClass="skills-btn" classes="shadow control-26" />
 	<ttTags:control text="Work Experience"
-		href="${pageContext.request.contextPath}/resume/tech"
+		href="${pageContext.request.contextPath}/resume/skills"
 		imageClass="work-btn" classes="shadow control-26" />
 	<ttTags:control text="Education"
-		href="${pageContext.request.contextPath}/resume/tech"
+		href="${pageContext.request.contextPath}/resume/skills"
 		imageClass="education-btn" classes="shadow control-26" />
+	<div class="v-margin-20 font-medium subtle bold">Admin Controls</div>
 	<ttTags:control text="Resume Manager"
 		href="${pageContext.request.contextPath}/resume/manager/"
 		imageClass="manager-btn" classes="shadow control-26" />
+	<c:if test="${skill != null}">
+		<ttTags:control text="Edit Skill"
+			href="${pageContext.request.contextPath}/resume/manager/skills/${skill.skillId}/edit"
+			imageClass="edit-control" classes="shadow control-26" />
+		<ttTags:control text="Delete Skill"
+			href="${pageContext.request.contextPath}/resume/manager/skills/${skill.skillId}/delete"
+			imageClass="delete-control" classes="shadow control-26" />	
+	</c:if>
 </div>

@@ -3,7 +3,7 @@
 	background: url(../../resources/images/resume/user2.png) no-repeat;
 }
 
-.tech-btn{
+.skills-btn{
 	background: url(../../resources/images/resume/tech-skills32.png) no-repeat;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .java-btn{
-	background: url(../../resources/images/resume/tech/java.png) no-repeat;
+	background: url(../../resources/images/resume/skills/java.png) no-repeat;
 	height: 32px;
 	width: 32px;
 }

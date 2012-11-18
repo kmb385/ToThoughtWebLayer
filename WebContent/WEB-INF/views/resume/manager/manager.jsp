@@ -10,9 +10,9 @@
 
 	<div class="v-bottom-margin-20 font-large bold">Resume Manager</div>
 	<div class="tile-container">
-		<a href="${pageContext.request.contextPath}/resume/manager/tech/new" class="tile bg3 fg1"><span>Technical
-				Expertise</span>
-			<span class="tile-img tech-skills-tile-img"></span> 
+		<a href="${pageContext.request.contextPath}/resume/manager/skills/new" class="tile bg3 fg1"><span>Technical
+				Skills</span>
+			<span class="tile-img skills-tile-img"></span> 
 		</a> 
 		<a href="#" class="tile bg3 fg1">
 			<span>Employment</span>
@@ -24,7 +24,7 @@
 		</a> 
 		<a href="#" class="tile bg3 fg1">
 			<span>Training</span>
-			<span class="tile-img tech-skills-tile-img"></span> 
+			<span class="tile-img skills-tile-img"></span> 
 		</a> 
 	</div>
 

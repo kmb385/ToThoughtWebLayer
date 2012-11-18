@@ -29,8 +29,16 @@ public class SkillCategoryTypeEditor extends PropertyEditorSupport {
 	}
 
 	@Override
+	public String getAsText() {
+		SkillCategory skillCategory = (SkillCategory) this.getValue();
+		if(skillCategory != null){
+			return skillCategory.getSkillCategoryId().toString();			
+		}
+		return super.getAsText();
+	}
+
+	@Override
 	public void setValue(Object value) {
-		// TODO Auto-generated method stub
 		super.setValue(value);
 	}
 	

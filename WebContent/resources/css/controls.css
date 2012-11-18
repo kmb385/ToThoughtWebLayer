@@ -57,15 +57,15 @@
 	left: 0px;
 }
 
-.new-post{
+.new-control{
 	background: url(../../resources/images/file-add.png) no-repeat;
 }
 
-.edit-post{
+.edit-control{
 	background: url(../../resources/images/file-edit.png) no-repeat;
 }
 
-.delete-post{
+.delete-control{
 	background: url(../../resources/images/file-delete.png) no-repeat;
 }
 

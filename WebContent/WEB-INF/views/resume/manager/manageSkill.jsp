@@ -8,9 +8,9 @@
 <ttTags:documentTemplate cssFiles="post_tags.css,resume.css,rating.css"
 	jsFiles="tag_editor.js,rating.js,${pageContext.request.contextPath}/resources/js/pages/manage_tech.js"
 	sidebarFragment="resume_sidebar.jsp" requiresTextEditor="true">
-	<div class="v-bottom-margin-20 font-large bold">Manage Technical Expertise</div>
+	<div class="v-bottom-margin-20 font-large bold">Manage Technical Skills</div>
 	<form method="post"
-		action="${pageContext.request.contextPath}/resume/manager/tech/save"
+		action="${pageContext.request.contextPath}/resume/manager/skills/save"
 		enctype="multipart/form-data">
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Name</div>
@@ -52,7 +52,7 @@
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Image File</div>
 			<div>
-				<input type="file" name="file" size="35" />
+				<input type="file" name="file" size="35" value="${skill.image}"/>
 			</div>
 		</div>
 		<div class="v-margin-10">
@@ -60,6 +60,7 @@
 			<div class="tag-editor"></div>
 		</div>
 		<input type="submit" class="control" value="Save" />
+		<input type="hidden" name="skillId" value="${skill.skillId}"/>
 	</form>
 
 </ttTags:documentTemplate>

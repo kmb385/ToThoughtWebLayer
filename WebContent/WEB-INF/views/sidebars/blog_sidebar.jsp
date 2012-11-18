@@ -9,15 +9,15 @@
 	<c:when test="${isNew}">
 		<ttTags:control text="Create New Post"
 			href="${pageContext.request.contextPath}/post/new" classes="shadow"
-			imageClass="new-post" />	
+			imageClass="new-control" />	
 	</c:when>
 	<c:otherwise>
 		<ttTags:control text="Edit Post"
 			href="${pageContext.request.contextPath}/post/${post.postId }/edit"
-			classes="shadow" imageClass="edit-post" />
+			classes="shadow" imageClass="edit-control" />
 		<ttTags:control text="Delete Post"
 			href="${pageContext.request.contextPath}/post/${post.postId }/delete"
-			imageClass="delete-post" classes="shadow" />	
+			imageClass="delete-control" classes="shadow" />	
 	</c:otherwise>
 </c:choose>
 	

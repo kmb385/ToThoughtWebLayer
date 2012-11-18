@@ -26,13 +26,13 @@ public class ResumeController {
 		return "resume/profile";
 	}
 
-	@RequestMapping("/tech")
+	@RequestMapping("/skills")
 	public String getAllSkills(Model model) {
 		model.addAttribute("categories", skillCategoryRepository.findAll());
-		return "resume/tech";
+		return "resume/skills";
 	}
 	
-	@RequestMapping("/tech/{skillId}")
+	@RequestMapping("/skills/{skillId}")
 	public String getSkill(Model model, @PathVariable Integer skillId ) {
 		model.addAttribute("skill", skillRepository.findOne(skillId));
 		return "resume/skill";
