@@ -1,4 +1,4 @@
-package org.tothought.controllers.annotations;
+package org.tothought.spring.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

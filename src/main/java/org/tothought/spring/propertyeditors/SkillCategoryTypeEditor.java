@@ -1,4 +1,4 @@
-package org.tothought.controllers.propertyeditors;
+package org.tothought.spring.propertyeditors;
 
 import java.beans.PropertyEditorSupport;
 

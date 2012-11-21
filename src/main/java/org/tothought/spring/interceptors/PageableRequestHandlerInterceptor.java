@@ -1,4 +1,4 @@
-package org.tothought.controllers.interceptors;
+package org.tothought.spring.interceptors;
 
 import java.lang.reflect.Method;
 
@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.tothought.controllers.annotations.PageableRequestMapping;
+import org.tothought.spring.annotations.PageableRequestMapping;
 
 public class PageableRequestHandlerInterceptor extends
 		HandlerInterceptorAdapter {
@@ -26,7 +26,7 @@ public class PageableRequestHandlerInterceptor extends
 				
 		HandlerMethod method = (HandlerMethod) handler;
 		
-		if(null != method.getMethodAnnotation(org.tothought.controllers.annotations.PageableRequestMapping.class)){
+		if(null != method.getMethodAnnotation(org.tothought.spring.annotations.PageableRequestMapping.class)){
 			logger.info("Handling method:" + request.getRequestURL());
 			
 			PageableRequestMapping pageableRequestMapping = method.getMethodAnnotation(PageableRequestMapping.class);

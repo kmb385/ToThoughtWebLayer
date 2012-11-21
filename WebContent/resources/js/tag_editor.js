@@ -30,7 +30,8 @@
 		
 		$.fn.ttTagEditor.defaultSettings = {
 				background : '#FFFFFF',
-				max_tags: 4
+				max_tags: 4,
+				param: "tags"
 		};
 
 		function TagEditor($elem, settings) {
@@ -92,7 +93,6 @@
 					$tmpTag.appendTo($tagOptions);
 				});
 				var parent = $(that.$elem).parent();
-				//parent.height(parent.height() + $tagOptions.height() + 10);
 				$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 			},
 			createOptionFrame: function(){
@@ -156,13 +156,13 @@
 			addHiddenInput: function(){
 				this.$hiddenInput = $('<input>').attr({
 				    type: 'hidden',
-				    name: "tags"
+				    name: this.settings.param
 				});
 				this.$hiddenInput.appendTo(this.$elem.parents('form'));
 			},
 			addHiddenInputData: function(value){
 				if(this.$hiddenInput.val().indexOf(value) == -1){
-					this.$hiddenInput.val(this.$hiddenInput.val() + "," + value);
+					this.$hiddenInput.val(this.$hiddenInput.val() + ((this.$hiddenInput.val()) ? ",":"") + value);
 				}
 			},
 			removeHiddenInputData: function(value){
@@ -199,6 +199,7 @@
 				var _url = settings.url || settings || this.settings.url;
 				
 				$.post(_url, function(data){
+					data = ($.isArray(data.length)) ? data:[data];
 					for(var i = 0; i < data.length; i++){
 						that.addTag(data[i].tagId, data[i].name);
 					}

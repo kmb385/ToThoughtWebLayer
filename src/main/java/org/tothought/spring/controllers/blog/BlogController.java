@@ -1,4 +1,4 @@
-package org.tothought.controllers.blog;
+package org.tothought.spring.controllers.blog;
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.tothought.controllers.annotations.PageableRequestMapping;
 import org.tothought.entities.PostView;
 import org.tothought.entities.TagView;
 import org.tothought.repositories.PostViewRepository;
 import org.tothought.repositories.TagViewRepository;
+import org.tothought.spring.annotations.PageableRequestMapping;
 
 
 @Controller

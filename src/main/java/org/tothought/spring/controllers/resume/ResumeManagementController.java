@@ -1,4 +1,4 @@
-package org.tothought.controllers.resume;
+package org.tothought.spring.controllers.resume;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.tothought.controllers.listeners.LookupLoaderApplicationListener;
-import org.tothought.controllers.propertyeditors.SkillCategoryTypeEditor;
 import org.tothought.entities.Image;
 import org.tothought.entities.Skill;
 import org.tothought.entities.SkillCategory;
 import org.tothought.repositories.SkillCategoryRepository;
 import org.tothought.repositories.SkillRepository;
+import org.tothought.spring.listeners.LookupLoaderApplicationListener;
+import org.tothought.spring.propertyeditors.SkillCategoryTypeEditor;
 
 @Controller
 @RequestMapping("/resume/manager")

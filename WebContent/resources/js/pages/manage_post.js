@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	var postId = $("#postId").val();
 	if (postId) {
-		var url = ttRoot + /post/ + postId + "/tags";
+		var url = ttRoot + "/post/" + postId + "/tags";
 		$(".tag-editor").ttTagEditor("load", url);
 	}
 

@@ -20,11 +20,11 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/blog/**"/>
-			<bean class="org.tothought.controllers.interceptors.PageableRequestHandlerInterceptor" />
+			<bean class="org.tothought.spring.interceptors.PageableRequestHandlerInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean class="org.tothought.controllers.interceptors.LookupHandlerInterceptor" />
+			<bean class="org.tothought.spring.interceptors.LookupHandlerInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
@@ -44,6 +44,6 @@
 		<property name="maxUploadSize" value="5000000"/>
 	</bean>
 
-	<context:component-scan base-package="org.tothought.controllers" />
+	<context:component-scan base-package="org.tothought.spring.**" />
 
 </beans>

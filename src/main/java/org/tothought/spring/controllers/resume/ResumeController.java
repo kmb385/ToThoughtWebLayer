@@ -1,4 +1,4 @@
-package org.tothought.controllers.resume;
+package org.tothought.spring.controllers.resume;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

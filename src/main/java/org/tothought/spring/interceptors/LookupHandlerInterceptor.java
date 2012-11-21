@@ -1,11 +1,11 @@
-package org.tothought.controllers.interceptors;
+package org.tothought.spring.interceptors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.tothought.controllers.listeners.LookupLoaderApplicationListener;
+import org.tothought.spring.listeners.LookupLoaderApplicationListener;
 
 public class LookupHandlerInterceptor extends HandlerInterceptorAdapter {
 

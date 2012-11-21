@@ -5,7 +5,7 @@
 <%@ taglib prefix="ttTags" uri="/WEB-INF/tags/tothought-tags.tld"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<ttTags:documentTemplate cssFiles="post_tags.css,resume.css,rating.css"
+<ttTags:documentTemplate cssFiles="post_tags.css,resume.css,rating.css, skill.css"
 	jsFiles="tag_editor.js,rating.js,${pageContext.request.contextPath}/resources/js/pages/manage_tech.js"
 	sidebarFragment="resume_sidebar.jsp" requiresTextEditor="true">
 	<div class="v-bottom-margin-20 font-large bold">Manage Technical Skills</div>
@@ -47,20 +47,34 @@
 		</div>
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Rating</div>
-			<div id="rating"></div>
+			<div id="rating">${skill.rating}</div>
 		</div>
 		<div class="v-margin-10">
-			<div class="bold v-margin-4">Image File</div>
-			<div>
-				<input type="file" name="file" size="35" value="${skill.image}"/>
-			</div>
+			<c:choose>
+				<c:when test="${empty skill.image}">
+					<div class="bold v-margin-4">Image File</div>
+					<div>
+						<input type="file" name="file" size="35" value="${skill.image}"/>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="bold v-margin-4">Image File</div>
+					<div class="delete-image-link clearfix">
+						<div class="delete-text">${skill.image.name}</div>
+						<div class="small-delete-btn h-margin-3"></div>
+						<a href="${pageContext.request.contextPath}/resume/manager/skills/${skill.skillId}/deleteimage">
+							<span class="div-link">&nbsp;</span>
+						</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Tags</div>
 			<div class="tag-editor"></div>
 		</div>
 		<input type="submit" class="control" value="Save" />
-		<input type="hidden" name="skillId" value="${skill.skillId}"/>
+		<input id="skillId" type="hidden" name="skillId" value="${skill.skillId}"/>
 	</form>
 
 </ttTags:documentTemplate>

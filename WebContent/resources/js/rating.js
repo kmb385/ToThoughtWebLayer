@@ -42,7 +42,15 @@
 
 		RatingObject.prototype = {
 			init : function() {
+				this.setInitialValue();
 				this.createDomElements();
+			},
+			setInitialValue: function(){
+				if(this.$elem.html()){
+					console.log(this.$elem.html());
+					this.rating = this.$elem.html();
+					this.$elem.html("");
+				}
 			},
 			createDomElements: function(){
 				var that = this;
@@ -52,6 +60,10 @@
 				});
 				this.createStars(5);
 				this.createHiddenInput();
+				
+				if(this.rating > -1){
+					this.setRating(this.rating);
+				}
 			},
 			createStars: function(starsNumber){
 				var that = this;

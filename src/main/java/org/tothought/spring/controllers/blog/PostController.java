@@ -1,11 +1,8 @@
-package org.tothought.controllers.blog;
+package org.tothought.spring.controllers.blog;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +20,7 @@ import org.tothought.repositories.PostRepository;
 import org.tothought.repositories.PostViewRepository;
 import org.tothought.repositories.TagRepository;
 import org.tothought.repositories.TagViewRepository;
+import org.tothought.spring.utilities.TagCreatorUtil;
 
 @Controller
 @RequestMapping("/post")
@@ -74,7 +72,7 @@ public class PostController {
 		post.setAuthor("Kevin Bowersox");
 		post.setPostedDt(new Date());
 		post.setPostPart(postPart);
-		post.setTags(this.createTags(tags));
+		post.setTags(new TagCreatorUtil().createTags(tags));
 
 		postRepository.save(post);
 
@@ -85,22 +83,6 @@ public class PostController {
 	public String deletePost(@PathVariable Integer postId, Model model) {
 		postRepository.delete(postId);
 		return "redirect:/blog/";
-	}
-
-	private List<Tag> createTags(String csvTags) {
-		List<Tag> tags = new ArrayList<Tag>();
-		String[] tagValues = csvTags.split(",");
-
-		for (String tag : tagValues) {
-			if (!StringUtils.isEmpty(tag)) {
-				if (!NumberUtils.isNumber(tag)) {
-					tags.add(new Tag(tag));
-				} else {
-					tags.add(tagRepository.findOne(new Integer(tag)));
-				}
-			}
-		}
-		return tags;
 	}
 
 }
