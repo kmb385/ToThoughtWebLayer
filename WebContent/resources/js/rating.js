@@ -34,7 +34,7 @@
 
 		function RatingObject($elem, settings) {
 			this.$elem = $elem;
-			this.rating = -1;
+			this.rating = 0;
 			this.$hiddenInput = {};
 			this.isInside = false;
 			return this;
@@ -47,7 +47,6 @@
 			},
 			setInitialValue: function(){
 				if(this.$elem.html()){
-					console.log(this.$elem.html());
 					this.rating = this.$elem.html();
 					this.$elem.html("");
 				}
@@ -61,7 +60,7 @@
 				this.createStars(5);
 				this.createHiddenInput();
 				
-				if(this.rating > -1){
+				if(this.rating > 0){
 					this.setRating(this.rating);
 				}
 			},
@@ -83,13 +82,13 @@
 							that.rating = $(this).data("rating");
 							that.setRating(that.rating);
 						}
-					}).data("rating", i);
+					}).data("rating", i + 1);
 					this.$elem.append(star);
 				}
 			},
 			setRating: function(rating){
-				if(this.rating > -1){
-					this.$elem.find(".star").eq(rating).prevAll().andSelf().addClass("gold-star");
+				if(this.rating > 0){
+					this.$elem.find(".star").eq(rating - 1).prevAll().andSelf().addClass("gold-star");
 					this.$hiddenInput.val(rating);
 				}
 			},
