@@ -12,7 +12,7 @@
 		href="${pageContext.request.contextPath}/resume/skills"
 		imageClass="skills-btn" classes="shadow control-26" />
 	<ttTags:control text="Work Experience"
-		href="${pageContext.request.contextPath}/resume/skills"
+		href="${pageContext.request.contextPath}/resume/experience"
 		imageClass="work-btn" classes="shadow control-26" />
 	<ttTags:control text="Education"
 		href="${pageContext.request.contextPath}/resume/skills"

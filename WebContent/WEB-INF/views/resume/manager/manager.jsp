@@ -14,7 +14,7 @@
 				Skills</span>
 			<span class="tile-img skills-tile-img"></span> 
 		</a> 
-		<a href="#" class="tile bg3 fg1">
+		<a href="${pageContext.request.contextPath}/resume/manager/experience/new" class="tile bg3 fg1">
 			<span>Employment</span>
 			<span class="tile-img work-tile-img"></span> 
 		</a> 

@@ -1,7 +1,6 @@
 package org.tothought.spring.controllers.blog;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.tothought.entities.Post;
 import org.tothought.entities.PostPart;
 import org.tothought.entities.PostView;
-import org.tothought.entities.Tag;
 import org.tothought.json.JsonUtil;
 import org.tothought.repositories.PostRepository;
 import org.tothought.repositories.PostViewRepository;
@@ -37,6 +35,9 @@ public class PostController {
 
 	@Autowired
 	PostViewRepository postViewRepository;
+	
+	@Autowired
+	TagCreatorUtil tagCreatorUtil;
 
 	@RequestMapping("/{postId}")
 	public String getPost(@PathVariable Integer postId, Model model) {
@@ -72,7 +73,7 @@ public class PostController {
 		post.setAuthor("Kevin Bowersox");
 		post.setPostedDt(new Date());
 		post.setPostPart(postPart);
-		post.setTags(new TagCreatorUtil().createTags(tags));
+		post.setTags(tagCreatorUtil.createTags(tags));
 
 		postRepository.save(post);
 

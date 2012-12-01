@@ -16,6 +16,23 @@
 	text-decoration: none;
 }
 
+.no-text-control{
+	border: 1px solid transparent;
+	cursor: pointer;
+	height: 32px;
+	margin: 0px 5px;
+	width: 32px;
+}
+
+.no-text-control:hover{
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+	
+	border: 1px solid rgba(0,0,0, 0.1);
+}
+
 .skrink-wrap-control, .shrink-wrap-control-left{
 	display: inline-block;
 	padding-right: 20px;

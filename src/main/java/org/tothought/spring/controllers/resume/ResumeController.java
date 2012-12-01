@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.tothought.repositories.ExperienceRepository;
 import org.tothought.repositories.SkillCategoryRepository;
 import org.tothought.repositories.SkillRepository;
 @Controller
@@ -20,6 +21,9 @@ public class ResumeController {
 
 	@Autowired
 	SkillRepository skillRepository;
+	
+	@Autowired
+	ExperienceRepository experienceRepository;
 	
 	@RequestMapping("/profile")
 	public String profile() {
@@ -37,25 +41,10 @@ public class ResumeController {
 		model.addAttribute("skill", skillRepository.findOne(skillId));
 		return "resume/skill";
 	}
-/*
-	@RequestMapping("/tech/manage")
-	public String manageTech() {
-		return "resume/manageTech";
+	
+	@RequestMapping("/experience")
+	public String getExperience(Model model){
+		model.addAttribute("experiences", experienceRepository.findAll());
+		return  "resume/experience";
 	}
-
-	@RequestMapping("/tech/save")
-	public String saveTech(@RequestParam("title") String name, @RequestParam("rating") int rating,
-			@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-		logger.info(file.getContentType());
-		String realPath = request.getServletContext().getRealPath("/");
-		File tmpFile = new File(realPath + "/resources/images/resume/tech/uploaded-icons/" + file.getOriginalFilename());
-		try {
-			FileUtils.writeByteArrayToFile(tmpFile, file.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "resume/manageTech";
-	}
-	*/
 }

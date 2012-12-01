@@ -1,6 +1,6 @@
 .tag-editor{
 	border: 1px solid #999999;
-	height: 30px;
+	min-height: 30px;
 	padding: 4px 0px 2px;
 	position: relative;
 	width: 600px;
@@ -21,7 +21,7 @@
     color: #3E6D8E;
 	cursor: pointer;
 	float:left;
-	margin: 0px 5px;
+	margin: 2px 5px;
 	padding: 3px 5px;
 	text-decoration: none;
 }

@@ -1,0 +1,14 @@
+.experience ul{
+	
+}
+
+.experience ul li{
+	list-style: circle;
+	margin-left: 20px;
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;
+}
+
+#details-input{
+	width: 536px;
+}
