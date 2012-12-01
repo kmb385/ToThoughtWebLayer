@@ -17,7 +17,8 @@ public class TagCreatorUtil {
 	private TagRepository tagRepository;
 	
 	public Tag createTag(String tag){
-		return this.createTags(tag).get(0);
+		List<Tag> tags =  this.createTags(tag);
+		return (tags.isEmpty()) ? null : tags.get(0);
 	}
 	
 	public List<Tag> createTags(String csvTags) {
