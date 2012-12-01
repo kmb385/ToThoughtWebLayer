@@ -9,9 +9,3 @@
 .delete-image-link div{
 	float: left;
 }
-
-.small-delete-btn{
-	background: url(../../resources/images/small-delete.png) no-repeat;
-	height: 16px;
-	width: 16px;
-}

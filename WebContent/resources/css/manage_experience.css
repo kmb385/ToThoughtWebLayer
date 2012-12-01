@@ -6,3 +6,7 @@
 #details-input{
 	width: 536px;
 }
+
+.small-delete-btn{
+	position: relative;
+}

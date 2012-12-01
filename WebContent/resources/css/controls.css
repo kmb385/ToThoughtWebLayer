@@ -93,3 +93,12 @@
 .prev-btn{
 	background: url(../../resources/images/back.png) no-repeat;
 }
+
+/** Small Buttons **/
+.small-delete-btn{
+	background: url(../../resources/images/small-delete.png) no-repeat;
+	cursor: pointer;
+	height: 16px;
+	margin-top:2px;
+	width: 16px;
+}

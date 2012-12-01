@@ -57,7 +57,12 @@
 					<c:forEach var="detail" items="${experience.experienceDetails }">
 						<ul id="details">
 							<li>
-								${detail.description}
+								<div class="float-left">${detail.description}</div>
+								<div class="small-delete-btn h-margin-3 float-left">
+									<a href="<c:url value="/resume/manager/experience/${detail.experienceDetailId}/deleteexperience"/>">
+										<span class="div-link">&nbsp;</span>
+									</a>
+								</div>	
 								<input type="hidden" name="experienceDetails" value="${detail.experienceDetailId }"/>
 							</li>
 						</ul>

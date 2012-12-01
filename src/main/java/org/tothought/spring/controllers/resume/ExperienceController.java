@@ -2,6 +2,7 @@ package org.tothought.spring.controllers.resume;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -64,6 +65,18 @@ public class ExperienceController {
 	public String getTags(@PathVariable Integer experienceId) {
 		Experience experience = experienceRepository.findOne(experienceId);
 		return JsonUtil.getJson(experience.getTags());
+	}
+	
+	@RequestMapping("/{detailId}/deleteexperience")
+	public String deleteExperience(@PathVariable("detailId") Integer detailId, Model model){
+		ExperienceDetail experienceDetail = detailRepository.findOne(detailId);
+		Experience experience = experienceDetail.getExperience();
+		
+		List<ExperienceDetail> details = experience.getExperienceDetails();
+		details.remove(details.indexOf(experienceDetail));
+		experienceRepository.save(experience);
+		
+		return "redirect:/resume/manager/experience/edit/" + experience.getExperienceId().toString();
 	}
 
 	/**
