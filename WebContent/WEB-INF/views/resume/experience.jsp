@@ -14,9 +14,11 @@
 	</div>
 	<c:forEach var="experience" items="${experiences}">
 		<div class="experience v-bottom-margin-20">
-			<div class="clearfix">
-			
-				<div class="font-medium bold float-left"><a href="<c:url value="/resume/manager/experience/edit/${experience.experienceId}"  />">${experience.position }</a></div>
+			<div class="clearfix">			
+				<div class="font-medium bold float-left">
+					<a href="<c:url value="/resume/manager/experience/edit/${experience.experienceId}"  />" 
+						class="position-title">${experience.position }</a>
+				</div>
 				<div class="float-right">
 					<fmt:formatDate value="${experience.startDate}" pattern="MMMM yyyy" /> -
 					<c:choose>
@@ -43,46 +45,5 @@
 			</div>
 		</div>
 	</c:forEach>
-	<div class="experience v-bottom-margin-20">
-		<div class="clearfix">
-			<div class="font-medium bold float-left">Web Application
-				Developer</div>
-			<div class="float-right">July 2009 - Present</div>
-		</div>
-		<div class="subtle">NAVSUP Business Systems Center</div>
-		<p class="v-margin-10">Developed J2EE applications that supported
-			logistics and supply chain operations for the United States Navy and
-			Department of Defense. Introduced new application development
-			approaches such as object relational mapping, interactive ajax user
-			interfaces and the front-controller pattern.</p>
-		<ul>
-			<li>Lead a team of three J2EE developers, raising competencies
-				in OOP design principles and MVC pattern. Created a reusable
-				application architecture adopted by several internal development
-				teams.</li>
-			<li>Managed team tasks, release deliverables and progress;
-				keeping developers engaged with challenging tasks and learning
-				opportunities through paired programming.</li>
-			<li>Developed and maintained six other J2EE applications;
-				working initiatives in parallel. Balancing the workload and needs of
-				each customer, business analyst team and manager. Applications
-				support business processes such as supply discrepancies, contract
-				management, hazardous material cataloging, mail delivery and RFID
-				enhanced supply management.</li>
-		</ul>
-		<div class="post-tags clearfix">
-			<div class="post-tag">Java</div>
-			<div class="post-tag">J2EE</div>
-			<div class="post-tag">HTML</div>
-			<div class="post-tag">CSS</div>
-			<div class="post-tag">Hibernate</div>
-			<div class="post-tag">Spring</div>
-			<div class="post-tag">Jquery</div>
-			<div class="post-tag">Jquery UI</div>
-			<div class="post-tag">Tomcat</div>
-			<div class="post-tag">Oracle</div>
-			<div class="post-tag">SSL</div>
-		</div>
-	</div>
 </ttTags:documentTemplate>
 
