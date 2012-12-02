@@ -15,7 +15,7 @@
 		href="${pageContext.request.contextPath}/resume/experience"
 		imageClass="work-btn" classes="shadow control-26" />
 	<ttTags:control text="Education"
-		href="${pageContext.request.contextPath}/resume/skills"
+		href="${pageContext.request.contextPath}/resume/degree"
 		imageClass="education-btn" classes="shadow control-26" />
 	<div class="v-margin-20 font-medium subtle bold">Admin Controls</div>
 	<ttTags:control text="Resume Manager"

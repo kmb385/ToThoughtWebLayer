@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.tothought.repositories.DegreeRepository;
 import org.tothought.repositories.ExperienceRepository;
 import org.tothought.repositories.SkillCategoryRepository;
 import org.tothought.repositories.SkillRepository;
@@ -24,6 +25,9 @@ public class ResumeController {
 	
 	@Autowired
 	ExperienceRepository experienceRepository;
+	
+	@Autowired
+	DegreeRepository degreeRepository;
 	
 	@RequestMapping("/profile")
 	public String profile() {
@@ -46,5 +50,11 @@ public class ResumeController {
 	public String getExperience(Model model){
 		model.addAttribute("experiences", experienceRepository.findAll());
 		return  "resume/experience";
+	}
+	
+	@RequestMapping("/degree")
+	public String getDegrees(Model model){
+		model.addAttribute("degrees", degreeRepository.findAll());
+		return "resume/degrees";
 	}
 }
