@@ -55,7 +55,6 @@
 			<div class="experience v-margin-20">
 				<ul id="details">
 					<c:forEach var="detail" items="${experience.experienceDetails }">
-						<ul id="details">
 							<li>
 								<div class="float-left">${detail.description}</div>
 								<div class="small-delete-btn h-margin-3 float-left">
@@ -65,7 +64,6 @@
 								</div>	
 								<input type="hidden" name="experienceDetails" value="${detail.experienceDetailId }"/>
 							</li>
-						</ul>
 					</c:forEach>
 				</ul>
 			</div>

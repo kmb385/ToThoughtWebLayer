@@ -18,7 +18,7 @@
 			<span>Employment</span>
 			<span class="tile-img work-tile-img"></span> 
 		</a> 
-		<a href="#" class="tile bg3 fg1">
+		<a href="<c:url value="/resume/manager/degree/new"/>" class="tile bg3 fg1">
 			<span>Education</span>
 			<span class="tile-img education-tile-img"></span> 
 		</a> 

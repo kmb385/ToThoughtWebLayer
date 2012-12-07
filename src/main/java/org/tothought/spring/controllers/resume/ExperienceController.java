@@ -89,7 +89,7 @@ public class ExperienceController {
 		   SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		   dateFormat.setLenient(false);
 
-		// true passed to CustomDateEditor constructor means convert empty String to null
+		// true passed to CustomDateEditor constructor means convert empty String to null, prevents error when date is null
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 		binder.registerCustomEditor(ExperienceDetail.class, new ExperienceDetailTypeEditor(detailRepository));
 	}

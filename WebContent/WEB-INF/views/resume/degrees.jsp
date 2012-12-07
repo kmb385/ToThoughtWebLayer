@@ -7,16 +7,12 @@
 <ttTags:documentTemplate
 	cssFiles="post_tags.css,resume.css,degrees.css"
 	sidebarFragment="resume_sidebar.jsp">
-	<div class="v-bottom-margin-20 clearfix">
-		<div class="float-left">
-			<div class="font-large bold">Education</div>
-		</div>
-	</div>
+	<div class="v-bottom-margin-20 font-large bold clearfix">Education</div>
 	<c:forEach var="degree" items="${degrees}">
   	<div class="degree v-bottom-margin-20">
 			<div class="clearfix">
 				<div class="float-left">			
-					<div class="font-medium bold float-left">
+					<div class="font-medium bold">
 						<a href="<c:url value="/resume/manager/degree/edit/${degree.degreeId}"  />" 
 							class="degree-title">${degree.institution }</a>
 					</div>
@@ -24,6 +20,9 @@
 					<div>${degree.degreeType }</div>
 					<ul>
 						<li>${degree.emphasis } Emphasis</li>
+						<c:forEach var="detail" items="${degree.degreeDetails }">
+						  <li>${detail.description}</li>
+						</c:forEach>
 					</ul>
 				</div>
 				<div class="float-right">
