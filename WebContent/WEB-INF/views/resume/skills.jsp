@@ -6,11 +6,7 @@
 
 <ttTags:documentTemplate cssFiles="resume.css,rating.css"
 	sidebarFragment="resume_sidebar.jsp">
-	<div class="v-bottm-margin-20 clearfix">
-		<div class="float-left">
-			<div class="font-large bold">Technical Skills</div>
-		</div>
-	</div>
+	<div class="page-title">Technical Skills</div>
 	<c:forEach var="skillCategory" items="${categories}">
 		<div class="font-medium bold section-title subtle">${skillCategory.name}</div>
 		<c:forEach var="skill" items="${skillCategory.skills}">

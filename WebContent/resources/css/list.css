@@ -1,0 +1,12 @@
+.simple-list-input{
+	width: 536px;
+}
+
+.simple-list ul{
+	margin: 1.25em;
+}
+
+.simple-list ul li{
+	list-style: circle;
+	margin-left: 20px;
+}

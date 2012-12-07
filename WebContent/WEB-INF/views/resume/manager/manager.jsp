@@ -7,8 +7,7 @@
 <ttTags:documentTemplate cssFiles="resume.css,resume_manager.css"
 	jsFiles="${pageContext.request.contextPath}/resources/js/pages/resume_manager.js"
 	sidebarFragment="resume_sidebar.jsp">
-
-	<div class="v-bottom-margin-20 font-large bold">Resume Manager</div>
+	<div class="page-title">Resume Manager</div>
 	<div class="tile-container">
 		<a href="${pageContext.request.contextPath}/resume/manager/skills/new" class="tile bg3 fg1"><span>Technical
 				Skills</span>

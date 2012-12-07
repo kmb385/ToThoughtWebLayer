@@ -72,6 +72,11 @@ input {
 	width: 100%;	
 }
 
+.no-decoration-anchor{
+	color:inherit;
+	text-decoration: none;
+}
+
 .clearfix:after {
 	content: ".";
 	display: block;

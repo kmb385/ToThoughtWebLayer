@@ -5,10 +5,10 @@
 <%@ taglib prefix="ttTags" uri="/WEB-INF/tags/tothought-tags.tld"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<ttTags:documentTemplate cssFiles="post_tags.css,resume.css, manage_degree.css"
-	jsFiles="tag_editor.js,${pageContext.request.contextPath}/resources/js/pages/manage_degree.js"
+<ttTags:documentTemplate cssFiles="post_tags.css,resume.css,list.css"
+	jsFiles="tag_editor.js,list.js,${pageContext.request.contextPath}/resources/js/pages/manage_degree.js"
 	sidebarFragment="resume_sidebar.jsp">
-	<div class="v-bottom-margin-20 font-large bold">Manage Education</div>
+	<div class="page-title">Manage Education</div>
 	<form method="post" action="${pageContext.request.contextPath}/resume/manager/degree/save">
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Institution</div>
@@ -39,34 +39,33 @@
 				<input name="endDate" value="<fmt:formatDate value="${degree.endDate }" pattern="MM/dd/yyyy"/>" 
 					class="date-picker input-medium" />
 			</div>
-			<div class="bold v-margin-4">Is currently being obtained?</div>
-			<form:checkbox path="degree.isPresent" value="${degree.isPresent}"/>
+			<div class="bold v-margin-10">
+			    Is currently being obtained? 
+				<form:checkbox path="degree.isPresent" value="${degree.isPresent}" cssClass="h-margin-3"/>
+		    </div>
 		</div>
-		<div class="v-margin-10">
+		<div class="simple-list v-margin-10">
 			<div class="bold v-margin-4">Details</div>
 			<div class="clearfix">
-				<textarea id="details-input" class="float-left"></textarea>
-				<div id="add-detail" class="no-text-control new-control float-left"></div>
+				<textarea class="simple-list-input float-left"></textarea>
+				<div class="add-item no-text-control new-control float-left"></div>
 			</div>
-			<div class="experience v-margin-20">
-				<ul id="details">
-					<c:forEach var="detail" items="${degree.degreeDetails }">
-							<li>
-								<div class="float-left">${detail.description}</div>
-								<div class="small-delete-btn h-margin-3 float-left">
-									<a href="<c:url value="/resume/manager/degree/${detail.degreeDetailId}/deletedetail"/>">
-										<span class="div-link">&nbsp;</span>
-									</a>
-								</div>	
-								<input type="hidden" name="degreeDetails" value="${detail.degreeDetailId }"/>
-							</li>
-					</c:forEach>
-				</ul>
-			</div>		
+			<ul>
+				<c:forEach var="detail" items="${degree.degreeDetails }">
+						<li>
+							<div class="float-left">${detail.description}</div>
+							<div class="small-delete-btn h-margin-3 float-left">
+								<a href="<c:url value="/resume/manager/degree/${detail.degreeDetailId}/deletedetail"/>">
+									<span class="div-link">&nbsp;</span>
+								</a>
+							</div>	
+							<input type="hidden" name="degreeDetails" value="${detail.degreeDetailId }"/>
+						</li>
+				</c:forEach>
+			</ul>
 		</div>
 		<input type="submit" class="control" value="Save" />
 		<input id="degreeId" type="hidden" name="degreeId" value="${degree.degreeId}"/>
 	</form>
-
 </ttTags:documentTemplate>
 

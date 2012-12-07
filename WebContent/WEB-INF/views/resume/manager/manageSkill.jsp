@@ -8,7 +8,7 @@
 <ttTags:documentTemplate cssFiles="post_tags.css,resume.css,rating.css, skill.css"
 	jsFiles="tag_editor.js,rating.js,${pageContext.request.contextPath}/resources/js/pages/manage_tech.js"
 	sidebarFragment="resume_sidebar.jsp" requiresTextEditor="true">
-	<div class="v-bottom-margin-20 font-large bold">Manage Technical Skills</div>
+	<div class="page-title">Manage Technical Skills</div>
 	<form method="post"
 		action="${pageContext.request.contextPath}/resume/manager/skills/save"
 		enctype="multipart/form-data">
@@ -76,6 +76,5 @@
 		<input type="submit" class="control" value="Save" />
 		<input id="skillId" type="hidden" name="skillId" value="${skill.skillId}"/>
 	</form>
-
 </ttTags:documentTemplate>
 

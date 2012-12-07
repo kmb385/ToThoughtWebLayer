@@ -21,7 +21,7 @@
 	<ttTags:control text="Resume Manager"
 		href="${pageContext.request.contextPath}/resume/manager/"
 		imageClass="manager-btn" classes="shadow control-26" />
-	<c:if test="${skill != null}">
+	<c:if test="${skill != null  && skill.skillId != null}">
 		<ttTags:control text="Edit Skill"
 			href="${pageContext.request.contextPath}/resume/manager/skills/${skill.skillId}/edit"
 			imageClass="edit-control" classes="shadow control-26" />

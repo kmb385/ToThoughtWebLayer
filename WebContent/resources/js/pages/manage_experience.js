@@ -4,7 +4,9 @@ $(document).ready(function(){
 		param : "tags"
 	});
 	
-	$("#add-detail").click(function(){
+	$(".simple-list").ttSimpleList("experienceDetails");
+/*	
+ * $("#add-detail").click(function(){
 		var value = $("#details-input").val();
 		var detail = $("<li />").html(value);
 		var hiddenDetail = $("<input />",{
@@ -17,6 +19,7 @@ $(document).ready(function(){
 		$("#details").append(hiddenDetail);
 		$("#details-input").val("").focus();
 	});
+*/
 	
 	$( ".date-picker" ).datepicker();
 	

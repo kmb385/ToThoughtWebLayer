@@ -100,5 +100,6 @@
 	cursor: pointer;
 	height: 16px;
 	margin-top:2px;
+	position: relative;
 	width: 16px;
 }
