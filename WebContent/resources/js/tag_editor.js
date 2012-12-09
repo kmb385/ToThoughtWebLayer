@@ -13,7 +13,6 @@
 					}
 				}
 			});
-
 			return elements;
 		}
 
@@ -123,7 +122,7 @@
 					var $tag = $(this);
 
 					if ($tag.parents(".tag-options").length > 0
-							&& that.tagCount < 4) {
+							&& that.tagCount < that.settings.max_tags) {
 						$tag.prependTo(that.$elem);
 						that.addHiddenInputData($tag.data("id"));
 						that.tagCount++;
@@ -171,13 +170,15 @@
 			this.$hiddenInput.appendTo(this.$elem.parents('form'));
 		},
 		addHiddenInputData : function(value) {
-			if (this.$hiddenInput.val().indexOf(value) == -1) {
+			//TODO: Index of Bug preventing addition of some tags.  Create regex.
+			if (this.$hiddenInput.val().split(",").indexOf(value + '') == -1) {
 				this.$hiddenInput.val(this.$hiddenInput.val()
 						+ ((this.$hiddenInput.val()) ? "," : "") + value);
 			}
 		},
 		removeHiddenInputData : function(value) {
-			if (this.$hiddenInput.val().indexOf(value) != -1) {
+			//TODO: Index of Bug preventing addition of some tags. Find a good regex.
+			if (this.$hiddenInput.val().split(",").indexOf(value + '') != -1) {
 				var dataArray = this.$hiddenInput.val().split(",");
 				for ( var i = 0; i < dataArray.length; i++) {
 					if (dataArray[i] == value) {
@@ -198,11 +199,13 @@
 				}
 			});
 		},
-		addTag : function(id, name) {
+		addTag : function(id, name, cleanUI) {
 			var $newTag = this.createTag(id, name);
 			this.addHiddenInputData($newTag.data("id"));
 			$newTag.prependTo(this.$elem);
-			this.cleanUI();
+			if(cleanUI !== false){
+				this.cleanUI();				
+			}
 			this.tagCount++;
 		},
 		load : function(settings) {
@@ -213,7 +216,7 @@
 				data = ($.isArray(data)) ? data : [ data ];
 				for ( var i = 0; i < data.length; i++) {
 					if (data) {
-						that.addTag(data[i].tagId, data[i].name);
+						that.addTag(data[i].tagId, data[i].name, false);
 					}
 				}
 			}, "json");

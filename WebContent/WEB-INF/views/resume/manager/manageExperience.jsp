@@ -9,7 +9,7 @@
 	jsFiles="tag_editor.js,list.js,${pageContext.request.contextPath}/resources/js/pages/manage_experience.js"
 	sidebarFragment="resume_sidebar.jsp">
 	<div class="page-title">Manage Work Experience</div>
-	<form method="post" action="${pageContext.request.contextPath}/resume/manager/experience/save"
+	<form method="post" action="${pageContext.request.contextPath}/secure//resume/manager/experience/save"
 		enctype="multipart/form-data">
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Position</div>
@@ -53,21 +53,20 @@
 				<textarea class="simple-list-input float-left"></textarea>
 				<div class="add-item no-text-control new-control float-left"></div>
 			</div>
-			<ul>
+			<ul class="clearfix">
 				<c:forEach var="detail" items="${experience.experienceDetails }">
 					<li>
-						<div class="float-left">${detail.description}</div>
-						<div class="small-delete-btn h-margin-3 float-left">
-							<a href="<c:url value="/resume/manager/experience/${detail.experienceDetailId}/deleteexperience"/>">
-								<span class="div-link">&nbsp;</span>
-							</a>
-						</div> 
+						<span>${detail.description}</span>
+						<a href="<c:url value="/secure/resume/manager/experience/${detail.experienceDetailId}/deleteexperience"/>"
+							class="small-delete-btn h-margin-3"></a>
 						<input type="hidden" name="experienceDetails" value="${detail.experienceDetailId }" />
 					</li>
 				</c:forEach>
 			</ul>
 		</div>
-		<input type="submit" class="control" value="Save" /> 
-		<input id="experienceId" type="hidden" name="experienceId" value="${experience.experienceId}" />
+		<div>
+			<input type="submit" class="control" value="Save" /> 	
+			<input id="experienceId" type="hidden" name="experienceId" value="${experience.experienceId}" />
+		</div>
 	</form>
 </ttTags:documentTemplate>

@@ -7,8 +7,9 @@ $(document).ready(function() {
 
 	var skillId = $("#skillId").val();
 	if (skillId) {
-		var url = ttRoot + "/resume/manager/skills/" + skillId + "/tags";
+		var url = ttRoot + "/secure/resume/manager/skills/" + skillId + "/tags";
 		$(".tag-editor").ttTagEditor("load", url);
 	}
-
+	
+	$("input:first").focus();
 });

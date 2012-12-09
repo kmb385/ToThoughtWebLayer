@@ -8,7 +8,7 @@
 			<li class="font-large fg1"><a href="${pageContext.request.contextPath}/blog/page/0">Blog</a></li>
 			<li class="font-large fg1"><a href="#">About</a></li>
 			<li class="font-large fg1"><a href="${pageContext.request.contextPath}/resume/profile">Resume</a></li>
-			<li class="font-large fg1"><a href="#">Admin</a></li>
+			<li id="login" class="font-large fg1"><a href="${pageContext.request.contextPath}/login.jsp">Admin</a></li>
 		</ul>
 	</div>
 </div>

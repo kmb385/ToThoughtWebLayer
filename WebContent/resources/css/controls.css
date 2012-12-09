@@ -49,10 +49,15 @@
 	color: #555555;
 }
 
-.control .img, .shrink-wrap-control-left .img{
-	float: left;
+.img{
 	height: 32px;
 	width: 32px;
+}
+
+.control .img, .shrink-wrap-control-left .img{
+	float: left;
+/*	height: 32px;
+	width: 32px;*/
 }
 
 .shrink-wrap-control-right .img{
@@ -98,8 +103,22 @@
 .small-delete-btn{
 	background: url(../../resources/images/small-delete.png) no-repeat;
 	cursor: pointer;
+	display: inline-block;
 	height: 16px;
 	margin-top:2px;
 	position: relative;
 	width: 16px;
+	vertical-align: top;
+}
+
+/** Control Group **/
+.control-group .img{
+	border: 1px solid transparent;
+	cursor: pointer;
+	margin: 5px;
+	float: left;
+}
+
+.control-group .img:hover{
+	border: 1px solid lightgray;
 }

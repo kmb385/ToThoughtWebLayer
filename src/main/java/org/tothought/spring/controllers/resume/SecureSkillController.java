@@ -25,10 +25,10 @@ import org.tothought.spring.utilities.ImageCreatorUtil;
 import org.tothought.spring.utilities.TagCreatorUtil;
 
 @Controller
-@RequestMapping("/resume/manager/skills")
-public class SkillController {
+@RequestMapping("/secure/resume/manager/skills")
+public class SecureSkillController {
 
-	Logger logger = LoggerFactory.getLogger(ResumeManagementController.class);
+	Logger logger = LoggerFactory.getLogger(SecureResumeManagerController.class);
 
 	@Autowired
 	SkillCategoryRepository skillCategoryRepository;
@@ -56,7 +56,7 @@ public class SkillController {
 		return "resume/manager/manageSkill";
 	}
 
-	@RequestMapping("/{skillId}/edit")
+	@RequestMapping("/edit/{skillId}")
 	public String editSkill(Model model, @PathVariable Integer skillId) {
 		Skill skill = skillRepository.findOne(skillId);
 		model.addAttribute("skill", skill);
@@ -91,10 +91,16 @@ public class SkillController {
 
 		return "redirect:/resume/skills";
 	}
-
+	
+	@RequestMapping("/delete/{skillId}")
+	public String deleteSkill(@PathVariable Integer skillId) {
+		skillRepository.delete(skillId);
+		return "redirect:/resume/skills";
+	}
+	
 	@RequestMapping("/{skillId}/tags")
 	@ResponseBody
-	public String getTags(@PathVariable Integer skillId) {
+	public String getSkillTags(@PathVariable Integer skillId) {
 		Skill skill = skillRepository.findOne(skillId);
 		Tag tag = skill.getTag();
 		return JsonUtil.getJson(tag);

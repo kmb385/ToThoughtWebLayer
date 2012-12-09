@@ -3,25 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="ttTags" uri="/WEB-INF/tags/tothought-tags.tld"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div class="control-container">
-<c:choose>
-	<c:when test="${isNew}">
-		<ttTags:control text="Create New Post"
-			href="${pageContext.request.contextPath}/post/new" classes="shadow"
-			imageClass="new-control" />	
-	</c:when>
-	<c:otherwise>
-		<ttTags:control text="Edit Post"
-			href="${pageContext.request.contextPath}/post/${post.postId }/edit"
-			classes="shadow" imageClass="edit-control" />
-		<ttTags:control text="Delete Post"
-			href="${pageContext.request.contextPath}/post/${post.postId }/delete"
-			imageClass="delete-control" classes="shadow" />	
-	</c:otherwise>
-</c:choose>
-	
-
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<c:if test="${isNew}">
+			<ttTags:control text="Create New Post"
+				href="${pageContext.request.contextPath}/secure/post/new"
+				classes="shadow" imageClass="new-control" />
+		</c:if>
+	</sec:authorize>
 </div>
 <div class="v-margin-20 h-margin-20">
 	<div class="bold fg3 v-margin-4 font-medium">Find Posts By Tag</div>

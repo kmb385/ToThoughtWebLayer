@@ -1,9 +1,11 @@
 package org.tothought.spring.controllers.resume;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,8 +20,8 @@ import org.tothought.repositories.DegreeRepository;
 import org.tothought.spring.propertyeditors.DegreeDetailTypeEditor;
 
 @Controller
-@RequestMapping("/resume/manager/degree")
-public class DegreeController {
+@RequestMapping("/secure/resume/manager/degree")
+public class SecureDegreeController {
 
 	@Autowired
 	DegreeRepository repository;
@@ -59,7 +61,13 @@ public class DegreeController {
 		details.remove(degreeDetail);
 		repository.save(degree);
 		
-		return "redirect:/resume/manager/degree/edit/" + degree.getDegreeId().toString();
+		return "redirect:/secure/resume/manager/degree/edit/" + degree.getDegreeId().toString();
+	}
+	
+	@RequestMapping("/delete/{degreeId}")
+	public String deleteDegree(@PathVariable Integer degreeId){
+		repository.delete(degreeId);
+		return "redirect:/resume/degree";
 	}
 
 	/**
@@ -73,9 +81,8 @@ public class DegreeController {
 		   dateFormat.setLenient(false);
 
 		// true passed to CustomDateEditor constructor means convert empty String to null
-		//binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 		binder.registerCustomEditor(DegreeDetail.class, new DegreeDetailTypeEditor(detailRepository));
 	}
 
-	
 }

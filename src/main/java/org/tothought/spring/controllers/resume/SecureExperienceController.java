@@ -14,18 +14,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.tothought.entities.Experience;
 import org.tothought.entities.ExperienceDetail;
-import org.tothought.json.JsonUtil;
 import org.tothought.repositories.ExperienceDetailRepository;
 import org.tothought.repositories.ExperienceRepository;
 import org.tothought.spring.propertyeditors.ExperienceDetailTypeEditor;
 import org.tothought.spring.utilities.TagCreatorUtil;
 
 @Controller
-@RequestMapping("/resume/manager/experience")
-public class ExperienceController {
+@RequestMapping("/secure/resume/manager/experience")
+public class SecureExperienceController {
 	
 	@Autowired
 	ExperienceRepository experienceRepository;
@@ -60,15 +58,14 @@ public class ExperienceController {
 		return "redirect:/resume/experience";
 	}
 	
-	@RequestMapping("/{experienceId}/tags")
-	@ResponseBody
-	public String getTags(@PathVariable Integer experienceId) {
-		Experience experience = experienceRepository.findOne(experienceId);
-		return JsonUtil.getJson(experience.getTags());
+	@RequestMapping("/delete/{experienceId}")
+	public String deleteExperience(@PathVariable Integer experienceId){
+		experienceRepository.delete(experienceId);
+		return "redirect:/resume/experience";		
 	}
 	
 	@RequestMapping("/{detailId}/deleteexperience")
-	public String deleteExperience(@PathVariable("detailId") Integer detailId, Model model){
+	public String deleteExperienceDetail(@PathVariable("detailId") Integer detailId, Model model){
 		ExperienceDetail experienceDetail = detailRepository.findOne(detailId);
 		Experience experience = experienceDetail.getExperience();
 		
@@ -76,7 +73,7 @@ public class ExperienceController {
 		details.remove(details.indexOf(experienceDetail));
 		experienceRepository.save(experience);
 		
-		return "redirect:/resume/manager/experience/edit/" + experience.getExperienceId().toString();
+		return "redirect:/secure/resume/manager/experience/edit/" + experience.getExperienceId().toString();
 	}
 
 	/**

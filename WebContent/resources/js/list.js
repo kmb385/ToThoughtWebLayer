@@ -12,12 +12,10 @@
 				value : input.val()
 			});
 
-			var text = $("<div />", {
-				"class" : "float-left"
-			}).html(input.val());
+			var text = $("<span />").html(input.val());
 
-			var deleteBtn = $("<div />", {
-				"class" : "small-delete-btn h-margin-3 float-left",
+			var deleteBtn = $("<a />", {
+				"class" : "small-delete-btn h-margin-3",
 				click : function() {
 					$(this).parent().remove();
 				}
@@ -28,7 +26,7 @@
 			item.append(hiddenInput);
 
 			list.append(item);
-			that.val("").focus();
+			input.val("").focus();
 		});
 	};
 })(jQuery);

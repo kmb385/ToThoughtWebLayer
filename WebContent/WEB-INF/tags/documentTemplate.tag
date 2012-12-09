@@ -78,7 +78,9 @@
 				<jsp:doBody/>	
 			</div>
 			<div id="side-bar">
-				<jsp:include page="/WEB-INF/views/sidebars/${sidebarFragment}" />
+				<c:if test="${!empty sidebarFragment}">
+					<jsp:include page="/WEB-INF/views/sidebars/${sidebarFragment}" />
+				</c:if>
 			</div>
 		</div>
 	</div>

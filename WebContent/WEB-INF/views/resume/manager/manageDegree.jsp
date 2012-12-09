@@ -9,7 +9,7 @@
 	jsFiles="tag_editor.js,list.js,${pageContext.request.contextPath}/resources/js/pages/manage_degree.js"
 	sidebarFragment="resume_sidebar.jsp">
 	<div class="page-title">Manage Education</div>
-	<form method="post" action="${pageContext.request.contextPath}/resume/manager/degree/save">
+	<form method="post" action="${pageContext.request.contextPath}/secure/resume/manager/degree/save">
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Institution</div>
 			<input name="institution" value="${degree.institution}" class="input-medium" />
@@ -52,15 +52,12 @@
 			</div>
 			<ul>
 				<c:forEach var="detail" items="${degree.degreeDetails }">
-						<li>
-							<div class="float-left">${detail.description}</div>
-							<div class="small-delete-btn h-margin-3 float-left">
-								<a href="<c:url value="/resume/manager/degree/${detail.degreeDetailId}/deletedetail"/>">
-									<span class="div-link">&nbsp;</span>
-								</a>
-							</div>	
-							<input type="hidden" name="degreeDetails" value="${detail.degreeDetailId }"/>
-						</li>
+					<li>
+						<span>${detail.description}</span>
+						<a href="<c:url value="/secure/resume/manager/degree/${detail.degreeDetailId}/deletedetail"/>"
+							 class="small-delete-btn h-margin-3"></a>
+						<input type="hidden" name="degreeDetails" value="${detail.degreeDetailId }" />
+					</li>
 				</c:forEach>
 			</ul>
 		</div>

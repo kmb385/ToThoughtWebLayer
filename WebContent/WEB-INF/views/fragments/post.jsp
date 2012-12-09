@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div class="post v-margin-20">
 	<div class="font-large bold">
@@ -27,4 +28,12 @@
 			<div class="post-tag">${tag.name}</div>
 		</c:forEach>
 	</div>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<div class="v-margin-10 control-group clearfix">
+			<a href="<c:url value="/secure/post/edit/${post.postId}"  />"
+				class="img edit-control"></a> <a
+				href="<c:url value="/secure/post/delete/${post.postId}"  />"
+				class="img delete-control"></a>
+		</div>
+	</sec:authorize>
 </div>
