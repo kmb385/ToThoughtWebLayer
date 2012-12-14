@@ -9,7 +9,7 @@
 	jsFiles="tag_editor.js,list.js,${pageContext.request.contextPath}/resources/js/pages/manage_experience.js"
 	sidebarFragment="resume_sidebar.jsp">
 	<div class="page-title">Manage Work Experience</div>
-	<form method="post" action="${pageContext.request.contextPath}/secure//resume/manager/experience/save"
+	<form method="post" action="<c:url value="/secure/resume/manager/experience/save"/>"
 		enctype="multipart/form-data">
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Position</div>

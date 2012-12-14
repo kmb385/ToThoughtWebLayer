@@ -6,7 +6,7 @@
 
 <div class="post v-margin-20">
 	<div class="font-large bold">
-		<a href="${pageContext.request.contextPath}/post/${post.postId}" class="post-title">${post.title}</a>
+		<a href="<c:url value="/post/${post.postId}"/>" class="post-title">${post.title}</a>
 	</div>
 	<div>
 		<fmt:formatDate value="${post.postedDt}" pattern="MMM dd yyyy" />
@@ -17,7 +17,7 @@
 			<c:when test="${tease}">
 				<div>${post.teaser}</div>
 				<div>
-					<a href="${pageContext.request.contextPath}/post/${post.postId}">Continue Reading</a>
+					<a href="<c:url value="/post/${post.postId}"/>">Continue Reading</a>
 				</div>
 			</c:when>
 			<c:otherwise>${post.body}</c:otherwise>

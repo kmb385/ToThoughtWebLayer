@@ -12,7 +12,7 @@
 		<c:forEach var="skill" items="${skillCategory.skills}">
 			<ttTags:rated-resume-item text="${skill.name}"
 				imageSrc="../resources/images/resume/skills/uploaded-icons/${skill.image.name}" 
-				rating="${skill.rating}" href="${pageContext.request.contextPath}/resume/skills/${skill.skillId}" />
+				rating="${skill.rating}" href="${pageContext.request.contextPath }/resume/skills/${skill.skillId}" />
 		</c:forEach>
 	</c:forEach>
 </ttTags:documentTemplate>

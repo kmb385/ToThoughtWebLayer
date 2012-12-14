@@ -9,8 +9,7 @@
 	jsFiles="tag_editor.js,rating.js,${pageContext.request.contextPath}/resources/js/pages/manage_tech.js"
 	sidebarFragment="resume_sidebar.jsp" requiresTextEditor="true">
 	<div class="page-title">Manage Technical Skills</div>
-	<form method="post"
-		action="${pageContext.request.contextPath}/secure/resume/manager/skills/save"
+	<form method="post" action="<c:url value="/secure/resume/manager/skills/save"/>"
 		enctype="multipart/form-data">
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Name</div>
@@ -62,7 +61,7 @@
 					<div class="delete-image-link clearfix">
 						<div class="delete-text">${skill.image.name}</div>
 						<div class="small-delete-btn h-margin-3"></div>
-						<a href="${pageContext.request.contextPath}/secure/resume/manager/skills/${skill.skillId}/deleteimage">
+						<a href="<c:url value="/secure/resume/manager/skills/${skill.skillId}/deleteimage"/>">
 							<span class="div-link">&nbsp;</span>
 						</a>
 					</div>

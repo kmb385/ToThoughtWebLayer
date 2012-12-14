@@ -23,10 +23,10 @@
 		<c:forEach var="cssFile" items="${fn:split(cssFiles,\",\")}">
 			<c:choose>
 				<c:when test="${!fn:contains(cssFile,pageContext.request.contextPath)}">
-					<link href="${pageContext.request.contextPath}/resources/css/${cssFile}" rel="stylesheet"/>
+					<link href="<c:url value="/resources/css/${cssFile}" />" rel="stylesheet"/>
 				</c:when>
 				<c:when test="${!fn:contains(cssFile,'resources') && empty pagecontext.request.contextPath}">
-					<link href="${pageContext.request.contextPath}/resources/css/${cssFile}" rel="stylesheet"/>
+					<link href="<c:url value="/resources/css/${cssFile}"/>" rel="stylesheet"/>
 				</c:when>
 				<c:when test="${fn:contains(cssFile,'resources') && empty pagecontext.request.contextPath}">
 					<link href="${cssFile}" rel="stylesheet"/>
@@ -54,10 +54,10 @@
 		<c:forEach var="jsFile" items="${fn:split(jsFiles,\",\")}">
 			<c:choose>
 				<c:when test="${!fn:contains(jsFile,pageContext.request.contextPath)}">
-					<script src="${pageContext.request.contextPath}/resources/js/${jsFile}" type="text/javascript"></script>
+					<script src="<c:url value="/resources/js/${jsFile}"/>" type="text/javascript"></script>
 				</c:when>
 				<c:when test="${!fn:contains(jsFile,'resources') && empty pagecontext.request.contextPath}">
-					<script src="${pageContext.request.contextPath}/resources/js/${jsFile}" type="text/javascript"></script>
+					<script src="<c:url value="/resources/js/${jsFile}"/>" type="text/javascript"></script>
 				</c:when>
 				<c:when test="${fn:contains(jsFile,'resources') && empty pagecontext.request.contextPath}">
 					<script src="${jsFile}" type="text/javascript"></script>

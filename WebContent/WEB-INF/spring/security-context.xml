@@ -19,9 +19,6 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<!--<user-service>
-				<user name="kevin" password="kevin" authorities="ROLE_USER, ROLE_ADMIN" />
-			</user-service>-->
 			<user-service id="userDetailsService" properties="classpath:META-INF/security/user.properties"/>
 		</authentication-provider>
 	</authentication-manager>

@@ -10,7 +10,7 @@
 	requiresTextEditor="true">
 	
 	<div class="font-large bold">New Blog Post</div>
-	<form action="${pageContext.request.contextPath}/secure/post/save" method="POST">
+	<form action="<c:url value="/secure/post/save"/>" method="POST">
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Title</div>
 			<div>

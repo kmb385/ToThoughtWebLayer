@@ -7,11 +7,11 @@
 <ttTags:documentTemplate cssFiles="resume.css,resume_manager.css" sidebarFragment="resume_sidebar.jsp">
 	<div class="page-title">Resume Manager</div>
 	<div class="tile-container">
-		<a href="${pageContext.request.contextPath}/secure/resume/manager/skills/new" class="tile bg3 fg1"><span>Technical
+		<a href="<c:url value="/secure/resume/manager/skills/new"/>" class="tile bg3 fg1"><span>Technical
 				Skills</span>
 			<span class="tile-img skills-tile-img"></span> 
 		</a> 
-		<a href="${pageContext.request.contextPath}/secure/resume/manager/experience/new" class="tile bg3 fg1">
+		<a href="<c:url value="/secure/resume/manager/experience/new"/>" class="tile bg3 fg1">
 			<span>Employment</span>
 			<span class="tile-img work-tile-img"></span> 
 		</a> 
