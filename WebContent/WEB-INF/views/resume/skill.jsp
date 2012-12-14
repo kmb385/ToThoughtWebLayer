@@ -21,11 +21,11 @@
 		${skill.description}
 	</div>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<div class="v-margin-10 control-group clearfix">
+		<div class="v-margin-10 clearfix">
 			<a href="<c:url value="/secure/resume/manager/skills/edit/${skill.skillId}"  />"
-				class="img edit-control"></a>
+				class="button-32 edit-control-btn"></a>
 			<a href="<c:url value="/secure/resume/manager/skills/delete/${skill.skillId}"  />"
-				class="img delete-control"></a>
+				class="button-32 delete-control-btn"></a>
 		</div>
 	</sec:authorize>
 </ttTags:documentTemplate>

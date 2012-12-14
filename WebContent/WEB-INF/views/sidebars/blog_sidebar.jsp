@@ -11,7 +11,7 @@
 		<c:if test="${isNew}">
 			<ttTags:control text="Create New Post"
 				href="${pageContext.request.contextPath}/secure/post/new"
-				classes="shadow" imageClass="new-control" />
+				classes="shadow" imageClass="add-control-btn" />
 		</c:if>
 	</sec:authorize>
 </div>

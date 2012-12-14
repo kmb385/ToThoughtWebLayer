@@ -39,9 +39,11 @@
 				</c:forEach>
 			</div>
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<div class="v-margin-10 control-group clearfix">
-					<a href="<c:url value="/secure/resume/manager/experience/edit/${experience.experienceId}"  />" class="img edit-control"></a>
-					<a href="<c:url value="/secure/resume/manager/experience/delete/${experience.experienceId}"  />" class="img delete-control"></a>
+				<div class="v-margin-10 clearfix">
+					<a href="<c:url value="/secure/resume/manager/experience/edit/${experience.experienceId}"  />" 
+						class="button-32 edit-control-btn"></a>
+					<a href="<c:url value="/secure/resume/manager/experience/delete/${experience.experienceId}"  />" 
+						class="button-32 delete-control-btn"></a>
 				</div>			
 			</sec:authorize>
 		</div>

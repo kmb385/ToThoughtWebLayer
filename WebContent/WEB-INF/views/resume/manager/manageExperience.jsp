@@ -51,7 +51,7 @@
 			<div class="bold v-margin-4">Details</div>
 			<div class="clearfix">
 				<textarea class="simple-list-input float-left"></textarea>
-				<div class="add-item no-text-control new-control float-left"></div>
+				<div class="add-item button-32 add-control-btn"></div>
 			</div>
 			<ul class="clearfix">
 				<c:forEach var="detail" items="${experience.experienceDetails }">

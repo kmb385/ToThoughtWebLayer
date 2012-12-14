@@ -1,3 +1,4 @@
+/** Long Control Buttons **/
 .control{
 	background: #C3D5E0;
 	
@@ -16,37 +17,19 @@
 	text-decoration: none;
 }
 
-.no-text-control{
-	border: 1px solid transparent;
-	cursor: pointer;
-	height: 32px;
-	margin: 0px 5px;
-	width: 32px;
-}
-
-.no-text-control:hover{
-	-moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -khtml-border-radius: 2px;
-    border-radius: 2px;
-	
-	border: 1px solid rgba(0,0,0, 0.1);
-}
-
-.skrink-wrap-control, .shrink-wrap-control-left{
-	display: inline-block;
-	padding-right: 20px;
-}
-
-.shrink-wrap-control-right{
-	display: inline-block;
-	padding-left: 20px;
-}
-
 .control:hover{
 	background: #C1D4E0;
 	border: 1px solid rgba(0,0,0, 0.3);
 	color: #555555;
+}
+
+/** Used to display Previous and Next Paging Buttons **/
+.skrink-wrap-control, .shrink-wrap-control-left, shrink-wrap-control-left{
+	display: inline-block;
+}
+
+.shrink-wrap-control-right .text{
+	text-align: right;
 }
 
 .img{
@@ -54,49 +37,10 @@
 	width: 32px;
 }
 
-.control .img, .shrink-wrap-control-left .img{
-	float: left;
-/*	height: 32px;
-	width: 32px;*/
-}
-
-.shrink-wrap-control-right .img{
-	float: right;
-	margin-left: 10px;
-}
-
-.control .text, .shrink-wrap-control-left .text{
-	float: left;
+.control .text{
 	font-size: 1.35em;
 	font-weight: bold;
-	position: relative;
-	left: 10px;
-	margin: 4px 0px;
-}
-
-.shrink-wrap-control-right .text{
-	float: right;
-	left: 0px;
-}
-
-.new-control{
-	background: url(../../resources/images/file-add.png) no-repeat;
-}
-
-.edit-control{
-	background: url(../../resources/images/file-edit.png) no-repeat;
-}
-
-.delete-control{
-	background: url(../../resources/images/file-delete.png) no-repeat;
-}
-
-.next-btn{
-	background: url(../../resources/images/next.png) no-repeat;
-}
-
-.prev-btn{
-	background: url(../../resources/images/back.png) no-repeat;
+	vertical-align: middle;
 }
 
 /** Small Buttons **/
@@ -111,14 +55,43 @@
 	vertical-align: top;
 }
 
-/** Control Group **/
-.control-group .img{
+/* 32 x 32 Control Buttons */
+.button-32, .button-32-no-hover{
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+	
 	border: 1px solid transparent;
 	cursor: pointer;
-	margin: 5px;
-	float: left;
+	display: inline-block;
+	margin: 0px 5px;
+	height: 32px;
+	width: 32px;
+	vertical-align: middle;
 }
 
-.control-group .img:hover{
+/* Button Images */
+.button-32:hover{
 	border: 1px solid lightgray;
+}
+
+.add-control-btn{
+	background: url(../../resources/images/file-add.png) no-repeat;
+}
+
+.edit-control-btn{
+	background: url(../../resources/images/file-edit.png) no-repeat;
+}
+
+.delete-control-btn{
+	background: url(../../resources/images/file-delete.png) no-repeat;
+}
+
+.next-btn{
+	background: url(../../resources/images/next.png) no-repeat;
+}
+
+.prev-btn{
+	background: url(../../resources/images/back.png) no-repeat;
 }

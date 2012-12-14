@@ -17,6 +17,10 @@
 	padding: 2px 3px;
 }
 
+#nav-menu ul li#login{
+	display: none;
+}
+
 #nav-menu ul li:hover{
 	background-color: #E3EBEF;
 	color: #10486E;

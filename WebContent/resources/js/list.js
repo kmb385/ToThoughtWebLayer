@@ -5,28 +5,31 @@
 		var button = this.find("." + (buttonClass || "add-item"));
 
 		button.click(function() {
-			var item = $("<li />");
-			var hiddenInput = $("<input />", {
-				type : "hidden",
-				name : param,
-				value : input.val()
-			});
+			if (input.val()) {
+				var item = $("<li />");
+				var hiddenInput = $("<input />", {
+					type : "hidden",
+					name : param,
+					value : input.val()
+				});
 
-			var text = $("<span />").html(input.val());
+				var text = $("<span />").html(input.val());
 
-			var deleteBtn = $("<a />", {
-				"class" : "small-delete-btn h-margin-3",
-				click : function() {
-					$(this).parent().remove();
-				}
-			});
+				var deleteBtn = $("<a />", {
+					"class" : "small-delete-btn h-margin-3",
+					click : function() {
+						$(this).parent().remove();
+					}
+				});
 
-			item.append(text);
-			item.append(deleteBtn);
-			item.append(hiddenInput);
+				item.append(text);
+				item.append(deleteBtn);
+				item.append(hiddenInput);
 
-			list.append(item);
-			input.val("").focus();
+				list.append(item);
+				input.val("").focus();
+
+			}
 		});
 	};
 })(jQuery);

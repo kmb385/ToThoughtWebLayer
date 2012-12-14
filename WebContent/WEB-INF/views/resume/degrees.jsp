@@ -44,11 +44,11 @@
 				</ul>
 			</div>
 			<sec:authorize access="hasRole('ROLE_ADMIN')" >
-				<div class="control-group clearfix">
+				<div class="clearfix">
 					<a href="<c:url value="/secure/resume/manager/degree/edit/${degree.degreeId}" />"
-						class="img edit-control"></a>
+						class="button-32 edit-control-btn"></a>
 					<a href="<c:url value="/secure/resume/manager/degree/delete/${degree.degreeId}"  />"
-						class="img delete-control"></a>
+						class="button-32 delete-control-btn"></a>
 				</div>
 			</sec:authorize>
 		</div>

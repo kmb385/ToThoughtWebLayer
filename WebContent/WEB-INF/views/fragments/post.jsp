@@ -29,11 +29,11 @@
 		</c:forEach>
 	</div>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<div class="v-margin-10 control-group clearfix">
+		<div class="v-margin-10 clearfix">
 			<a href="<c:url value="/secure/post/edit/${post.postId}"  />"
-				class="img edit-control"></a> <a
-				href="<c:url value="/secure/post/delete/${post.postId}"  />"
-				class="img delete-control"></a>
+				class="button-32 edit-control-btn"></a>
+			<a href="<c:url value="/secure/post/delete/${post.postId}"  />"
+				class="button-32 delete-control-btn"></a>
 		</div>
 	</sec:authorize>
 </div>

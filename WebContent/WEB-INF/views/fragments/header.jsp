@@ -6,7 +6,7 @@
 	<div id="nav-menu" class="clearfix">
 		<ul>
 			<li class="font-large fg1"><a href="<c:url value="/blog/page/0"/>">Blog</a></li>
-			<li class="font-large fg1"><a href="#">About</a></li>
+			<li class="font-large fg1"><a href="<c:url value="/about/"/>">About</a></li>
 			<li class="font-large fg1"><a href="<c:url value="/resume/profile"/>" >Resume</a></li>
 			<li id="login" class="font-large fg1"><a href="<c:url value="/login.jsp"/>">Admin</a></li>
 		</ul>

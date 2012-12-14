@@ -73,10 +73,17 @@ public class ControlTag extends SimpleTagSupport {
 		String anchorClasses = this.createAnchorClassLink();
 		try {
 			StringBuilder sb = new StringBuilder();
+			String image = "<span class=\"button-32-no-hover " + this.imageClass + "\"></span>";
+			String text =  "<span class=\"text\">" + this.text + "</span>";
 		
 			sb.append("<a href=\"" + this.href + "\" class=\"control" + anchorClasses + "\">");
-			sb.append("<span class=\"img " + this.imageClass + "\"></span>");
-			sb.append("<span class=\"text\">" + this.text + "</span>");
+
+			if(this.floatImage.equalsIgnoreCase("left")){
+				sb.append(image).append(text);
+			}else{
+				sb.append(text).append(image);
+			}
+			
 			sb.append("</a>");
 
 			out.write(sb.toString());
