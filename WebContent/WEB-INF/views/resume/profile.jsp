@@ -6,25 +6,31 @@
 <ttTags:documentTemplate cssFiles="post.css,post_tags.css,resume.css"
 	requiresTextEditor="true" sidebarFragment="resume_sidebar.jsp">
 	<div class="v-bottom-margin-20 clearfix">
-		<div class="float-left">
-			<div class="font-large bold">Kevin Bowersox</div>
-			<div class="font-medium subtle">Web Application Developer</div>
-		</div>
-		<div class="float-right">
-			<div class="clearfix">
-				<div class="left-cell-50 label">Phone</div>
-				<div class="right-cell">(570) 490-4738</div>
+		<div class="clearfix">
+			<div class="r-margin-20 float-left">
+				<img width="128" height="128" class="logo" alt=""
+					src="http://www.gravatar.com/avatar/decb36ec7136af8090a57cabd06ce3a8?s=128&amp;d=identicon&amp;r=PG">
 			</div>
-			<div class="clearfix">
-				<div class="left-cell-50 label">Email</div>
-				<div class="right-cell">
-					<a href="mailto:kmb385@gmail.com">kmb385@gmail.com</a>
+			<div class="float-left">
+				<div class="font-large bold">Kevin Bowersox</div>
+				<div class="font-medium subtle">Web Application Developer</div>
+				<div class="v-margin-10">
+				<div class="clearfix">
+					<div class="left-cell-50 label">Phone</div>
+					<div class="right-cell">(570) 490-4738</div>
 				</div>
-			</div>
-			<div class="clearfix">
-				<div class="left-cell-50 label">Site</div>
-				<div class="right-cell">
-					<a href="http://tothought.cloudfoundry.com">tothought.cloudfoundry.com</a>
+				<div class="clearfix">
+					<div class="left-cell-50 label">Email</div>
+					<div class="right-cell">
+						<a href="mailto:kmb385@gmail.com">kmb385@gmail.com</a>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="left-cell-50 label">Site</div>
+					<div class="right-cell">
+						<a href="http://tothought.cloudfoundry.com">tothought.cloudfoundry.com</a>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
