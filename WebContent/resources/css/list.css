@@ -9,4 +9,5 @@
 .simple-list ul li{
 	list-style: circle;
 	margin-left: 20px;
+	margin: .75em 0;
 }

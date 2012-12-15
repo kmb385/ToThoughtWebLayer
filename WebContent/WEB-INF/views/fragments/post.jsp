@@ -9,7 +9,7 @@
 		<a href="<c:url value="/post/${post.postId}"/>" class="post-title">${post.title}</a>
 	</div>
 	<div>
-		<fmt:formatDate value="${post.postedDt}" pattern="MMM dd yyyy" />
+		<fmt:formatDate value="${post.postedDt}" pattern="MMMM dd yyyy" />
 		by ${post.author}
 	</div>
 	<div class="post-body">

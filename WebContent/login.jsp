@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="ttTags" uri="/WEB-INF/tags/tothought-tags.tld"%>
 
-<ttTags:documentTemplate>
+<ttTags:documentTemplate jsFiles="login.js">
 	<form action="login" method="post">
 		<div class="page-title">Login</div>
 		<div class="v-margin-10">

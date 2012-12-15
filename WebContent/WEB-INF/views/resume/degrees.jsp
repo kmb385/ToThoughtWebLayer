@@ -19,8 +19,10 @@
 				</div>
 				<div class="float-right">
 					<div class="text-right">
-						<fmt:formatDate value="${degree.startDate}" pattern="MMMM yyyy" />
-						-
+					    <c:if test="${!empty degree.startDate}">
+							<fmt:formatDate value="${degree.startDate}" pattern="MMMM yyyy" />
+							-
+					    </c:if>
 						<c:choose>
 							<c:when test="${degree.isPresent}">
 								Present
@@ -30,9 +32,11 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
-					<div class="text-right">
-						<span class="subtle">GPA </span>${degree.gpa}
-					</div>
+					<c:if test="${!empty degree.gpa}">
+						<div class="text-right">
+							<span class="subtle">GPA </span>${degree.gpa}
+						</div>					
+					</c:if>
 				</div>
 			</div>
 			<div class="simple-list">
