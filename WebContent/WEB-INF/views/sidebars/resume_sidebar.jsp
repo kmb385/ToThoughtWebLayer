@@ -18,6 +18,9 @@
 	<ttTags:control text="Education"
 		href="${pageContext.request.contextPath}/resume/degree"
 		imageClass="education-btn" classes="shadow control-26" />
+	<ttTags:control text="PDF Resume" 
+		href="${pageContext.request.contextPath}/resume/full/generatePDF" 
+		imageClass="pdf-btn" classes="shadow control-26"/>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<ttTags:control text="Resume Manager"
 			href="${pageContext.request.contextPath}/secure/resume/manager/"

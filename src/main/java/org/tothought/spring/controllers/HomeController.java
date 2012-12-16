@@ -1,14 +1,10 @@
 package org.tothought.spring.controllers;
 
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.tothought.entities.Post;
 import org.tothought.repositories.PostPartRepository;
 import org.tothought.repositories.PostRepository;
 
@@ -22,20 +18,7 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String home(Model model) {
-
-		List<Post> posts = repository.findAll();
-
-		if (posts.size() == 0) {
-			Post post = new Post();
-			post.setAuthor("Kevin Bowersox");
-			post.setPostedDt(new Date());
-			repository.save(post);
-		}
-		
-		posts = repository.findAll();
-		
-		model.addAttribute("post", posts.get(0));
-		return "home";
+		return "redirect:/blog/";
 	}
 	
 	@RequestMapping("/save")
@@ -49,4 +32,5 @@ public class HomeController {
 	public String loadTinyMceTest(){
 		return "syntax";
 	}
+
 }

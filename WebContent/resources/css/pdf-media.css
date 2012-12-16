@@ -1,0 +1,47 @@
+@page {
+	size: 8.5in 11in;
+}
+
+html,body{
+	height: 100%;
+	min-height: 100%;
+	background: white;
+}
+
+#center-panel{
+	width: auto;	
+}
+
+.pdf-no-break{
+	page-break-inside: avoid;
+}
+
+.pdf-section{
+	margin: 20px 0px;
+	page-break-inside: avoid;
+	page-break-after:always;
+}
+
+.pdf-128{
+	width: 128px;
+}
+
+.pdf-150 {
+	width: 150px;
+}
+
+.pdf-175{
+	width: 175px;
+}
+
+.pdf-257{
+	width: 257px;
+}
+
+.pdf-450 {
+	width: 450px;
+}
+
+.resume-block{
+	height: 43px;
+}

@@ -7,3 +7,4 @@
 <link href="<c:url value="/resources/css/nav.css"/>" rel="stylesheet" />
 <link href="<c:url value="/resources/css/controls.css"/>" rel="stylesheet" />
 <link href="<c:url value="/resources/css/components.css"/>" rel="stylesheet" />
+<link href="<c:url value="/resources/css/pdf-media.css"/>" rel="stylesheet" media="print"/>

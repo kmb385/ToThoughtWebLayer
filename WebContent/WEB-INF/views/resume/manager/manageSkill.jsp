@@ -22,7 +22,7 @@
 			<form:select path="skill.skillCategory" cssClass="input-medium">
 				<form:option value="0" label="" />
 				<form:options items="${skillCategories}" itemValue="skillCategoryId"
-					itemLabel="name"></form:options> />
+					itemLabel="name"></form:options>
 			</form:select>
 		</div>
 		<div class="v-margin-10">
