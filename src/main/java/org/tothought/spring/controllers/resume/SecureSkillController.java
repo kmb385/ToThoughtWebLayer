@@ -3,6 +3,7 @@ package org.tothought.spring.controllers.resume;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -48,7 +49,8 @@ public class SecureSkillController {
 		model.addAttribute("skillCategory", new SkillCategory());
 		return "resume/manager/manageSkill";
 	}
-
+	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/new")
 	public String newSkill(Model model) {
 		model.addAttribute("skill", new Skill());
@@ -56,6 +58,7 @@ public class SecureSkillController {
 		return "resume/manager/manageSkill";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/edit/{skillId}")
 	public String editSkill(Model model, @PathVariable Integer skillId) {
 		Skill skill = skillRepository.findOne(skillId);
@@ -63,6 +66,7 @@ public class SecureSkillController {
 		return "resume/manager/manageSkill";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/{skillId}/deleteimage")
 	public String deleteImage(Model model, @PathVariable Integer skillId) {
 		Skill skill = skillRepository.findOne(skillId);
@@ -72,6 +76,7 @@ public class SecureSkillController {
 		return "resume/manager/manageSkill";
 	}
 
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/save")
 	public String saveSkill(@ModelAttribute Skill skill,
 			@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam("tag") String tag) {
@@ -92,6 +97,7 @@ public class SecureSkillController {
 		return "redirect:/resume/skills";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/delete/{skillId}")
 	public String deleteSkill(@PathVariable Integer skillId) {
 		skillRepository.delete(skillId);

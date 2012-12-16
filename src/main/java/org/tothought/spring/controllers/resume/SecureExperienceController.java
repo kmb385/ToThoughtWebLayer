@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -39,18 +40,21 @@ public class SecureExperienceController {
 		return "resume/experience";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/new")
 	public String newExperience(Model model){
 		model.addAttribute("experience", new Experience());
 		return "resume/manager/manageExperience";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/edit/{experienceId}")
 	public String editExperience(@PathVariable Integer experienceId, Model model){
 		model.addAttribute("experience", experienceRepository.findOne(experienceId));
 		return "resume/manager/manageExperience";		
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/save")
 	public String save(@ModelAttribute Experience experience, @RequestParam("tags") String tags){
 		experience.setTags(tagCreatorUtil.createTags(tags));
@@ -58,12 +62,14 @@ public class SecureExperienceController {
 		return "redirect:/resume/experience";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/delete/{experienceId}")
 	public String deleteExperience(@PathVariable Integer experienceId){
 		experienceRepository.delete(experienceId);
 		return "redirect:/resume/experience";		
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@RequestMapping("/{detailId}/deleteexperience")
 	public String deleteExperienceDetail(@PathVariable("detailId") Integer detailId, Model model){
 		ExperienceDetail experienceDetail = detailRepository.findOne(detailId);

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -29,29 +30,34 @@ public class SecureDegreeController {
 	@Autowired
 	DegreeDetailRepository detailRepository;
 	
+	
 	@RequestMapping("/")
 	public String getDegrees(){
 		return "degrees";
 	}
-	
+
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/new")
 	public String createDegree(Model model){
 		model.addAttribute("degree", new Degree());
 		return "/resume/manager/manageDegree";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/edit/{degreeId}")
 	public String editDegree(@PathVariable Integer degreeId, Model model){
 		model.addAttribute("degree", repository.findOne(degreeId));
 		return "/resume/manager/manageDegree";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/save")
 	public String saveDegree(@ModelAttribute Degree degree){
 		repository.save(degree);
 		return "redirect:/resume/degree";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/{detailId}/deletedetail")
 	public String deleteExperience(@PathVariable("detailId") Integer detailId, Model model){
 		DegreeDetail degreeDetail = detailRepository.findOne(detailId);
@@ -64,6 +70,7 @@ public class SecureDegreeController {
 		return "redirect:/secure/resume/manager/degree/edit/" + degree.getDegreeId().toString();
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/delete/{degreeId}")
 	public String deleteDegree(@PathVariable Integer degreeId){
 		repository.delete(degreeId);
