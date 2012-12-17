@@ -14,8 +14,8 @@
 	<div class="post-body">
 		<c:choose>
 			<c:when test="${tease}">
-				<div>${post.teaser}</div>
 				<div>
+					${post.teaser}
 					<a href="<c:url value="/post/${post.postId}"/>">Continue Reading</a>
 				</div>
 			</c:when>

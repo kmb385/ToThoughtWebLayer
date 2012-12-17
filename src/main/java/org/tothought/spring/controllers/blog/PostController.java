@@ -24,6 +24,7 @@ public class PostController {
 	
 	@RequestMapping("/{postId}")
 	public String getPost(@PathVariable Integer postId, Model model) {
+		model.addAttribute("isSingle", true);
 		model.addAttribute("post", postViewRepository.findOne(postId));
 		model.addAttribute("tags", tagViewRepository.findAll());
 		return "blog/post";

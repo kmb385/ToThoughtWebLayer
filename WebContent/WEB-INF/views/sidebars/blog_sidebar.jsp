@@ -27,7 +27,12 @@
 		</c:forEach>
 	</div>
 </div>
-<div class="dzone-button">
-	<script type="text/javascript">var dzone_style = '2';</script>
-	<script language="javascript" src="http://widgets.dzone.com/links/widgets/zoneit.js"></script>
-</div>
+<c:if test="${isSingle}">
+	<div class="dzone-button">
+		<script type="text/javascript">
+			var dzone_style = '2';
+		</script>
+		<script language="javascript"
+			src="http://widgets.dzone.com/links/widgets/zoneit.js"></script>
+	</div>
+</c:if>
