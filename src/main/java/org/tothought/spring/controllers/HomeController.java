@@ -9,6 +9,6 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String home(Model model) {
-		return "redirect:/blog/";
+		return "blog/blog";
 	}
 }
