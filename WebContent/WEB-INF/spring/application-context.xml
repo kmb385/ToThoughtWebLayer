@@ -11,7 +11,9 @@
     
 	<context:property-placeholder location="classpath:META-INF/db/db.properties" />
 	<context:annotation-config/>
-	<context:component-scan base-package="org.tothought.spring"></context:component-scan>
+	
+	<!-- Pick up objects for autowiring -->
+	<context:component-scan base-package="org.tothought.spring"/>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -31,9 +33,23 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
+	<!-- Scans for Spring-Data Repositories -->
 	<jpa:repositories base-package="org.tothought.repositories"/>
 	
 	<!-- Application Listeners -->
+	<!-- Fired when different application events occur such as context refresh or startup -->
 	<bean id="lookupLoader" class="org.tothought.spring.listeners.LookupLoaderApplicationListener" /> 
-	<bean id="imageLoader" class="org.tothought.spring.listeners.ImageLoaderApplicationListener" /> 
+	<bean id="imageLoader" class="org.tothought.spring.listeners.ImageLoaderApplicationListener" />
+	
+	<!-- Register Converters -->
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="org.tothought.spring.converters.SkillCategoryToStringConverter"/>
+				<bean class="org.tothought.spring.converters.StringToSkillCategoryConverter"/>
+				<bean class="org.tothought.spring.converters.StringToDegreeDetailConverter"/>
+				<bean class="org.tothought.spring.converters.StringtToExperienceDetailConverter"/>
+			</list>		
+		</property>
+	</bean> 
 </beans>

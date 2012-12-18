@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +19,6 @@ import org.tothought.entities.Tag;
 import org.tothought.json.JsonUtil;
 import org.tothought.repositories.SkillCategoryRepository;
 import org.tothought.repositories.SkillRepository;
-import org.tothought.spring.propertyeditors.SkillCategoryTypeEditor;
 import org.tothought.spring.utilities.ImageCreatorUtil;
 import org.tothought.spring.utilities.TagCreatorUtil;
 
@@ -110,17 +107,6 @@ public class SecureSkillController {
 		Skill skill = skillRepository.findOne(skillId);
 		Tag tag = skill.getTag();
 		return JsonUtil.getJson(tag);
-	}
-
-	/**
-	 * Sets a binder to handle the conversion of the file.
-	 * 
-	 * @param binder
-	 */
-	@InitBinder
-	public void initBinderAll(WebDataBinder binder) {
-		binder.registerCustomEditor(SkillCategory.class, new SkillCategoryTypeEditor(
-				this.skillCategoryRepository));
 	}
 
 }

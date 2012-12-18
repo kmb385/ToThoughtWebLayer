@@ -19,7 +19,6 @@ import org.tothought.entities.Experience;
 import org.tothought.entities.ExperienceDetail;
 import org.tothought.repositories.ExperienceDetailRepository;
 import org.tothought.repositories.ExperienceRepository;
-import org.tothought.spring.propertyeditors.ExperienceDetailTypeEditor;
 import org.tothought.spring.utilities.TagCreatorUtil;
 
 @Controller
@@ -94,7 +93,6 @@ public class SecureExperienceController {
 
 		// true passed to CustomDateEditor constructor means convert empty String to null, prevents error when date is null
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-		binder.registerCustomEditor(ExperienceDetail.class, new ExperienceDetailTypeEditor(detailRepository));
 	}
 
 }

@@ -18,7 +18,6 @@ import org.tothought.entities.Degree;
 import org.tothought.entities.DegreeDetail;
 import org.tothought.repositories.DegreeDetailRepository;
 import org.tothought.repositories.DegreeRepository;
-import org.tothought.spring.propertyeditors.DegreeDetailTypeEditor;
 
 @Controller
 @RequestMapping("/secure/resume/manager/degree")
@@ -59,7 +58,7 @@ public class SecureDegreeController {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/{detailId}/deletedetail")
-	public String deleteExperience(@PathVariable("detailId") Integer detailId, Model model){
+	public String deleteDetail(@PathVariable("detailId") Integer detailId, Model model){
 		DegreeDetail degreeDetail = detailRepository.findOne(detailId);
 		Degree degree = degreeDetail.getDegree();
 		
@@ -89,7 +88,6 @@ public class SecureDegreeController {
 
 		// true passed to CustomDateEditor constructor means convert empty String to null
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-		binder.registerCustomEditor(DegreeDetail.class, new DegreeDetailTypeEditor(detailRepository));
 	}
 
 }
