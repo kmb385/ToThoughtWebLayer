@@ -51,5 +51,9 @@
 				<bean class="org.tothought.spring.converters.StringtToExperienceDetailConverter"/>
 			</list>		
 		</property>
-	</bean> 
+	</bean>
+	
+	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	 	<property name="basename" value="META-INF/messages/messages"/>
+	 </bean>
 </beans>

@@ -4,11 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +21,7 @@ import org.tothought.entities.Degree;
 import org.tothought.entities.DegreeDetail;
 import org.tothought.repositories.DegreeDetailRepository;
 import org.tothought.repositories.DegreeRepository;
+import org.tothought.validators.DegreeValidator;
 
 @Controller
 @RequestMapping("/secure/resume/manager/degree")
@@ -51,7 +55,10 @@ public class SecureDegreeController {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/save")
-	public String saveDegree(@ModelAttribute Degree degree){
+	public String saveDegree(@Valid @ModelAttribute Degree degree, BindingResult result){
+		if(result.hasErrors()){
+			return "/resume/manager/manageDegree";
+		}
 		repository.save(degree);
 		return "redirect:/resume/degree";
 	}
@@ -88,6 +95,7 @@ public class SecureDegreeController {
 
 		// true passed to CustomDateEditor constructor means convert empty String to null
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		binder.setValidator(new DegreeValidator());
 	}
 
 }

@@ -1,50 +1,67 @@
-body {	
+body {
 	color: #333333;
-	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
+		"AppleGothic", sans-serif;
 	font-size: 90%;
 }
 
-.bg1{
+.bg1 {
 	background-color: #F7F7F7;
 }
 
-.bg2{
+.bg2 {
 	background-color: #FFFFFF;
 }
 
-.bg3{
+.bg3 {
 	background-color: #10486E;
 }
 
-.bg4{
+.bg4 {
 	background-color: #EBF0F5;
 }
 
-.border{
+.border {
 	border: 1px solid lightgray;
 }
 
-.fg1{
+.fg1 {
 	color: #E3EBEF;
 }
 
-.fg2{
+.fg2 {
 	color: #10486E;
 }
 
-.fg3{
+.fg3 {
 	color: #555555;
 }
 
-.subtle{
+.subtle {
 	color: #666666;
 }
 
-.font-large{
+.font-large {
 	font-size: 1.5em;
 }
 
-.font-medium{
+.font-medium {
 	font-size: 1.35em;
 }
 
+.required {
+	color: #D8000C;
+	margin-right: 2px;
+}
+
+.error {
+	background-color: #FFBABA;
+	border: 1px solid;
+	color: #D8000C;
+	display: block;
+}
+
+.field-error {
+	margin: 10px 0px;
+	padding: 5px 5px 5px 5px;
+}
