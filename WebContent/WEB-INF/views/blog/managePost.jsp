@@ -16,15 +16,19 @@
 			<div>
 				<input name="title" class="post-title" value="${post.title}" />
 			</div>
+			<div class="bold v-margin-4">Source Code</div>
+			<div>
+				<input name="sourceCode" class="post-title" value="${post.sourceCode}" />
+			</div>
 		</div>
-			<div class="v-margin-10 clearfix">
-				<textarea id="post-editor" class="post-editor" name="body">${post.postPart.body}</textarea>
-			</div>
-			<div class="v-margin-10">
-				<div class="bold v-margin-4">Tags</div>
-				<div class="tag-editor"></div>
-			</div>
-			<input id="postId" name="postId" type="hidden" value="${post.postId}" />
+		<div class="v-margin-10 clearfix">
+			<textarea id="post-editor" class="post-editor" name="body">${post.postPart.body}</textarea>
+		</div>
+		<div class="v-margin-10">
+			<div class="bold v-margin-4">Tags</div>
+			<div class="tag-editor"></div>
+		</div>
+		<input id="postId" name="postId" type="hidden" value="${post.postId}" />
 	</form>
 	<div class="spacer"></div>
 </ttTags:documentTemplate>

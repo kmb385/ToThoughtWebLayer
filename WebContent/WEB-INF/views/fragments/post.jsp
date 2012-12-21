@@ -27,12 +27,16 @@
 			<div class="post-tag">${tag.name}</div>
 		</c:forEach>
 	</div>
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<div class="v-margin-10 clearfix">
+	<div class="v-margin-10 clearfix">
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
 			<a href="<c:url value="/secure/post/edit/${post.postId}"  />"
 				class="button-32 edit-control-btn"></a>
 			<a href="<c:url value="/secure/post/delete/${post.postId}"  />"
 				class="button-32 delete-control-btn"></a>
-		</div>
-	</sec:authorize>
+		</sec:authorize>
+		<c:if test="${!empty post.sourceCode}">
+			<a href="${post.sourceCode}" title="Source Code" target="_blank"
+				class="button-32 github-btn"></a>	
+		</c:if>
+	</div>
 </div>
