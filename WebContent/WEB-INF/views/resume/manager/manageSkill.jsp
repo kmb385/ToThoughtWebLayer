@@ -12,19 +12,21 @@
 	<form method="post" action="<c:url value="/secure/resume/manager/skills/save"/>"
 		enctype="multipart/form-data">
 		<div class="v-margin-10">
-			<div class="bold v-margin-4">Name</div>
+			<div class="bold v-margin-4"><span class="required">*</span>Name</div>
 			<div>
 				<input name="name" value="${skill.name}" class="input-medium" />
 			</div>
 		</div>
+		<form:errors path="skill.name" cssClass="error field-error" />
 		<div class="v-margin-10">
-			<div class="bold v-margin-4">Skill Category</div>
+			<div class="bold v-margin-4"><span class="required">*</span>Skill Category</div>
 			<form:select path="skill.skillCategory" cssClass="input-medium">
 				<form:option value="0" label="" />
 				<form:options items="${skillCategories}" itemValue="skillCategoryId"
 					itemLabel="name"></form:options>
 			</form:select>
 		</div>
+		<form:errors path="skill.skillCategory" cssClass="error field-error" />
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Provider</div>
 			<div>
@@ -45,9 +47,10 @@
 			</div>
 		</div>
 		<div class="v-margin-10">
-			<div class="bold v-margin-4">Rating</div>
+			<div class="bold v-margin-4"><span class="required">*</span>Rating</div>
 			<div id="rating">${skill.rating}</div>
 		</div>
+		<form:errors path="skill.name" cssClass="error field-error" />
 		<div class="v-margin-10">
 			<c:choose>
 				<c:when test="${empty skill.image}">

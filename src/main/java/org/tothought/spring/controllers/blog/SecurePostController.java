@@ -2,10 +2,15 @@ package org.tothought.spring.controllers.blog;
 
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +20,7 @@ import org.tothought.entities.PostPart;
 import org.tothought.repositories.PostRepository;
 import org.tothought.repositories.TagRepository;
 import org.tothought.spring.utilities.TagCreatorUtil;
+import org.tothought.validators.PostValidator;
 
 @Controller
 @RequestMapping("/secure/post")
@@ -32,8 +38,10 @@ public class SecurePostController {
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/new")
 	public String createPost(Model model) {
-		model.addAttribute("post", new Post());
-		model.addAttribute("postPart", new PostPart());
+		Post post = new Post();
+		post.setPostPart(new PostPart());
+		model.addAttribute("post", post);
+		//model.addAttribute("postPart", new PostPart());
 		return "blog/managePost";
 	}
 
@@ -46,16 +54,18 @@ public class SecurePostController {
 
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/save")
-	public String savePost(@ModelAttribute Post post,
-			@ModelAttribute PostPart postPart, @RequestParam("tags") String tags) {
+	public String savePost(@Valid @ModelAttribute Post post, BindingResult result, @RequestParam("tags") String tags) {
+		
+		if(result.hasErrors()){
+			return "blog/managePost";
+		}
 
 		post.setAuthor("Kevin Bowersox");
 		post.setPostedDt(new Date());
-		post.setPostPart(postPart);
 		post.setTags(tagCreatorUtil.createTags(tags));
-
+		
 		postRepository.save(post);
-
+		
 		return "redirect:/blog/";
 	}
 
@@ -64,6 +74,16 @@ public class SecurePostController {
 	public String deletePost(@PathVariable Integer postId, Model model) {
 		postRepository.delete(postId);
 		return "redirect:/blog/";
+	}
+
+	/**
+	 * Sets a binder to handle the conversion of the file.
+	 * 
+	 * @param binder
+	 */
+	@InitBinder("post")
+	public void initBinderAll(WebDataBinder binder) {
+		binder.setValidator(new PostValidator());
 	}
 
 }
