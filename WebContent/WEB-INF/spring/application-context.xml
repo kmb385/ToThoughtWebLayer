@@ -49,6 +49,7 @@
 				<bean class="org.tothought.spring.converters.StringToSkillCategoryConverter"/>
 				<bean class="org.tothought.spring.converters.StringToDegreeDetailConverter"/>
 				<bean class="org.tothought.spring.converters.StringtToExperienceDetailConverter"/>
+				<bean class="org.tothought.spring.converters.StringToPostConverter"/>
 			</list>		
 		</property>
 	</bean>

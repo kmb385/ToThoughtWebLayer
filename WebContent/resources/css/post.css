@@ -29,3 +29,9 @@
 	margin: 0px auto;
 	width: 560px;
 }
+
+#comment-form{
+	border: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+	padding: 5px 20px;
+}

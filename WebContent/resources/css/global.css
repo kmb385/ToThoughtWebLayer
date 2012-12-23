@@ -6,6 +6,10 @@ input {
 	border: 1px solid #999999;
 }
 
+textarea{
+	resize: none;
+}
+
 .margin-center{
 	margin: 0px auto;
 }
@@ -13,6 +17,11 @@ input {
 .v-margin-4 {
 	margin-top: 4px;
 	margin-bottom: 4px;
+}
+
+.v-margin-5{
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .v-margin-10 {

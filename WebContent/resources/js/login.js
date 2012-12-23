@@ -6,7 +6,9 @@ $(document).ready(function() {
 				$("#login").fadeIn(700).css("display", "inline-block");
 			}
 		}
-	});
-	
-	$("input:first").focus();
+	});	
+	var $username = $("input[name='j_username']");
+	if($username.length >0){
+		$username.focus();
+	}
 });

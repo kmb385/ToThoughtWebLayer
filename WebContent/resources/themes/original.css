@@ -49,6 +49,10 @@ body {
 	font-size: 1.35em;
 }
 
+.font-small{
+	font-size: .75em;
+}
+
 .required {
 	color: #D8000C;
 	margin-right: 2px;
