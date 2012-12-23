@@ -4,11 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +23,7 @@ import org.tothought.entities.ExperienceDetail;
 import org.tothought.repositories.ExperienceDetailRepository;
 import org.tothought.repositories.ExperienceRepository;
 import org.tothought.spring.utilities.TagCreatorUtil;
+import org.tothought.validators.ExperienceValidator;
 
 @Controller
 @RequestMapping("/secure/resume/manager/experience")
@@ -55,7 +59,12 @@ public class SecureExperienceController {
 	
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/save")
-	public String save(@ModelAttribute Experience experience, @RequestParam("tags") String tags){
+	public String save(@Valid @ModelAttribute Experience experience, BindingResult result, @RequestParam("tags") String tags){
+		
+		if(result.hasErrors()){
+			return "resume/manager/manageExperience";
+		}
+		
 		experience.setTags(tagCreatorUtil.createTags(tags));
 		experienceRepository.save(experience);
 		return "redirect:/resume/experience";
@@ -86,13 +95,15 @@ public class SecureExperienceController {
 	 * 
 	 * @param binder
 	 */
-	@InitBinder
+	@InitBinder("experience")
 	public void initBinderAll(WebDataBinder binder) {
-		   SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		   dateFormat.setLenient(false);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		dateFormat.setLenient(false);
 
-		// true passed to CustomDateEditor constructor means convert empty String to null, prevents error when date is null
+		// true passed to CustomDateEditor constructor means convert empty
+		// String to null, prevents error when date is null
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		binder.setValidator(new ExperienceValidator());
 	}
 
 }

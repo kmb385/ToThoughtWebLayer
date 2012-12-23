@@ -17,10 +17,12 @@
 				<input name="position" value="${experience.position}" class="input-medium" />
 			</div>
 		</div>
+		<form:errors path="experience.position" cssClass="error field-error" />
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Organization</div>
 			<input name="organization" value="${experience.organization}" class="input-medium" />
 		</div>
+		<form:errors path="experience.organization" cssClass="error field-error" />
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Start Date</div>
 			<div>
@@ -28,15 +30,22 @@
 					class="date-picker input-medium" />
 			</div>
 		</div>
+		<form:errors path="experience.startDate" cssClass="error field-error" />
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">End Date</div>
 			<div>
 				<input name="endDate" value="<fmt:formatDate value="${experience.endDate }" pattern="MM/dd/yyyy"/>"
 					class="date-picker input-medium" />
 			</div>
-			<div class="bold v-margin-4">Is present experience?</div>
-			<form:checkbox path="experience.isPresent" value="${experience.isPresent}" />
 		</div>
+		<form:errors path="experience.endDate" cssClass="error field-error" />
+		<div class="v-margin-10">
+			<div class="bold v-margin-4">
+				<span>Is present experience?</span>
+				<form:checkbox path="experience.isPresent" value="${experience.isPresent}" cssClass="h-margin-3"/>	
+			</div>	
+		</div>
+		<form:errors path="experience.isPresent" cssClass="error field-error" />
 		<div class="v-margin-10">
 			<div class="bold v-margin-4">Description</div>
 			<div class="clearfix">
