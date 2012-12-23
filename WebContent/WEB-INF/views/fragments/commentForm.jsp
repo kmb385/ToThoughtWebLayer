@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div id="comment-form" class="bg4">
 	<a id="postcomment" class="font-large bold subtle">Post a Comment</a>
@@ -13,6 +14,7 @@
 			</div>
 			<input name="author" class="input-medium" />
 		</div>
+		<form:errors path="comment.author" cssClass="error field-error" />
 		<div class="v-margin-5">
 			<div class="bold subtle v-margin-4">Email</div>
 			<input name="email" class="input-medium" />
@@ -25,6 +27,7 @@
 			<div class="bold subtle v-margin-4">Comment</div>
 			<textarea name="body" class="input-large"></textarea>
 		</div>
+		<form:errors path="comment.body" cssClass="error field-error" />
 		<div>
 			<input type="submit" class="control" value="Submit" />
 		</div>

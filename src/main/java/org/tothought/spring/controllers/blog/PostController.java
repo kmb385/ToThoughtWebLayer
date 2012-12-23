@@ -27,6 +27,7 @@ public class PostController {
 		model.addAttribute("isSingle", true);
 		model.addAttribute("post", postViewRepository.findOne(postId));
 		model.addAttribute("tags", tagViewRepository.findAll());
+		//model.addAttribute("comment", new Comment());
 		return "blog/post";
 	}
 
