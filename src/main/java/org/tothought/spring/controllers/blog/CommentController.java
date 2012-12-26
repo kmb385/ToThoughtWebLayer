@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,7 +38,7 @@ public class CommentController {
 		if(result.hasErrors()){
 			model.addAttribute("post", postViewRepository.findOne(comment.getPost().getPostId()));
 			model.addAttribute("isSingle", true);
-			model.addAttribute("tags", tagViewRepository.findAll());
+			model.addAttribute("tags", tagViewRepository.findAll(new Sort(Direction.ASC, "name")));
 
 			return "blog/post";
 		}

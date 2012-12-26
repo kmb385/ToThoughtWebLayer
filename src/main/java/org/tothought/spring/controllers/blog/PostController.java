@@ -1,6 +1,8 @@
 package org.tothought.spring.controllers.blog;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +28,7 @@ public class PostController {
 	public String getPost(@PathVariable Integer postId, Model model) {
 		model.addAttribute("isSingle", true);
 		model.addAttribute("post", postViewRepository.findOne(postId));
-		model.addAttribute("tags", tagViewRepository.findAll());
-		//model.addAttribute("comment", new Comment());
+		model.addAttribute("tags", tagViewRepository.findAll(new Sort(Direction.ASC, "name")));
 		return "blog/post";
 	}
 

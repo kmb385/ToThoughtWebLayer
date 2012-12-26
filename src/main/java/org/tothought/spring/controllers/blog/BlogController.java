@@ -28,7 +28,7 @@ public class BlogController {
 	@Autowired
 	TagViewRepository tagViewRepository;
 	
-	private Sort sort = new Sort(Direction.DESC, "postId");	
+	private Sort sort = new Sort(Direction.DESC, "postedDt");	
 	private int pageSize = 5;
 	
 	@RequestMapping("/")
