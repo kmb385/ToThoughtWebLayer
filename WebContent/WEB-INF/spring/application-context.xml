@@ -8,8 +8,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <import resource="security-context.xml"/>
+
     
-	<context:property-placeholder location="classpath:META-INF/db/db.properties" />
+	<context:property-placeholder location="classpath:META-INF/db/db.properties" order="1" ignore-unresolvable="true"/>
+	
 	<context:annotation-config/>
 	
 	<!-- Pick up objects for autowiring -->
@@ -57,4 +59,6 @@
 	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 	 	<property name="basename" value="META-INF/messages/messages"/>
 	 </bean>
+	 
+	 <import resource="email-context.xml"/>
 </beans>

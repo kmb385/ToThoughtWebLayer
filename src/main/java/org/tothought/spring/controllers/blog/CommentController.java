@@ -14,6 +14,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.tothought.email.EmailService;
+import org.tothought.email.interfaces.MailMessage;
 import org.tothought.entities.Comment;
 import org.tothought.repositories.CommentRepository;
 import org.tothought.repositories.PostViewRepository;
@@ -33,20 +35,29 @@ public class CommentController {
 	@Autowired
 	TagViewRepository tagViewRepository;
 	
+	@Autowired
+	EmailService emailService;
+	
+	@Autowired
+	MailMessage commentMessage;
+	
 	@RequestMapping(value="/save")
 	public String save(@Valid @ModelAttribute Comment comment, BindingResult result, Model model){
 		if(result.hasErrors()){
 			model.addAttribute("post", postViewRepository.findOne(comment.getPost().getPostId()));
 			model.addAttribute("isSingle", true);
 			model.addAttribute("tags", tagViewRepository.findAll(new Sort(Direction.ASC, "name")));
-
+			
 			return "blog/post";
 		}
 		
 		String postId = comment.getPost().getPostId().toString();
 		comment.setPostedDt(new Date());
 		repository.save(comment);
-
+		
+		//Send notification email
+		emailService.sendMessage(this.commentMessage);
+		
 		return "redirect:/post/" + postId;
 	}
 	

@@ -107,5 +107,10 @@
   		</artifactId>
   		<version>4.1.0.Final</version>
   	</dependency>
+  	<dependency>
+  		<groupId>javax.mail</groupId>
+  		<artifactId>mail</artifactId>
+  		<version>1.4.6-rc1</version>
+  	</dependency>
   </dependencies>
 </project>
