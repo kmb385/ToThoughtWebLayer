@@ -11,6 +11,8 @@
 		<config>WebContent/WEB-INF/spring/application-context.xml</config>
 		<config>WebContent/WEB-INF/spring/security-context.xml</config>
 		<config>WebContent/WEB-INF/spring/email-context.xml</config>
+		<config>WebContent/WEB-INF/spring/job-context.xml</config>
+		<config>WebContent/WEB-INF/spring/spring-data-context.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

@@ -9,8 +9,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing 
-		infrastructure -->
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
 	<!-- Enables @Secure Annotation -->
 	<security:global-method-security secured-annotations="enabled"/>
@@ -51,5 +50,29 @@
 	</bean>
 
 	<context:component-scan base-package="org.tothought.spring.**" />
+	
+	<context:annotation-config/>
+
+	<!-- Application Listeners -->
+	<!-- Fired when different application events occur such as context refresh or startup -->
+	<bean id="lookupLoader" class="org.tothought.spring.listeners.LookupLoaderApplicationListener" /> 
+	<bean id="imageLoader" class="org.tothought.spring.listeners.ImageLoaderApplicationListener" />
+	
+	<!-- Register Converters - Used for data binding-->
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="org.tothought.spring.converters.SkillCategoryToStringConverter"/>
+				<bean class="org.tothought.spring.converters.StringToSkillCategoryConverter"/>
+				<bean class="org.tothought.spring.converters.StringToDegreeDetailConverter"/>
+				<bean class="org.tothought.spring.converters.StringtToExperienceDetailConverter"/>
+				<bean class="org.tothought.spring.converters.StringToPostConverter"/>
+			</list>		
+		</property>
+	</bean>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	 	<property name="basename" value="META-INF/messages/messages"/>
+	</bean>
 
 </beans>

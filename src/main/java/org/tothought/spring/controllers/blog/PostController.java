@@ -8,10 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.tothought.entities.PostView;
 import org.tothought.json.JsonUtil;
 import org.tothought.repositories.PostViewRepository;
 import org.tothought.repositories.TagViewRepository;
+import org.tothought.views.PostView;
 
 @Controller
 @RequestMapping("/post")
