@@ -43,9 +43,11 @@ public class PageableRequestHandlerInterceptor extends
 	private int parsePageNumber(StringBuffer requestUrl,
 			PageableRequestMapping pageableRequestMapping) {
 		
+		//Token within url to denote paging parameter
 		String pathVariable = pageableRequestMapping.pathVariable();
 		String defaultPathVariable = this.getDefaultPathVariable(pageableRequestMapping);
 		
+		//If custom path variable is defined
 		if(!pathVariable.equalsIgnoreCase(defaultPathVariable)){
 			String[] tokens = requestUrl.toString().split("/");
 			
@@ -55,6 +57,7 @@ public class PageableRequestHandlerInterceptor extends
 				}				
 			}
 		}else{
+			//Default path variable handling
 			String pageNumber = requestUrl.substring(requestUrl.lastIndexOf("/") + 1);
 			return (NumberUtils.isNumber(pageNumber)) ? Integer.parseInt(pageNumber) : 0;
 		}

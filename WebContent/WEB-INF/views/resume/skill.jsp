@@ -28,5 +28,15 @@
 				class="button-32 delete-control-btn"></a>
 		</div>
 	</sec:authorize>
+	<div class="font-medium bold section-title subtle">Latest Commits</div>
+	<c:forEach var="commit" items="${commits}">
+		<div class="v-margin-5">
+			<a href="${commit.htmlUrl}" target="_blank" class="commit">${commit.title}</a>
+			<span class="subtle font-small"><fmt:formatDate value="${commit.commitDt}" pattern="MM/dd/yyyy" /></span>
+		</div>
+	</c:forEach>
+	<c:if test="${!empty nextPage}">
+		<a href="<c:url value="/resume/skills/${skill.skillId}"/>" class="more subtle">View More</a>
+	</c:if>
 </ttTags:documentTemplate>
 

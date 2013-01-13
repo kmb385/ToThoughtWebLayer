@@ -3,6 +3,15 @@
 	text-align: justify;	
 }
 
+.post-body a, .post-body a:VISITED{
+	text-decoration: none;
+	color: #10486E;
+}
+
+.post-body a:HOVER{
+	text-decoration: underline;
+}
+
 .post-editor{
 	height: 400px;
 	width: 600px;
