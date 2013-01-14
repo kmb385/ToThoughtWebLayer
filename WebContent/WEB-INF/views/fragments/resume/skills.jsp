@@ -7,6 +7,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <div class="page-title">Technical Skills</div>
+<div class="noprint">To view more information such as work examples click a Skill below.</div>
 <c:forEach var="skillCategory" items="${categories}">
 	<div class="pdf-no-break">
 		<div class="font-medium bold section-title subtle">${skillCategory.name}</div>

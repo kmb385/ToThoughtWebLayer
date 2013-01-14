@@ -51,7 +51,8 @@ public class GitHubJob {
 	@Autowired
 	CommitRepository repository;
 
-	@Scheduled(fixedDelay = 600000)
+	//Once Per Week
+	@Scheduled(fixedDelay = 604800000)
 	public void perform() {
 		try {
 			logger.info("Starting GitHub Data Load..");
@@ -104,15 +105,15 @@ public class GitHubJob {
 	private void log(List<Commit> unsavedCommits) {
 		int x = 0;
 		for(Commit commit: unsavedCommits){
-			System.out.println("--- Commit ---" + ++x);
-			System.out.println(commit.getApiUrl());
-			System.out.println(commit.getHtmlUrl());
-			System.out.println(commit.getMessage());
-			System.out.println(commit.getSha());
-			System.out.println(commit.getTitle());
-			System.out.println(commit.getCommitDt());
-			System.out.println(commit.getTags().size());
-			System.out.println("-- End Commit --");
+			logger.info("--- Commit ---" + ++x);
+			logger.info(commit.getApiUrl());
+			logger.info(commit.getHtmlUrl());
+			logger.info(commit.getMessage());
+			logger.info(commit.getSha());
+			logger.info(commit.getTitle());
+			logger.info(commit.getCommitDt().toString());
+			logger.info(String.valueOf(commit.getTags().size()));
+			logger.info("-- End Commit --");
 		}
 		
 	}

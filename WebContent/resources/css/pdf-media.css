@@ -12,6 +12,10 @@ html,body{
 	width: auto;	
 }
 
+.noprint{
+	display:none;
+}
+
 .pdf-no-break{
 	page-break-inside: avoid;
 }
@@ -20,6 +24,10 @@ html,body{
 	margin: 20px 0px;
 	page-break-inside: avoid;
 	page-break-after:always;
+}
+
+.pdf-section:last-child{
+	page-break-after:avoid;
 }
 
 .pdf-128{
