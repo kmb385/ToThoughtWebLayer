@@ -12,22 +12,28 @@
 			<div class="bold subtle v-margin-4">
 				<span class="required">*</span>Name
 			</div>
-			<input name="author" class="input-medium" />
+			<input name="author" class="input-medium" value="${comment.author}" />
 		</div>
 		<form:errors path="comment.author" cssClass="error field-error" />
 		<div class="v-margin-5">
 			<div class="bold subtle v-margin-4">Email</div>
-			<input name="email" class="input-medium" />
+			<input name="email" class="input-medium" value="${comment.email}" />
 		</div>
 		<div class="v-margin-5">
 			<div class="bold subtle v-margin-4">Site</div>
-			<input name="site" class="input-medium" />
+			<input name="site" class="input-medium" value="${comment.site}"/>
 		</div>
 		<div class="v-margin-5 clearfix">
-			<div class="bold subtle v-margin-4">Comment</div>
-			<textarea name="body" class="input-large"></textarea>
+			<div class="bold subtle v-margin-4"><span class="required">*</span>Comment</div>
+			<textarea name="body" class="input-large">${comment.body}</textarea>
 		</div>
 		<form:errors path="comment.body" cssClass="error field-error" />
+		<div class="v-margin-5">
+			${captcha}
+			<c:if test="${!empty captchaError}">
+				<div class="error field-error">${captchaError}</div>		
+			</c:if>
+		</div>
 		<div>
 			<input type="submit" class="control" value="Submit" />
 		</div>

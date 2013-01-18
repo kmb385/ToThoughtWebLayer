@@ -12,20 +12,24 @@ import org.tothought.entities.PostView;
 import org.tothought.json.JsonUtil;
 import org.tothought.repositories.PostViewRepository;
 import org.tothought.repositories.TagViewRepository;
+import org.tothought.spring.utilities.RecaptchaService;
 
 @Controller
 @RequestMapping("/post")
 public class PostController {
-
 	
 	@Autowired
 	TagViewRepository tagViewRepository;
 
 	@Autowired
 	PostViewRepository postViewRepository;
+
+	@Autowired
+	RecaptchaService recaptchaService;
 	
 	@RequestMapping("/{postId}")
 	public String getPost(@PathVariable Integer postId, Model model) {
+		model.addAttribute("captcha", recaptchaService.getRecaptcha());
 		model.addAttribute("isSingle", true);
 		model.addAttribute("post", postViewRepository.findOne(postId));
 		model.addAttribute("tags", tagViewRepository.findAll(new Sort(Direction.ASC, "name")));

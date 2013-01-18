@@ -51,5 +51,5 @@
 	</bean>
 
 	<context:component-scan base-package="org.tothought.spring.**" />
-
+<context:property-placeholder location="classpath:META-INF/security/recaptcha.properties" order="1" ignore-unresolvable="true" />
 </beans>
