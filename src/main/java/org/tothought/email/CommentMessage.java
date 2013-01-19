@@ -13,7 +13,7 @@ import org.tothought.email.interfaces.MailMessage;
 @Component
 public class CommentMessage extends AbstractMailMessage implements MailMessage {
 
-	
+	//TODO: Create a new method that allows information to be passed.
 	@Override
 	public Message getMessage() {
 
