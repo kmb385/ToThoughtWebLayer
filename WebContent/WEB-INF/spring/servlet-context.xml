@@ -78,5 +78,6 @@
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 	 	<property name="basename" value="META-INF/messages/messages"/>
 	</bean>
-
+	
+	<context:property-placeholder location="classpath:META-INF/security/recaptcha.properties" order="1" ignore-unresolvable="true" />
 </beans>
