@@ -12,6 +12,7 @@ import org.tothought.json.JsonUtil;
 import org.tothought.repositories.PostViewRepository;
 import org.tothought.repositories.TagViewRepository;
 import org.tothought.spring.utilities.RecaptchaService;
+import org.tothought.views.PostView;
 
 @Controller
 @RequestMapping("/post")

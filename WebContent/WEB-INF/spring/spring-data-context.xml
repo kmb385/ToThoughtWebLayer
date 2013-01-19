@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<context:property-placeholder location="classpath:META-INF/db/db.properties" order="1" ignore-unresolvable="true"/>
+	<context:property-placeholder location="classpath:META-INF/db/db.properties" order="3" ignore-unresolvable="true"/>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
