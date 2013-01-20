@@ -10,7 +10,7 @@ import org.tothought.email.interfaces.MailMessage;
 @Component
 public class EmailService {
 
-	public void sendMessage(MailMessage message){
+	public <T> void sendMessage(MailMessage<T> message){
 		try {
 			Transport.send(message.getMessage());
 		} catch (MessagingException e) {

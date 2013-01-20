@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,8 @@ public class CommentController {
 	EmailService emailService;
 
 	@Autowired
-	MailMessage commentMessage;
+	@Qualifier("commentMessage")
+	MailMessage<Comment> commentMessage;
 	
 	@Autowired
 	RecaptchaService recaptchaService;
@@ -50,22 +52,31 @@ public class CommentController {
 	public String save(@Valid @ModelAttribute Comment comment, BindingResult result, Model model,
 			HttpServletRequest request) {
 
+		final Integer postId = comment.getPost().getPostId();
+		
 		if (result.hasErrors() || !recaptchaService.isValid(request)) {
-			model.addAttribute("post", postViewRepository.findOne(comment.getPost().getPostId()));
+
+			model.addAttribute("post", postViewRepository.findOne(postId));
 			model.addAttribute("isSingle", true);
 			model.addAttribute("tags", tagViewRepository.findAll(new Sort(Direction.ASC, "name")));
 			model.addAttribute("captcha", recaptchaService.getRecaptcha());
 			model.addAttribute("captchaError", recaptchaService.getErrorMsg());
 			return "blog/post";
+
 		} else {
-				String postId = comment.getPost().getPostId().toString();
+
 				comment.setPostedDt(new Date());
 				repository.save(comment);
+				this.sendEmail(comment);
 
-				// Send notification email
-				emailService.sendMessage(this.commentMessage);
-				return "redirect:/post/" + postId;
+				return "redirect:/post/" + postId.toString();
 		}
+	}
+
+	private void sendEmail(Comment comment) {
+		// Send notification email
+		this.commentMessage.setBody(comment);
+		emailService.sendMessage(this.commentMessage);
 	}
 
 	@InitBinder("comment")

@@ -9,26 +9,34 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.stereotype.Component;
 import org.tothought.email.abstracts.AbstractMailMessage;
 import org.tothought.email.interfaces.MailMessage;
+import org.tothought.entities.Comment;
 
-@Component
-public class CommentMessage extends AbstractMailMessage implements MailMessage {
+@Component(value="commentMessage")
+public class CommentMessage extends AbstractMailMessage implements MailMessage<Comment> {
 
-	//TODO: Create a new method that allows information to be passed.
+	private static final String MESSAGE_SUBJECT = "A new comment has been made on the toThought Blog";
+	StringBuilder body = new StringBuilder(MESSAGE_SUBJECT);
+
 	@Override
 	public Message getMessage() {
-
 		Message message = new MimeMessage(super.getSession());
 		try {
 			message.setFrom(new InternetAddress("kmb385@gmail.com"));
 			message.addRecipients(Message.RecipientType.TO, InternetAddress.parse("kmb385@gmail.com"));
-			message.setSubject("A new comment has been made on the toThought Blog");
-			message.setText("A new comment has been made on the toThought Blog");
+			message.setSubject(MESSAGE_SUBJECT);
+			message.setText(body.toString());
 		} catch (AddressException e) {
 			e.printStackTrace();
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
 		return message;
+	}
+
+	@Override
+	public void setBody(Comment comment) {
+		body.append("\n").append(comment.getAuthor()).append(" commented: ").append("\n");
+		body.append(comment.getBody());
 	}
 
 }
