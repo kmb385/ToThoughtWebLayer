@@ -8,11 +8,12 @@
 <%@ attribute name="jsFiles" type="java.lang.String"%>
 <%@ attribute name="sidebarFragment" type="java.lang.String"%>
 <%@ attribute name="requiresTextEditor" type="java.lang.Boolean"%>
+<%@ attribute name="title" type="java.lang.String"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ToThought</title>
+<title>ToThought ${title}</title>
 <!-- Load Base CSS -->
 <jsp:include page="/WEB-INF/views/fragments/base_css.jsp" />
 <!-- Load Specified CSS -->

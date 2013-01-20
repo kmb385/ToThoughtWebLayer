@@ -5,7 +5,7 @@
 <%@ taglib prefix="ttTags" uri="/WEB-INF/tags/tothought-tags.tld" %>
 
 <ttTags:documentTemplate sidebarFragment="blog_sidebar.jsp"
-	cssFiles="post.css,post_tags.css,comments.css" requiresTextEditor="true">
+	cssFiles="post.css,post_tags.css,comments.css" requiresTextEditor="true" title="${post.title}">
 		<jsp:include page="../fragments/post.jsp" />
 		<jsp:include page="../fragments/comments.jsp" />
 		<jsp:include page="../fragments/commentForm.jsp" />
