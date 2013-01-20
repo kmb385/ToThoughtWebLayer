@@ -63,7 +63,7 @@ public class CommentController {
 				repository.save(comment);
 
 				// Send notification email
-				// emailService.sendMessage(this.commentMessage);
+				emailService.sendMessage(this.commentMessage);
 				return "redirect:/post/" + postId;
 		}
 	}

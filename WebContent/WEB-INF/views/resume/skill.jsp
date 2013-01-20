@@ -8,7 +8,7 @@
 <ttTags:documentTemplate cssFiles="resume.css, skill.css, rating.css"
 	sidebarFragment="resume_sidebar.jsp">
 	<div class="v-bottm-margin-20 clearfix">
-		<img src="../../resources/images/resume/skills/uploaded-icons/${skill.image.name}" class="float-left"/>
+		<img src="/resources/images/resume/skills/uploaded-icons/${skill.image.name}" class="float-left"/>
 		<div class="skill-page-title float-left">
 			<div class="font-large bold">${skill.name}</div>
 		</div>

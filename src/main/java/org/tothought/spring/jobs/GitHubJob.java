@@ -68,27 +68,32 @@ public class GitHubJob {
 			List<Commit> unsavedCommits = new ArrayList<Commit>();
 
 			for (Skill skill : this.skillRepository.findAll()) {
-				List<Commit> commits = service.getCommitsByTag(skill.getTag());
-
-				logger.info("GitHub data load is processing " + commits.size() + " commits for skill: " + skill.getTag().getName() + ".");
-
-				for (Commit commit : commits) {
-					Date commitDt = commit.getCommitDt();
-					if ((dataCurrentDate == null || commitDt.after(dataCurrentDate) && !unsavedCommits.contains(commit))) {
-						unsavedCommits.add(commit);
-
-						if (mostRecentCommitDate == null || commitDt.after(mostRecentCommitDate)) {
-							mostRecentCommitDate = commitDt;
+				if(skill.getTag() != null){
+					
+					List<Commit> commits = service.getCommitsByTag(skill.getTag());					
+					logger.info("GitHub data load is processing " + commits.size() + " commits for skill: " + skill.getTag().getName() + ".");
+					
+					for (Commit commit : commits) {
+						Date commitDt = commit.getCommitDt();
+						if (commitDt != null && (dataCurrentDate == null || commitDt.after(dataCurrentDate) && !unsavedCommits.contains(commit))) {
+							unsavedCommits.add(commit);
+							
+							if (mostRecentCommitDate == null || commitDt.after(mostRecentCommitDate)) {
+								mostRecentCommitDate = commitDt;
+							}
 						}
 					}
+					
 				}
+				
+
 			}
 
 			int unsavedCommitsCount = unsavedCommits.size();
 			if (unsavedCommitsCount > 0) {
 				
 				logger.info("GitHub data load is saving " + unsavedCommitsCount + " commits.");
-				this.log(unsavedCommits);
+				//this.log(unsavedCommits);
 				repository.save(unsavedCommits);
 				dataLoadLogEntryRepository.save(new DataLoadLogEntry(JOB_NAME, unsavedCommitsCount,
 						mostRecentCommitDate));

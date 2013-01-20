@@ -68,7 +68,7 @@ public class GitHubService {
 		}
 		
 		for(Commit commit:this.commits){
-			if(StringUtils.containsIgnoreCase(commit.getMessage(), tag.getName()))
+			if(commit != null && tag != null && commit.getMessage() != null && StringUtils.containsIgnoreCase(commit.getMessage(), tag.getName()))
 			{
 				//Taking advantage of reference to add tag
 				commit.getTags().add(tag);
