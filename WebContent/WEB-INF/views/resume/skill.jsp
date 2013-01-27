@@ -33,6 +33,10 @@
 		<div class="v-margin-5">
 			<a href="${commit.htmlUrl}" target="_blank" class="commit">${commit.title}</a>
 			<span class="subtle font-small"><fmt:formatDate value="${commit.commitDt}" pattern="MM/dd/yyyy" /></span>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<a href="<c:url value="/secure/resume/manager/commit/edit/${commit.commitId}"/>"
+							class="small-edit-btn h-margin-3"></a>
+				</sec:authorize>
 		</div>
 	</c:forEach>
 	<c:if test="${!empty nextPage}">

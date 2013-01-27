@@ -41,7 +41,6 @@ public class SecurePostController {
 		Post post = new Post();
 		post.setPostPart(new PostPart());
 		model.addAttribute("post", post);
-		//model.addAttribute("postPart", new PostPart());
 		return "blog/managePost";
 	}
 

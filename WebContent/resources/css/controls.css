@@ -56,6 +56,17 @@
 	vertical-align: top;
 }
 
+.small-edit-btn{
+	background: url(../../resources/images/edit-16.png) no-repeat;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	margin-top:2px;
+	position: relative;
+	width: 16px;
+	vertical-align: top;
+}
+
 /* 32 x 32 Control Buttons */
 .button-32, .button-32-no-hover{
 	-moz-border-radius: 2px;
