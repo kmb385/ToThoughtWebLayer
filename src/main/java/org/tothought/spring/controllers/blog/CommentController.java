@@ -49,7 +49,7 @@ public class CommentController {
 
 		final Integer postId = comment.getPost().getPostId();
 		
-		if (result.hasErrors() || !recaptchaService.isValid(request)) {
+		if (result.hasErrors() || !recaptchaService.isValid(request) || !request.getParameter("mandatory").isEmpty()) {
 
 			model.addAttribute("post", postViewRepository.findOne(postId));
 			model.addAttribute("isSingle", true);
@@ -60,6 +60,7 @@ public class CommentController {
 
 		} else {
 
+				comment.setIpAddress(request.getRemoteAddr());
 				comment.setPostedDt(new Date());
 				repository.save(comment);
 				this.sendEmail(comment);

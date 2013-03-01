@@ -38,5 +38,7 @@
 			<input type="submit" class="control" value="Submit" />
 		</div>
 		<input type="hidden" name="post" value="${post.postId}" />
+		<input type="hidden" name="mandatory"/>
+		
 	</form>
 </div>
