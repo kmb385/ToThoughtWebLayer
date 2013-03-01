@@ -9,13 +9,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.tothought.email.DataLoadMessage;
 import org.tothought.email.EmailService;
-import org.tothought.email.interfaces.MailMessage;
 import org.tothought.entities.Commit;
 import org.tothought.entities.DataLoadLogEntry;
 import org.tothought.entities.Skill;
@@ -46,11 +45,6 @@ public class GitHubJob {
 	
 	@Autowired
 	EmailService emailService;
-
-	@Autowired
-	@Qualifier("dataLoadMessage")
-	MailMessage<DataLoadLogEntry> dataLoadMessage;
-		
 
 	@Autowired
 	DataLoadLogEntryRepository dataLoadLogEntryRepository;
@@ -187,6 +181,7 @@ public class GitHubJob {
 	 * @param unsavedCommits
 	 */
 	private void logJob(List<Commit> unsavedCommits) {
+		DataLoadMessage dataLoadMessage = new DataLoadMessage();
 		DataLoadLogEntry dataLoadLogEntry = new DataLoadLogEntry(JOB_NAME, unsavedCommits.size(), this.recentCommitDate);
 		dataLoadLogEntryRepository.save(dataLoadLogEntry);
 		dataLoadMessage.setBody(dataLoadLogEntry);
