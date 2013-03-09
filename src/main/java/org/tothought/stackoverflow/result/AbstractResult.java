@@ -11,7 +11,9 @@ public abstract class AbstractResult {
 	private boolean hasMore;
 
 	private Integer page;
-
+	
+	private Boolean backOff;
+	
 	@JsonProperty("quota_remaining")
 	public Integer getQuotaRemaining() {
 		return quotaRemaining;
@@ -48,4 +50,12 @@ public abstract class AbstractResult {
 		this.page = page;
 	}
 
+	public Boolean getBackOff() {
+		return backOff;
+	}
+
+	public void setBackOff(Boolean backOff) {
+		this.backOff = backOff;
+	}
+	
 }

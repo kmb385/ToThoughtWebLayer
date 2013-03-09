@@ -2,17 +2,17 @@ package org.tothought.stackoverflow;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tothought.stackoverflow.entities.Answer;
+import org.tothought.stackoverflow.queries.AbstractQuery;
 import org.tothought.stackoverflow.queries.AnswerQuery;
-import org.tothought.stackoverflow.queries.Query;
 import org.tothought.stackoverflow.result.AnswerResult;
 
 public class StackOverflowService {
@@ -23,10 +23,25 @@ public class StackOverflowService {
 	public List<Answer> answers = new LinkedList<Answer>();
 		
 	/**
-	 * Retreive all answers on Stack Overflow
+	 * Retrieve all answers on Stack Overflow
 	 * @return
 	 */
 	public List<Answer> findAllAnswers(){
+		return this.findAllAnswers(new AnswerQuery(USER_ID));
+	}
+	
+	public List<Answer> findAllAnswers(Date toDate, Date fromDate){
+		AnswerQuery query = new AnswerQuery(USER_ID);
+		query.setFromDate(fromDate);
+		query.setToDate(toDate);
+		return this.findAllAnswers(query);
+	}
+	
+	private List<Answer> findAllAnswers(AbstractQuery query){
+		
+		if(logger.isInfoEnabled()){			
+			logger.info("Retreiving answers from StackOverflow API.");
+		}
 		
 		if(!this.answers.isEmpty()){
 			return this.answers;
@@ -35,20 +50,15 @@ public class StackOverflowService {
 		int pageCount = 1;
 
 		List<Answer> answers = new LinkedList<Answer>();
-		StackOverflowService service = new StackOverflowService();
-		AnswerQuery query = new AnswerQuery(USER_ID);
-		
-		if(logger.isDebugEnabled()){			
-			logger.debug("Executing StackOverflow API Query: " + query.getQuery());
-		}
-		
+				
 		AnswerResult result = null; 
-		while(pageCount == 1 || result.isHasMore()){
-			result = service.executeQuery(AnswerResult.class, query.setPage(pageCount++));
+		while((pageCount == 1 || result.isHasMore()) && (result == null || (result.getBackOff() == null  || !result.getBackOff()))){
+			result = this.executeQuery(AnswerResult.class, query.setPage(pageCount++));
 			answers.addAll(result.getAnswers());
 		}	
 				
 		return answers;
+
 	}
 	
 	/**
@@ -78,7 +88,12 @@ public class StackOverflowService {
 	 * @param query
 	 * @return
 	 */
-	private <T> T executeQuery(Class<T> clazz, Query query) {
+	private <T> T executeQuery(Class<T> clazz, AbstractQuery query) {		
+		
+		if(logger.isInfoEnabled()){			
+			logger.info("Executing StackOverflow API Query: " + query.getQuery());
+		}
+		
 		ObjectMapper mapper = new ObjectMapper();
 		URL url;
 		T result = null;
@@ -89,61 +104,19 @@ public class StackOverflowService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return result;
 	}
 	
 	public static void main(String[] args) throws IOException {
 		StackOverflowService service = new StackOverflowService();
-		List<Answer> answers = service.findAllAnswers();
+//		List<Answer> answers = service.findAllAnswers();
+//		List<Answer> answers = service.findAnswersByTag("Java");
+		Date toDate = new Date(2013,4,1);
+		Date fromDate = new Date(2013,4,2);
+		List<Answer> answers = service.findAllAnswers(toDate, fromDate);
 		for(Answer answer:answers){
-			System.out.println(answer.getTitle());
+			System.out.println(answer.toString());
 		}
-		
-//		int pageCount = 1;
-//		StackOverflowService service = new StackOverflowService();
-//		AnswerQuery query = new AnswerQuery(USER_ID);
-//		System.out.println(query.getQuery());
-//		AnswerResult result = null; 
-//		while(pageCount == 1 || result.isHasMore()){
-//			result = service.executeQuery(AnswerResult.class, query.setPage(pageCount++));
-//			for(Answer answer: result.getAnswers()){
-//				System.out.println(answer.getTitle());
-//			}
-//		}	
-				
-//		System.out.println(result.getAnswers().get(0).getLink());
-//		URL url;
-
-		// try {
-		// // url = new URL(STACK_API_BASE_DOMAIN + "/users/714969/answers" +
-		// SITE_PARAMETER + "&filter=!6N0G7E63eenl8");
-		// // url = new URL(STACK_API_BASE_DOMAIN + "/users/714969/answers" +
-		// SITE_PARAMETER + "&filter=!*Kc0z1PJKtK-g)_R");
-		// //
-		// // Query query = new Query();
-		// //
-		// query.buildBase(USER_ID).setMethod("answers").setSite("stackoverflow");
-		// // System.out.println(query.getQuery());
-		// // System.out.println(url.toString());
-		// //
-		// // BufferedReader in = new BufferedReader(new InputStreamReader(new
-		// GZIPInputStream(url.openStream())));
-		// // ObjectMapper mapper = new ObjectMapper();
-		// // AnswerResult wrapper = mapper.readValue(new
-		// GZIPInputStream(url.openStream()), AnswerResult.class);
-		// // System.out.println(wrapper.getQuotaMax());
-		// /*
-		// String inputLine;
-		// while((inputLine = in.readLine()) != null){
-		//
-		// System.out.println(inputLine);
-		// }*/
-		//
-		// // in.close();
-		// } catch (MalformedURLException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-
 	}
 }

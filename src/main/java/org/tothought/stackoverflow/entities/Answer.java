@@ -56,4 +56,19 @@ public class Answer {
 		this.link = link;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("-----------  Answer ---------").append("\n");
+		sb.append("Answer Id: ").append(this.answerId).append("\n");
+		sb.append("Link: ").append(this.link).append("\n");
+		sb.append("Title: ").append(this.title).append("\n");
+		sb.append("Tags").append("\n");
+		for(String tag: this.tags){
+			sb.append(tag).append("\n");
+		}
+		return sb.toString();
+	}
+
+	
 }
