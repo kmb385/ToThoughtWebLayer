@@ -5,8 +5,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.tothought.email.CommentMessage;
 import org.tothought.email.EmailService;
-import org.tothought.email.interfaces.MailMessage;
 import org.tothought.entities.Comment;
 import org.tothought.repositories.CommentRepository;
 import org.tothought.repositories.PostViewRepository;
@@ -40,10 +40,6 @@ public class CommentController {
 
 	@Autowired
 	EmailService emailService;
-
-	@Autowired
-	@Qualifier("commentMessage")
-	MailMessage<Comment> commentMessage;
 	
 	@Autowired
 	RecaptchaService recaptchaService;
@@ -54,8 +50,8 @@ public class CommentController {
 
 		final Integer postId = comment.getPost().getPostId();
 		
-		if (result.hasErrors() || !recaptchaService.isValid(request)) {
-
+		if (result.hasErrors() || !recaptchaService.isValid(request) || !request.getParameter("mandatory").isEmpty() || this.isValid(comment.getBody())) {
+			
 			model.addAttribute("post", postViewRepository.findOne(postId));
 			model.addAttribute("isSingle", true);
 			model.addAttribute("tags", tagViewRepository.findAll(new Sort(Direction.ASC, "name")));
@@ -65,6 +61,7 @@ public class CommentController {
 
 		} else {
 
+				comment.setIpAddress(request.getRemoteAddr());
 				comment.setPostedDt(new Date());
 				repository.save(comment);
 				this.sendEmail(comment);
@@ -75,12 +72,17 @@ public class CommentController {
 
 	private void sendEmail(Comment comment) {
 		// Send notification email
-		this.commentMessage.setBody(comment);
-		emailService.sendMessage(this.commentMessage);
+		CommentMessage commentMessage = new CommentMessage();
+		commentMessage.setBody(comment);
+		emailService.sendMessage(commentMessage);
 	}
 
 	@InitBinder("comment")
 	public void initBinderAll(WebDataBinder binder) {
 		binder.setValidator(new CommentValidator());
+	}
+	
+	public boolean isValid(String body){
+		return StringUtils.containsIgnoreCase(body, "http");
 	}
 }
