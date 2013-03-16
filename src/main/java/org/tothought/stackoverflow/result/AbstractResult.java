@@ -12,7 +12,7 @@ public abstract class AbstractResult {
 
 	private Integer page;
 	
-	private Boolean backOff;
+	private Integer backOff;
 	
 	@JsonProperty("quota_remaining")
 	public Integer getQuotaRemaining() {
@@ -50,11 +50,11 @@ public abstract class AbstractResult {
 		this.page = page;
 	}
 
-	public Boolean getBackOff() {
+	public Integer getBackOff() {
 		return backOff;
 	}
 
-	public void setBackOff(Boolean backOff) {
+	public void setBackOff(Integer backOff) {
 		this.backOff = backOff;
 	}
 	

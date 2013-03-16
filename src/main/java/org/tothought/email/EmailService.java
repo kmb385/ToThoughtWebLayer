@@ -28,10 +28,12 @@ public class EmailService {
 	}
 	
 	public <T> void sendMessage(MailMessage<T> message){
-		try {
-			Transport.send(message.getMessage(this.getSession()));
-		} catch (MessagingException e) {
-			e.printStackTrace();
+		if(this.isEnabled()){			
+			try {
+				Transport.send(message.getMessage(this.getSession()));
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -51,6 +53,26 @@ public class EmailService {
 		});
 		
 		return session;
+	}
+	
+	/**
+	 * Determines if an email should be sent, emails are not sent in the test environment
+	 * unless manually specified
+	 * @return
+	 */
+	private boolean isEnabled(){
+	    boolean active;
+		String environment = this.configuration.getEnvironment();
+		
+		if(environment == null){
+			active = true;
+		}else if(environment.equalsIgnoreCase(EmailConfiguration.DEV_ENVIRONMENT) && !EmailConfiguration.IS_EMAIL_ENABLED){
+			active = false;
+		}else{
+			active = true;
+		}
+		
+		return active;
 	}
 
 }

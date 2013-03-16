@@ -16,5 +16,5 @@
 	 
 	<task:scheduler id="myScheduler" pool-size="10"/>
 	<bean id="gitHubJob" class="org.tothought.spring.jobs.GitHubJob"/>
-	
+	<bean id="stackOverflowJob" class="org.tothought.spring.jobs.StackOverflowJob"/>	
 </beans>

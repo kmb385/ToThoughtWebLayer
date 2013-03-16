@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.tothought.jackson.LongDateDeserializer;
 
 public class Answer {
 
@@ -31,6 +33,7 @@ public class Answer {
 		this.answerId = answerId;
 	}
 
+	@JsonDeserialize(using=LongDateDeserializer.class)
 	@JsonProperty("creation_date")
 	public Date getCreateDt() {
 		return createDt;

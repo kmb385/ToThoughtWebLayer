@@ -67,17 +67,19 @@ public abstract class AbstractQuery{
 	}
 	
 	public AbstractQuery setToDate(Date date){
-		String dateAsLong = Long.toString(date.getTime());
-		//this.addParameter(TO_DATE_PARAMETER, dateAsLong);
-		this.addParameter(TO_DATE_PARAMETER,  "1362182400");
+		this.addParameter(TO_DATE_PARAMETER, dateToSeconds(date));
 		return this;
 	}
 	
 	public AbstractQuery setFromDate(Date date){
-		String dateAsLong = Long.toString(date.getTime());
-		//this.addParameter(FROM_DATE_PARAMETER, dateAsLong);
-		this.addParameter(FROM_DATE_PARAMETER, "1362096000");
+		this.addParameter(FROM_DATE_PARAMETER, dateToSeconds(date));
 		return this;
+	}
+
+	private String dateToSeconds(Date date) {
+		String dateAsLong = Long.toString(date.getTime());
+		//remove milliseconds to satisfy API
+		return dateAsLong.substring(0, dateAsLong.length() -3);
 	}
 	
 }

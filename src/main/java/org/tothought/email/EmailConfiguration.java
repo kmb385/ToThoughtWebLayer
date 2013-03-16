@@ -6,6 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailConfiguration {
 
+	public static final boolean IS_EMAIL_ENABLED = false;
+	
+	public static final String DEV_ENVIRONMENT = "DEV";
+
+	@Value("${tothought.env}")
+	private String environment;
+	
 	@Value("${email.username}")
 	private String username;
 	
@@ -48,6 +55,14 @@ public class EmailConfiguration {
 
 	public void setPort(String port) {
 		this.port = port;
+	}
+
+	public String getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(String environment) {
+		this.environment = environment;
 	}
 
 }
