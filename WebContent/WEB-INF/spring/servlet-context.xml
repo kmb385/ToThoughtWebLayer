@@ -29,7 +29,7 @@
 			<bean class="org.tothought.spring.interceptors.PageableRequestHandlerInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/resume/skills/*/commitpage/*"/>
+			<mvc:mapping path="/resume/skills/**"/>
 			<bean class="org.tothought.spring.interceptors.PageableRequestHandlerInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>

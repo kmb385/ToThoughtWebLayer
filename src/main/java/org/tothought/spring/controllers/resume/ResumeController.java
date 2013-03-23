@@ -60,32 +60,32 @@ public class ResumeController {
 		return "resume/profile";
 	}
 
-	@RequestMapping("/skills")
-	public String getAllSkills(Model model) {
-		model.addAttribute("categories", skillCategoryRepository.findAll());
-		return "resume/skills";
-	}
-
-	@RequestMapping("/skills/{skillId}")
-	public String getSkill(Model model, @PathVariable Integer skillId) {
-		Skill skill = skillRepository.findOne(skillId);
-		model.addAttribute("skill", skill);
-		model.addAttribute("commits", commitRepository.findByTag(skill.getTag().getName()));
-		return "resume/skill";
-	}
-
-	@RequestMapping("/skills/{skillId}/commitpage/{commitpage}")
-	@PageableRequestMapping(pathVariable="commitpage")
-	public String getSkill(Model model, @PathVariable Integer skillId, @PathVariable Integer commitpage) {
-
-		Skill skill = skillRepository.findOne(skillId);
-		PageRequest pageRequest = new PageRequest(commitpage, this.pageSize, this.sort);
-
-		model.addAttribute("skill", skill);
-		model.addAttribute("commits", commitRepository.pageByTag(skill.getTag().getName(), pageRequest).getContent());
-		
-		return "resume/skill";
-	}
+//	@RequestMapping("/skills")
+//	public String getAllSkills(Model model) {
+//		model.addAttribute("categories", skillCategoryRepository.findAll());
+//		return "resume/skills";
+//	}
+//
+//	@RequestMapping("/skills/{skillId}")
+//	public String getSkill(Model model, @PathVariable Integer skillId) {
+//		Skill skill = skillRepository.findOne(skillId);
+//		model.addAttribute("skill", skill);
+//		model.addAttribute("commits", commitRepository.findByTag(skill.getTag().getName()));
+//		return "resume/skill";
+//	}
+//
+//	@RequestMapping("/skills/{skillId}/commitpage/{commitpage}")
+//	@PageableRequestMapping(pathVariable="commitpage")
+//	public String getSkill(Model model, @PathVariable Integer skillId, @PathVariable Integer commitpage) {
+//
+//		Skill skill = skillRepository.findOne(skillId);
+//		PageRequest pageRequest = new PageRequest(commitpage, this.pageSize, this.sort);
+//
+//		model.addAttribute("skill", skill);
+//		model.addAttribute("commits", commitRepository.pageByTag(skill.getTag().getName(), pageRequest).getContent());
+//		
+//		return "resume/skill";
+//	}
 
 	@RequestMapping("/experience")
 	public String getExperience(Model model) {

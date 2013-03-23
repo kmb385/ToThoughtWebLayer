@@ -10,12 +10,12 @@
 <div class="noprint">To view more information such as work examples click a Skill below.</div>
 <c:forEach var="skillCategory" items="${categories}">
 	<div class="pdf-no-break">
-		<div class="font-medium bold section-title subtle">${skillCategory.name}</div>
+		<div class="font-medium section-title subtle">${skillCategory.name}</div>
 		<c:forEach var="skill" items="${skillCategory.skills}">
 			<ttTags:rated-resume-item text="${skill.name}"
 				imageSrc="${pageContext.request.contextPath }/resources/images/resume/skills/uploaded-icons/${skill.image.name}"
 				rating="${skill.rating}"
-				href="${pageContext.request.contextPath }/resume/skills/${skill.skillId}/commitpage/0" />
+				href="${pageContext.request.contextPath }/resume/skills/${skill.skillId}/detailpage/0" />
 		</c:forEach>
 	</div>
 </c:forEach>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="ttTags" uri="/WEB-INF/tags/tothought-tags.tld"%>
 <ttTags:documentTemplate cssFiles="post.css,post_tags.css,resume.css"
-	requiresTextEditor="true" sidebarFragment="resume_sidebar.jsp">
+	requiresTextEditor="true">
 	<div class="page-title">About toThought</div>
 	<p class="v-margin-text-block">toThought is a blog and online
 		profile I created to share my coding adventures. The site functions as

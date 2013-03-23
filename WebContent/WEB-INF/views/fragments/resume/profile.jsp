@@ -26,7 +26,7 @@
 			</div>
 		</div>
 </div>
-<div class="font-medium bold section-title">About Myself</div>
+<div class="font-medium section-title">About Myself</div>
 <div class="v-margin-text-block">At the age of 14 I wrote my first
 	line of code, since that moment I have dedicated myself to mastering
 	the craft of software development. Coding is a part of my life, more
@@ -39,7 +39,7 @@
 	This passion has lead to considerable success within my career, however
 	my driver has always remained the pursuit of excellence within the
 	field. I invite you to explore my resume to learn more about me.</div>
-<div class="font-medium bold section-title">Objectives</div>
+<div class="font-medium section-title">Objectives</div>
 <ul class="list">
 	<li>Pursue excellence in the art of software development with
 		relentless vigor</li>
@@ -48,7 +48,7 @@
 	<li>Experience virtuous challenges in my day to day activities</li>
 	<li>Teach others to find joy and success from coding</li>
 </ul>
-<div class="font-medium bold section-title">Characteristics</div>
+<div class="font-medium section-title">Characteristics</div>
 <div class="clearfix">
 	<ul class="list floated-list">
 		<li>Driven</li>
