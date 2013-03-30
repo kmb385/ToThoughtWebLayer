@@ -1,5 +1,7 @@
 package org.tothought.spring.controllers.resume;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -8,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.tothought.entities.Skill;
+import org.tothought.entities.interfaces.SkillDetail;
+import org.tothought.json.JsonUtil;
 import org.tothought.repositories.CommitRepository;
 import org.tothought.repositories.SkillCategoryRepository;
 import org.tothought.repositories.SkillRepository;
@@ -18,9 +23,9 @@ import org.tothought.spring.annotations.PageableRequestMapping;
 @Controller
 @RequestMapping("/resume/skills")
 public class SkillController {
-	
-	private Sort commitSort = new Sort(Direction.DESC, "commitDt");	
-	private Sort answerSort = new Sort(Direction.DESC, "createdDt");	
+
+	private Sort commitSort = new Sort(Direction.DESC, "commitDt");
+	private Sort answerSort = new Sort(Direction.DESC, "createdDt");
 	private int pageSize = 5;
 
 	@Autowired
@@ -28,13 +33,13 @@ public class SkillController {
 
 	@Autowired
 	SkillCategoryRepository skillCategoryRepository;
-	
+
 	@Autowired
 	CommitRepository commitRepository;
 
 	@Autowired
 	StackOverflowAnswerRepository answerRepository;
-	
+
 	@RequestMapping
 	public String getAllSkills(Model model) {
 		model.addAttribute("categories", skillCategoryRepository.findAll());
@@ -42,7 +47,8 @@ public class SkillController {
 	}
 
 	/**
-	 * Display all details.
+	 * Display all details when more link is clicked via non-ajax request.
+	 * 
 	 * @param model
 	 * @param skillId
 	 * @param detail
@@ -50,21 +56,41 @@ public class SkillController {
 	 */
 	@RequestMapping("/{skillId}/detail/{detail}")
 	public String getSkill(Model model, @PathVariable Integer skillId, @PathVariable String detail) {
-		Skill skill = skillRepository.findOne(skillId);
-		model.addAttribute("skill", skill);
-
-		if(detail.equalsIgnoreCase("github")){				
-			model.addAttribute("details", commitRepository.findByTag(skill.getTag().getName()));
-		}else if(detail.equalsIgnoreCase("stack")){
-			model.addAttribute("details", answerRepository.findByTag(skill.getTag().getName()));
-		}
-		model.addAttribute("detailType", detail);
-		model.addAttribute("commits", commitRepository.findByTag(skill.getTag().getName()));
+		this.handleSkillRequest(model, skillId, detail, null);
 		return "resume/skill";
+	}
+	
+	/**
+	 * Returns JSON of all details for ajax request.
+	 * 
+	 * @param model
+	 * @param skillId
+	 * @param detail
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/{skillId}/detail/{detail}", produces="application/json")
+	public String getSkillJson(Model model, @PathVariable Integer skillId, @PathVariable String detail) {
+		return this.getDetailJson(skillId, detail, null);
+	}
+	
+	/**
+	 * Returns JSON of a page of details for ajax request.
+	 * 
+	 * @param model
+	 * @param skillId
+	 * @param detail
+	 * @return
+	 */
+	@RequestMapping(value="/{skillId}/detail/{detail}/detailpage/{detailpage}", produces="application/json")
+	@ResponseBody
+	public String getSkillJson(@PathVariable Integer skillId, @PathVariable String detail, @PathVariable Integer detailpage) {
+		return this.getDetailJson(skillId, detail, detailpage);
 	}
 
 	/**
-	 * Display a page of details.
+	 * Display a page of details, used for non-ajax requests.
+	 * 
 	 * @param model
 	 * @param skillId
 	 * @param detail
@@ -72,39 +98,72 @@ public class SkillController {
 	 * @return
 	 */
 	@RequestMapping("/{skillId}/detail/{detail}/detailpage/{detailpage}")
-	@PageableRequestMapping(pathVariable="detailpage")
-	public String getSkill(Model model, @PathVariable Integer skillId, @PathVariable String detail, @PathVariable Integer detailpage){
-		Skill skill = skillRepository.findOne(skillId);
-		model.addAttribute("skill", skill);
-		model.addAttribute("detailType", detail);
-		
-		if(detail.equalsIgnoreCase("stack")){
-			PageRequest pageRequest = new PageRequest(detailpage, this.pageSize, this.answerSort);
-			model.addAttribute("details", answerRepository.pageByTag(skill.getTag().getName(),pageRequest).getContent());
-		}else if (detail.equalsIgnoreCase("github")){
-			PageRequest pageRequest = new PageRequest(detailpage, this.pageSize, this.commitSort);
-			model.addAttribute("details", commitRepository.pageByTag(skill.getTag().getName(),pageRequest).getContent());
-		}
+	@PageableRequestMapping(pathVariable = "detailpage")
+	public String getSkill(Model model, @PathVariable Integer skillId, @PathVariable String detail,
+			@PathVariable Integer detailpage) {
+		this.handleSkillRequest(model, skillId, detail, detailpage);
 		return "resume/skill";
+	}
+
+	/**
+	 * Return the appropriate list of skills.
+	 * @param model
+	 * @param skillId
+	 * @param detailType
+	 * @param page
+	 */
+	private void handleSkillRequest(Model model, Integer skillId, String detailType, Integer page) {
+		List<? extends SkillDetail> details = null;
+		Skill skill = skillRepository.findOne(skillId);
+		String tagName = (skill.getTag() != null) ? skill.getTag().getName() : null;
+
+		details = findDetails(detailType, page, tagName);
+
+		model.addAttribute("skill", skill);
+		model.addAttribute("detailType", detailType);
+		model.addAttribute("details", details);
+	}
+
+	/**
+	 * Returns a list of Details based upon request parameters.
+	 * @param detailType
+	 * @param page
+	 * @param tagName
+	 * @return
+	 */
+	private List<? extends SkillDetail> findDetails(String detailType, Integer page,String tagName) {
+		List<? extends SkillDetail> details = null;
+		if (page == null) {
+			if (detailType.equalsIgnoreCase("github")) {
+				details = commitRepository.findByTag(tagName);
+			} else if (detailType.equalsIgnoreCase("stack")) {
+				details = answerRepository.findByTag(tagName);
+			}
+		} else {
+			if (detailType.equalsIgnoreCase("github")) {
+				PageRequest pageRequest = new PageRequest(page, this.pageSize, this.commitSort);
+				details = commitRepository.pageByTag(tagName, pageRequest).getContent();
+			} else if (detailType.equalsIgnoreCase("stack")) {
+				PageRequest pageRequest = new PageRequest(page, this.pageSize, this.answerSort);
+				details = answerRepository.pageByTag(tagName, pageRequest).getContent();
+			}
+		}
+		return details;
 	}
 	
 	/**
-	 * Display the Github commits on initial visit.
-	 * @param model
+	 * Returns Json for based upon parameters specified by request.
 	 * @param skillId
-	 * @param detailpage
+	 * @param detail
+	 * @param detailPage
 	 * @return
 	 */
-	@RequestMapping("/{skillId}/detailpage/{detailpage}")
-	@PageableRequestMapping(pathVariable="detailpage")
-	public String getSkill(Model model, @PathVariable Integer skillId, @PathVariable Integer detailpage) {
+	private String getDetailJson(Integer skillId, String detail, Integer detailPage){
+		List<? extends SkillDetail> details = null;
 		Skill skill = skillRepository.findOne(skillId);
-		PageRequest pageRequest = new PageRequest(detailpage, this.pageSize, this.commitSort);
-
-		model.addAttribute("skill", skill);
-		model.addAttribute("details", commitRepository.pageByTag(skill.getTag().getName(), pageRequest).getContent());
-		model.addAttribute("detailType", "github");
-		return "resume/skill";
+		String tagName = (skill.getTag() != null) ? skill.getTag().getName() : null;
+		
+		details = this.findDetails(detail, detailPage, tagName);
+		return JsonUtil.getJson(details);
 	}
-
 }

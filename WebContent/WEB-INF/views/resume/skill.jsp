@@ -31,12 +31,12 @@
 	<div class="tabs clearfix">
 		<!--  <div class="font-medium bold subtle tab active">GitHub Commits<div class="tab-pointer"></div></div>
 		<div class="font-medium bold subtle tab">StackOverflow Answers<div class="tab-pointer"></div></div>-->
-		<a class="font-medium bold subtle tab active" 
+		<a class="font-medium bold subtle tab ${detailType == 'github' ? 'active':''}" 
 			href="<c:url value="/resume/skills/${skill.skillId}/detail/github/detailpage/0"/>">
 				<span>GitHub Commits</span>
 				<div class="tab-pointer"></div>
 		</a>
-		<a class="font-medium bold subtle tab" 
+		<a class="font-medium bold subtle tab ${detailType == 'stack' ? 'active':''}" 
 			href="<c:url value="/resume/skills/${skill.skillId}/detail/stack/detailpage/0"/>">
 				<span>StackOverflow Answers</span>
 				<div class="tab-pointer"></div>
@@ -55,19 +55,6 @@
 			</li>
 		</c:forEach>
 	</ul>
-<!--  	<ul id="skill-details">
-		<c:forEach var="commit" items="${commits}">
-			<li class="v-margin-5">
-				<a href="${commit.htmlUrl}" target="_blank" class="commit">${commit.title}</a>
-				<span class="subtle font-small"><fmt:formatDate
-					value="${commit.commitDt}" pattern="MM/dd/yyyy" /></span>
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<a href="<c:url value="/secure/resume/manager/commit/edit/${commit.commitId}"/>"
-					class="small-edit-btn h-margin-3"></a>
-				</sec:authorize>
-			</li>
-		</c:forEach>
-	</ul>-->
 	<c:if test="${!empty nextPage}">
 		<a href="<c:url value="/resume/skills/${skill.skillId}/detail/${detailType}"/>"
 			class="more subtle">View More</a>

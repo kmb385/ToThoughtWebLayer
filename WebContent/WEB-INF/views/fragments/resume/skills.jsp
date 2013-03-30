@@ -15,7 +15,7 @@
 			<ttTags:rated-resume-item text="${skill.name}"
 				imageSrc="${pageContext.request.contextPath }/resources/images/resume/skills/uploaded-icons/${skill.image.name}"
 				rating="${skill.rating}"
-				href="${pageContext.request.contextPath }/resume/skills/${skill.skillId}/detailpage/0" />
+				href="${pageContext.request.contextPath }/resume/skills/${skill.skillId}/detail/github/detailpage/0" />
 		</c:forEach>
 	</div>
 </c:forEach>
