@@ -36,7 +36,7 @@ function appendDetails(data) {
 			"class" : "v-margin-5"
 		});
 		var a = $("<a></a>", {
-			href : element.url,
+			href : (element.url || element.link),
 			target : "_blank",
 			"class" : "commit"
 		}).html(element.title);
