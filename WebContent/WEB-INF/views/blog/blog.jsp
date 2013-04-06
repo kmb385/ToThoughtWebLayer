@@ -5,7 +5,9 @@
 <%@ taglib prefix="ttTags" uri="/WEB-INF/tags/tothought-tags.tld"%>
 
 <ttTags:documentTemplate sidebarFragment="blog_sidebar.jsp"
-	cssFiles="post.css,post_tags.css" requiresTextEditor="true">
+	cssFiles="post.css,post_tags.css"
+	jsFiles="${pageContext.request.contextPath}/resources/js/pages/post.js"
+	requiresTextEditor="true">
 		<c:set var="isNew" value="true" scope="request"/>
 		<c:forEach items="${posts}" var="tmpPost">
 			<c:set var="post" value="${tmpPost}" scope="request" />
