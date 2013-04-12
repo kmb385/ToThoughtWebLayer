@@ -35,4 +35,8 @@
 		<script language="javascript"
 			src="http://widgets.dzone.com/links/widgets/zoneit.js"></script>
 	</div>
+	<div class="h-margin-20 v-margin-10">
+		<a href="https://twitter.com/share" class="twitter-share-button" data-via="bowersox_kevin">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>	
+	</div>
 </c:if>
