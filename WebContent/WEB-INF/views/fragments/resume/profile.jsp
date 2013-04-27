@@ -30,7 +30,7 @@
 <div class="v-margin-text-block">At the age of 14 I wrote my first
 	line of code, since that moment I have dedicated myself to mastering
 	the craft of software development. Coding is a part of my life, more
-	than a career, more than a paycheck, second only to god, family and my
+	than a career, more than a paycheck, second only to God, family and my
 	health. I am grateful to have been blessed with the opportunity to
 	explore and practice within this remarkable field.</div>
 <div class="v-margin-text-block">I enjoy developing, exploring and
