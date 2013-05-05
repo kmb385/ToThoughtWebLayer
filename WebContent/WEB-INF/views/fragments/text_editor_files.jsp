@@ -5,4 +5,5 @@
 <script type="text/javascript" src="<c:url value="/resources/libraries/syntaxhl/scripts/shCore.js"/>" ></script>
 <script type="text/javascript" src="<c:url value="/resources/libraries/syntaxhl/scripts/shBrushJava.js"/>" ></script>
 <script type="text/javascript" src="<c:url value="/resources/libraries/syntaxhl/scripts/shBrushJScript.js"/>" ></script>
+<script type="text/javascript" src="<c:url value="/resources/libraries/syntaxhl/scripts/shBrushXml.js"/>" ></script>
 <script type="text/javascript" src="<c:url value="/resources/js/my_tinymce.js"/>" ></script>
