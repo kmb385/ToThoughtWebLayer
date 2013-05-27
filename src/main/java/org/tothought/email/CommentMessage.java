@@ -35,7 +35,10 @@ public class CommentMessage extends AbstractMailMessage implements MailMessage<C
 
 	@Override
 	public void setBody(Comment comment) {
-		body.append("\n").append(comment.getAuthor()).append(" commented: ").append("\n");
+		body.append("\n");
+		body.append("Regarding post: ").append(comment.getPost().getTitle());
+		body.append("\n");
+		body.append(comment.getAuthor()).append(" commented: ").append("\n");
 		body.append(comment.getBody());
 	}
 
