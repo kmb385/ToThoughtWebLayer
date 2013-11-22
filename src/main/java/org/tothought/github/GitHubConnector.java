@@ -63,9 +63,9 @@ public class GitHubConnector {
 		try {
 			// Construct data
 			String data = URLEncoder.encode("username", "UTF-8") + "="
-					+ URLEncoder.encode("kmb385", "UTF-8");
+					+ URLEncoder.encode("username", "UTF-8");
 			data += "&" + URLEncoder.encode("password", "UTF-8") + "="
-					+ URLEncoder.encode("shamrock1", "UTF-8");
+					+ URLEncoder.encode("password", "UTF-8");
 
 			// Send data
 			URL url = new URL("https://api.github.com/authorizations");
